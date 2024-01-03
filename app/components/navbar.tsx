@@ -15,13 +15,14 @@ const Navbar = () => {
       <nav className="flex justify-between m-5 ">
         <div className="text-xl font-bold	">WEBXMASTERS</div>
         <ul className="hidden md:flex font-bold ">
-          <li className="mr-5">TOOLS</li>
-          <li>VIDEOS</li>
+          <li className="mr-5"><a href="/tools">TOOLS</a>
+          </li>
+          <li><a href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ">VIDEOS</a></li>
         </ul>
         <div className="hidden md:flex justify-center">
-          <p className="mr-5 font-bold">LOGIN</p>
+          <p className="mr-5 font-bold"><a href="/login">LOGIN</a></p>
           <p className="bg-primary-color font-bold  -mt-2 px-10 py-2  align-center rounded-full">
-            SIGNUP
+            <a href="/signup">SIGNUP</a>
           </p>
         </div>
         <button className="md:hidden" onClick={toggleMenu}>
@@ -45,9 +46,9 @@ const Navbar = () => {
       </nav>
       {isMenuOpen && <nav className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
         <ul className="flex flex-col text-center bg-primary-color w-full">
-          <li className="p-2">TOOLS</li>
+          <li className="p-2"><a href="/tools">TOOLS</a></li>
           <hr />
-          <li className="p-2">VIDEOS</li>
+          <li className="p-2"><a href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ">VIDEOS</a></li>
           <hr />
           <li className="p-2">LOGIN</li>
           <hr />
