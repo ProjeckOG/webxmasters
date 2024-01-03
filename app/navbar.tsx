@@ -19,8 +19,8 @@ const Navbar = () => {
           <li>VIDEOS</li>
         </ul>
         <div className="hidden md:flex justify-center">
-          <p className="mr-5">LOGIN</p>
-          <p className="bg-primary-color font-bold -mt-5 p-5 rounded-full">
+          <p className="mr-5 font-bold">LOGIN</p>
+          <p className="bg-primary-color font-bold  -mt-2 px-10 py-2  align-center rounded-full">
             SIGNUP
           </p>
         </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
         </button>
       </nav>
       {isMenuOpen && <nav className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
-        <ul className="flex flex-col bg-primary-color w-full">
+        <ul className="flex flex-col text-center bg-primary-color w-full">
           <li className="p-2">TOOLS</li>
           <hr />
           <li className="p-2">VIDEOS</li>

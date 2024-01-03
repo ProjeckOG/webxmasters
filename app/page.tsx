@@ -2,7 +2,7 @@ import NavBar from "./navbar"
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main className="">
       <NavBar />
     </main>
   )
