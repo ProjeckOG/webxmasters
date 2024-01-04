@@ -6,7 +6,7 @@ import Navbar from './components/navbar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'WebxMasters: Builders Toolset',
+  title: 'WebxMasters: Maker Tools',
   description: 'Find the tools to create things in the digital era!',
 }
 

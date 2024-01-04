@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-
+import Link from "next/link";
 const Navbar = () => {
   // State to manage the visibility of the menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,16 +13,16 @@ const Navbar = () => {
   return (
     <>
       <nav className="flex justify-between m-5 ">
-        <div className="text-xl font-bold	">WEBXMASTERS</div>
+        <div className="text-xl font-bold	"><Link href="/">WEBXMASTERS</Link></div>
         <ul className="hidden md:flex font-bold ">
-          <li className="mr-5"><a href="/tools">TOOLS</a>
+          <li className="mr-5"><Link href="/tools">TOOLS</Link>
           </li>
-          <li><a href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ">VIDEOS</a></li>
+          <li><Link href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ" target="_blank">VIDEOS</Link></li>
         </ul>
         <div className="hidden md:flex justify-center">
-          <p className="mr-5 font-bold"><a href="/login">LOGIN</a></p>
+          <p className="mr-5 font-bold"><Link href="/login">LOGIN</Link></p>
           <p className="bg-primary-color font-bold  -mt-2 px-10 py-2  align-center rounded-full">
-            <a href="/signup">SIGNUP</a>
+            <Link href="/signup">SIGNUP</Link>
           </p>
         </div>
         <button className="md:hidden" onClick={toggleMenu}>
@@ -46,13 +46,13 @@ const Navbar = () => {
       </nav>
       {isMenuOpen && <nav className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
         <ul className="flex flex-col text-center bg-primary-color w-full">
-          <li className="p-2"><a href="/tools">TOOLS</a></li>
+          <li className="p-2"><Link href="/tools">TOOLS</Link></li>
           <hr />
-          <li className="p-2"><a href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ">VIDEOS</a></li>
+          <li className="p-2"><Link href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ">VIDEOS</Link></li>
           <hr />
-          <li className="p-2">LOGIN</li>
+          <li className="p-2"><Link href="/login">LOGIN</Link></li>
           <hr />
-          <li className="p-2">SIGNUP</li>
+          <li className="p-2"><Link href="/signup">SIGNUP</Link></li>
         </ul>
       </nav>}
     </>
