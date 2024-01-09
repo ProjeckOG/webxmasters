@@ -6,7 +6,7 @@ const ResetPassword = () => {
       <h2 className="text-white text-center text-2xl font-bold my-10">
         RESET PASSWORD
       </h2>
-      <form>
+      <form className="">
         <div className="mb-4">
           <label
             htmlFor="currentPassword"

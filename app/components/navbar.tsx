@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between m-5 ">
+      <nav className="flex justify-between m-5 text-white">
         <div className="text-xl font-bold	"><Link href="/">WEBXMASTERS</Link></div>
         <ul className="hidden md:flex font-bold ">
           <li className="mr-5"><Link href="/tools">TOOLS</Link>

@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 const Hero = () => {
   return (
-    <div className="w-3/4 md:w-3/4 mx-auto mt-20">
+    <div className="w-3/4 md:w-3/4 mx-auto mt-20 text-white">
       <h1 className="text-3xl font-bold text-center uppercase">
         Discover webmaster tools and get started building today
       </h1>

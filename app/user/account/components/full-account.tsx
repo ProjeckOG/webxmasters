@@ -4,7 +4,7 @@ import AccountDetails from "./account-details";
 const FullAccount = () => {
 
   return (
-    <div>
+    <div className="mb-10">
      <AccountDetails />
      <ResetPassword />
     </div>

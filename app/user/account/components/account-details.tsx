@@ -6,7 +6,7 @@ const AccountDetails = () => {
     <div className="uppercase">
       <h2 className="text-white text-center text-2xl font-bold my-10">ACCOUNT DETAILS</h2>
       <form>
-  <div className="mb-4">
+  <div className="mb-4 text-white">
     <label htmlFor="username" className="block mb-2 text-sm font-bold ">
       Username
     </label>
