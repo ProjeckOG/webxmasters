@@ -21,9 +21,11 @@ const Navbar = () => {
         </ul>
         <div className="hidden md:flex justify-center">
           <p className="mr-5 font-bold"><Link href="/login">LOGIN</Link></p>
+          <Link href="/signup">
           <p className=" border hover:bg-primary-color font-bold  -mt-2 px-10 py-2  align-center rounded-full">
-            <Link href="/signup">SIGNUP</Link>
+           SIGNUP
           </p>
+          </Link>
         </div>
         <button className="md:hidden" onClick={toggleMenu}>
           <svg
