@@ -8,6 +8,6 @@ body {
     background-color: #0C0C1E;
     color: #fff
   }
-  input {
+  input, textarea {
     background-color: hsl(240, 41%, 15%);
   }
