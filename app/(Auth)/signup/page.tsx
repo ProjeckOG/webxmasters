@@ -20,7 +20,7 @@ export default function SignUp() {
           </div>
           <input className="w-full p-2 mb-4 rounded " type="password" placeholder="PASSWORD" />
           <input className="w-full p-2 mb-6 rounded  " type="password" placeholder="REPEAT PASSWORD" />
-          <button className="w-full px-4 py-2 mb-4 rounded bg-primary-color text-white hover:bg-accent-color">
+          <button className="w-full px-4 py-2 mb-4 rounded bg-secondary-color text-white hover:bg-accent-color">
             SUBMIT
           </button>
           <div className="text-center text-white mt-6">

@@ -3,6 +3,7 @@ import FullAccount from "./components/full-account";
 import Link from "next/link";
 import { useState } from "react";
 import WorkPreferences from "./components/work-preferences";
+import { ArrowBigDownIcon, ArrowBigLeftIcon } from "lucide-react";
 
 const Account = () => {
   // State to keep track of the active tab
@@ -15,7 +16,11 @@ const Account = () => {
 
   return (
     <div>
-      <div className="w-full md:w-1/2 mt-10 mx-auto flex justify-around text-white">
+      <div className="w-full md:w-1/2 mx-auto mt-10">
+      <Link href="/user" className=" flex uppercase font-bold  p-3  rounded-xl"><ArrowBigLeftIcon fill="white"/>Back to User Activity</Link>
+      </div>
+
+      <div className="w-full md:w-1/2 mt-5 mx-auto flex justify-around ">
         <button
           className={`uppercase font-bold  p-3 w-full border  hover:underline
           ${activeTab === "accountDetails" ? "bg-primary-color" : ""}

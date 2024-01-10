@@ -3,7 +3,7 @@ import Link from "next/link";
 const User = () => {
 
   return (
-    <div className=" flex items-center justify-center">
+    <div className=" flex w-full md:w-1/2 mx-auto  items-center justify-center">
     <div className="  mt-10 rounded-lg text-white">
       <div className="flex items-center  p-2 mb-4">
         <Image
@@ -17,12 +17,12 @@ const User = () => {
           <h2 className="text-xl font-semibold ">Jerry Cullen</h2>
           <div className="flex mt-2">
           <Link href="user/account">
-            <button className="bg-secondary-color hover:bg-accent-color text-white font-bold p-2 md:p-4 rounded-3xl mr-2 md:mr-10">
+            <button className="bg-secondary-color hover:bg-accent-color text-white font-bold p-2 md:p-3 rounded-3xl mr-2 md:mr-10">
              EDIT ACCOUNT
             </button>
             </Link>
             <Link href="user/profile"> 
-            <button className="bg-secondary-color  hover:bg-accent-color text-white font-bold  p-2 md:p-4  rounded-3xl mr-2 md:mr-10">
+            <button className="bg-secondary-color  hover:bg-accent-color text-white font-bold  p-2 md:p-3  rounded-3xl mr-2 md:mr-10">
             EDIT PROFILE
             </button>
             </Link>

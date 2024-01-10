@@ -8,7 +8,9 @@ const WorkPreferences = () => {
       </h2>
       <form>
         <div className="mb-6">
-          <label className="text-xl font-bold mb-3 block mt-10">WORK AVAILABILITY</label>
+          <label className="text-xl font-bold mb-3 block mt-10">
+            WORK AVAILABILITY
+          </label>
           <div className="mb-3">
             <label className="block ">
               <input
@@ -45,52 +47,54 @@ const WorkPreferences = () => {
           </div>
         </div>
         <div className="uppercase">
-          <label className="text-xl font-bold mb-3 block mt-10">Work History</label>
-
-          <label className="block mb-2 text-sm font-bold">
-            Job Position
-            <input className="w-full p-2 mb-3 rounded" type="text" />
+          <label className="text-xl font-bold mb-3 block mt-10">
+            Work History
           </label>
 
-          <label className="block mb-2 text-sm font-bold">
-            Company
-            <input className="w-full p-2 mb-3 rounded" type="text" />
-          </label>
+          <label className="block mb-3 text-sm font-bold ">Job Position</label>
+          <input className="w-full p-2 mb-3 rounded" type="text" />
 
+          <label className="block mb-3 text-sm font-bold">Company</label>
+          <input className="w-full p-2 mb-3 rounded" type="text" />
           <div className="flex mb-3">
-            <label className="w-1/2 mr-2 block">
-              Date Started
-              <input className="w-full p-2 rounded" type="text" />
-            </label>
-
-            <label className="w-1/2 block">
-              Date End
-              <input className="w-full p-2 rounded" type="text" />
-            </label>
+            <div className="w-full md:w-1/2 mr-2">
+              <label className="block mb-2 text-sm font-bold">
+                Date Started
+              </label>
+              <input className="w-full p-2 mb-3 rounded" type="text" />
+            </div>
+            <div className="w-full md:w-1/2">
+              <label className="block mb-2 text-sm font-bold">Date EnD</label>
+              <input className="w-full p-2 mb-3 rounded" type="text" />
+            </div>
           </div>
-
           <button className="text-sm bg-blue-600 hover:bg-blue-700 py-1 px-2 rounded">
             + Add Another Job
           </button>
         </div>
-        <div className="mb-6">
-          <label className="text-xl font-bold mb-3 block mt-10">Education</label>
+        <div className="mb-6 uppercase">
+          <label className="text-xl font-bold mb-3 block mt-10">
+            Education
+          </label>
 
           <label className="block mb-2 text-sm font-bold">
             School / University
-            <input className="w-full p-2 mb-3 rounded" type="text" />
           </label>
+          <input className="w-full p-2 mb-3 rounded" type="text" />
 
           <div className="flex mb-3">
-            <label className="w-1/2 mr-2 block">
-              Degree Type
-              <input className="w-full p-2 rounded" type="text" />
-            </label>
-
-            <label className="w-1/2 block">
-              Completion Year
-              <input className="w-full p-2 rounded" type="text" />
-            </label>
+            <div className="w-full md:w-1/2 mr-2">
+              <label className="block mb-2 text-sm font-bold">
+                DEGREE TYPE
+              </label>
+              <input className="w-full p-2 mb-3 rounded" type="text" />
+            </div>
+            <div className="w-full md:w-1/2">
+              <label className="block mb-2 text-sm font-bold">
+                COMPLETION YEAR
+              </label>
+              <input className="w-full p-2 mb-3 rounded" type="text" />
+            </div>
           </div>
 
           <button className="text-sm bg-blue-600 hover:bg-blue-700 py-1 px-2 rounded">
@@ -99,7 +103,7 @@ const WorkPreferences = () => {
         </div>
 
         <div className="mb-6">
-          <label className="block  text-sm font-bold mb-2">
+          <label className="block mb-2 text-sm font-bold">
             ARE YOU LOOKING FOR WORK
           </label>
           <div className="relative inline-block w-10 align-middle select-none">
@@ -114,7 +118,7 @@ const WorkPreferences = () => {
             ></label>
           </div>
         </div>
-        <button className="w-full bg-blue-600  py-2 px-4 rounded hover:bg-blue-700">
+        <button className="w-full bg-secondary-color py-2 px-4 rounded hover:bg-accent-color">
           UPDATE
         </button>
       </form>

@@ -20,7 +20,7 @@ export default function Login() {
               <span className="ml-2">REMEMBER ME</span>
             </label>
           </div>
-          <button className="bg-primary-color text-white px-4 py-3 w-full font-bold rounded hover:bg-accent-color">LOG IN</button>
+          <button className="bg-secondary-color text-white px-4 py-3 w-full font-bold rounded hover:bg-accent-color">LOG IN</button>
         </div>
         <div className="text-center text-gray-400 mt-6 ">
           <Link href="/forgotpassword" className="hover:underline">FORGOT YOUR PASSWORD?</Link>
