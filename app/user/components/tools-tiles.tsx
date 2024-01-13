@@ -92,7 +92,7 @@ const ToolCard = ({ name, logo, link, fav }: ToolCardProps) => (
 
 const ToolTiles = () => {
   return (
-      <div className="flex flex-wrap mx-auto w-full md:w-1/2">
+      <div className="flex flex-wrap mx-auto w-full md:w-3/4 ">
         {toolCardsData.map((tool) => (
           <ToolCard
             key={tool.id}

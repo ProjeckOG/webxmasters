@@ -43,6 +43,43 @@ const skillCardsData: SkillCardProps[] = [
     id: 9,
     name: 'Google',
   },
+  {
+    id: 1,
+    name: 'HTml',
+
+  },
+  {
+    id: 2,
+    name: 'css',
+  },
+  {
+    id: 3,
+    name: 'javascript',
+  },
+  {
+    id: 4,
+    name: 'NextJS',
+  },
+  {
+    id: 5,
+    name: 'reactjs',
+  },
+  {
+    id: 6,
+    name: 'supabase',
+  },
+  {
+    id: 7,
+    name: 'typescript',
+  },
+  {
+    id: 8,
+    name: 'Vercel',
+  },
+  {
+    id: 9,
+    name: 'Google',
+  },
   
   
   
@@ -57,7 +94,7 @@ const SkillCard = ({ name }: SkillCardProps) => (
 
 const SkillTiles = () => {
   return (
-      <div className="flex flex-wrap mx-auto w-full md:w-1/2">
+      <div className="flex flex-wrap mx-auto w-full md:w-3/4">
         {skillCardsData.map((skill) => (
           <SkillCard
             id={skill.id}
