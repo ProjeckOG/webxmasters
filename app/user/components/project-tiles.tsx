@@ -112,6 +112,7 @@ const ProjectTiles = () => {
           description={project.description}
           link={project.link}
           tools={project.tools}
+          key={project.id}
         />
       ))}
     </div>

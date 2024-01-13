@@ -17,7 +17,7 @@ export default function Login() {
   const handleSignIn = async () => {
     await supabase.auth.signInWithPassword({
       email,
-      password,
+      password, 
     })
     router.refresh()
   }

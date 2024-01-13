@@ -97,6 +97,7 @@ const SkillTiles = () => {
       <div className="flex flex-wrap mx-auto w-full md:w-3/4">
         {skillCardsData.map((skill) => (
           <SkillCard
+          key={skill.id}
             id={skill.id}
             name={skill.name}
                     />
