@@ -1,8 +1,34 @@
+'use client'
 
 import Link from "next/link"
 import Image from "next/image"
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
+import type { Database } from "@/lib/lib/database.types"
+
 
 export default function SignUp() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const router = useRouter()
+  const supabase = createClientComponentClient<Database>()
+
+  const handleSignUp = async () => {
+    
+    await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${location.origin}/auth/callback`,
+      },
+    })
+    router.refresh()
+    setEmail('')
+    setPassword('')
+  }
+
     return (
       <div className="my-32 flex items-center  justify-center bg-dark-blue">
       <div className="w-full max-w-lg p-8 border rounded-lg bg-darker-blue shadow-xl">
@@ -13,18 +39,18 @@ export default function SignUp() {
         <hr />
         <div className="text-white text-center my-4">OR</div>
         <form>
-          <input className="w-full p-2 mb-4 rounded " type="text" placeholder="USERNAME" />
-          <div className="flex -mx-2">
-            <input className="w-1/2 mx-2 p-2 mb-4 rounded " type="text" placeholder="FIRST NAME" />
-            <input className="w-1/2 mx-2 p-2 mb-4 rounded " type="text" placeholder="LAST NAME" />
-          </div>
-          <input className="w-full p-2 mb-4 rounded " type="password" placeholder="PASSWORD" />
-          <input className="w-full p-2 mb-6 rounded  " type="password" placeholder="REPEAT PASSWORD" />
-          <button className="w-full px-4 py-2 mb-4 rounded bg-secondary-color text-white hover:bg-accent-color">
-            SUBMIT
+          <input className="w-full p-2 mb-4 rounded " type="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="EMAIL" />
+          {/*<div className="flex -mx-2">
+            <input className="w-1/2 mx-2 p-2 mb-4 rounded " type="text" name="FIRST NAME"  placeholder="FIRST NAME" />
+            <input className="w-1/2 mx-2 p-2 mb-4 rounded " type="text" name="LAST NAME" placeholder="LAST NAME" />
+    </div> */}
+          <input className="w-full p-2 mb-4 rounded " type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="PASSWORD"  />
+          {/*<input className="w-full p-2 mb-6 rounded  " type="password" name="REPEAT PASSWORD" placeholder="REPEAT PASSWORD" /> */}
+          <button type="button" className="w-full px-4 py-2 mb-4 rounded bg-secondary-color text-white hover:bg-accent-color" onClick={handleSignUp}>
+            SIGN UP
           </button>
           <div className="text-center text-white mt-6">
-          ALREADY A MEMBER? <Link href="/login" className=" hover:underline">LOGIN HERE</Link>
+          ALREADY A MEMBER? <Link href="/login" className="hover:underline"> LOGIN HERE</Link>
         </div>
         </form>
       </div>
