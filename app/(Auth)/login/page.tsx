@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image"
 import Link from "next/link"
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createBrowserClient } from "@supabase/ssr"
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
@@ -11,7 +11,10 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
-  const supabase = createClientComponentClient<Database>()
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
 
 
   const handleSignIn = async () => {
@@ -20,12 +23,10 @@ export default function Login() {
       password, 
     })
     router.refresh()
+    setEmail('')
+    setPassword('')
   }
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    router.refresh()
-  }
     return (
       <div className="my-32 flex items-center justify-center">
       <div className=" mx-auto p-8 border bg-transparent 	 border-white rounded-lg">
