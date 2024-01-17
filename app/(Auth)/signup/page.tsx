@@ -31,23 +31,18 @@ export default function SignUp() {
   }
 
     return (
-      <div className="my-32 flex items-center  justify-center bg-dark-blue">
-      <div className="w-full max-w-lg p-8 border rounded-lg bg-darker-blue shadow-xl">
-        <h2 className="text-3xl text-center text-white font-bold mb-6">JOIN OTHER WEBMASTERS</h2>
+      <div className="my-32 flex items-center justify-center">
+      <div className="mx-auto p-8 border bg-transparent 	 border-white rounded-lg">
+        <h2 className="text-3xl mb-6 text-center font-bold">JOIN OTHER WEBMASTERS</h2>
         <button className="w-full flex items-center justify-center px-4 py-3 mb-5 bg-accent-color text-white rounded hover:bg-gray-900 focus:outline-none">
           SIGN UP WITH GOOGLE <Image src="/googlelogo.png" alt="google logo" width="50" height="50" />
         </button>
         <hr />
-        <div className="text-white text-center my-4">OR</div>
-        <form>
-          <input className="w-full p-2 mb-4 rounded " type="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="EMAIL" />
-          {/*<div className="flex -mx-2">
-            <input className="w-1/2 mx-2 p-2 mb-4 rounded " type="text" name="FIRST NAME"  placeholder="FIRST NAME" />
-            <input className="w-1/2 mx-2 p-2 mb-4 rounded " type="text" name="LAST NAME" placeholder="LAST NAME" />
-    </div> */}
-          <input className="w-full p-2 mb-4 rounded " type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="PASSWORD"  />
-          {/*<input className="w-full p-2 mb-6 rounded  " type="password" name="REPEAT PASSWORD" placeholder="REPEAT PASSWORD" /> */}
-          <button type="button" className="w-full px-4 py-2 mb-4 rounded bg-secondary-color text-white hover:bg-accent-color" onClick={handleSignUp}>
+        <div className=" text-center my-4">OR</div>
+        <form className="space-y-4">
+          <input className="w-full p-2  rounded" type="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="EMAIL" />
+          <input className="w-full p-2  rounded" type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="PASSWORD"  />
+          <button type="button" className="bg-secondary-color  px-4 py-3 w-full font-bold rounded hover:bg-accent-color" onClick={handleSignUp}>
             SIGN UP
           </button>
           <div className="text-center text-white mt-6">
