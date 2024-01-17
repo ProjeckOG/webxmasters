@@ -4,7 +4,7 @@ import Image from "next/image"
 import { createBrowserClient } from '@supabase/ssr'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-
+import GoogleLogo from '/public/googlelogo.png';
 
 
 export default function SignUp() {
@@ -35,7 +35,7 @@ export default function SignUp() {
       <div className="mx-auto p-8 border bg-transparent 	 border-white rounded-lg">
         <h2 className="text-3xl mb-6 text-center font-bold">JOIN OTHER WEBMASTERS</h2>
         <button className="w-full flex items-center justify-center px-4 py-3 mb-5 bg-accent-color text-white rounded hover:bg-gray-900 focus:outline-none">
-          SIGN UP WITH GOOGLE <Image src="/googlelogo.png" alt="google logo" width="50" height="50" />
+          SIGN UP WITH GOOGLE <Image src={GoogleLogo} alt="google logo" width="50" height="50" />
         </button>
         <hr />
         <div className=" text-center my-4">OR</div>

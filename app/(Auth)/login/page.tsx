@@ -4,6 +4,7 @@ import Link from "next/link"
 import { createBrowserClient } from "@supabase/ssr"
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
+import GoogleLogo from '/public/googlelogo.png';
 
 import type { Database } from "@/lib/lib/database.types"
 
@@ -32,7 +33,7 @@ export default function Login() {
       <div className=" mx-auto p-8 border bg-transparent 	 border-white rounded-lg">
         <h2 className="text-3xl mb-6 text-center font-bold">LOG IN</h2>
         <button className="w-full flex items-center justify-center px-4 py-3 mb-5 bg-accent-color text-white rounded hover:bg-gray-900 focus:outline-none">
-          LOG IN WITH GOOGLE <Image src="/googlelogo.png" alt="google logo" width="50" height="50" />
+          LOG IN WITH GOOGLE <Image src={GoogleLogo} alt="google logo" width="50" height="50" />
         </button>
         <hr />
         <div className="text-center  my-4">OR</div>
