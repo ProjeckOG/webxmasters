@@ -11,6 +11,7 @@ const Footer = () => {
         <Link href="/tools" className="font-bold hover:text-gray-300">TOOLS</Link>
     
         <Link href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ" target="_blank" className="font-bold hover:text-gray-300">VIDEOS</Link>
+        <Link href="/about" target="_blank" className="font-bold hover:text-gray-300">ABOUT</Link>
       </div>
       <div className="flex gap-10">
         <Link href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ" target="_blank" rel="noopener noreferrer">

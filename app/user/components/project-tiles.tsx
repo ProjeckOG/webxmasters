@@ -80,12 +80,12 @@ const ProjectCard = ({ title, description, link, tools }: ProjectCardProps) => (
       <h5 className="text-xl font-bold uppercase mb-2">{title}</h5>
       <p className="mb-4">{description}</p>
       <Link href={link}>
-        <button className="border p-3 rounded-xl hover:bg-accent-color uppercase text-xs mr-2">
+        <button className="border p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs mr-2">
           View Project
         </button>
       </Link>
       <Link href={link}>
-        <button className="border p-3 rounded-xl hover:bg-accent-color uppercase text-xs">
+        <button className="border p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs">
           Edit Project
         </button>
       </Link>
