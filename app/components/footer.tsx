@@ -5,16 +5,16 @@ import Link from "next/link";
 const Footer = () => {
 
   return (
-    <footer className="bg-primary-color text-white py-4">
-    <div className="container mx-auto flex justify-around items-center">
-      <div className="flex gap-10">
+    <footer className=" bg-primary-color text-white py-4">
+    <div className="container mx-auto flex flex-wrap gap-5 justify-around ">
+      <div className="flex flex-wrap justify-center  gap-10">
         <Link href="/tools" className="font-bold hover:text-gray-300">TOOLS</Link>
     
         <Link href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ" target="_blank" className="font-bold hover:text-gray-300">VIDEOS</Link>
         <Link href="/about"  className="font-bold hover:text-gray-300">ABOUT</Link>
-        <Link href="/about"  className="font-bold hover:text-gray-300">SUPPORT</Link>
+        <Link href="/support"  className="font-bold hover:text-gray-300">SUPPORT</Link>
       </div>
-      <div className="flex gap-10">
+      <div className="flex flex-wrap justify-center gap-10">
         <Link href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ" target="_blank" rel="noopener noreferrer">
           <Play fill="white" />
         </Link>
