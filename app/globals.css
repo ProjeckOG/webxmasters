@@ -4,10 +4,23 @@
 
 
 
+
+/* Default (Light Mode) Styles */
 body {
-    background-color: #0C0C1E;
-    color: #fff
-  }
-  input, textarea {
-    background-color: hsl(240, 41%, 15%);
-  }
+  background-color: #e2e2f3; /* Light mode background */
+  color: #070623; /* Light mode text color */
+}
+
+input, textarea {
+  background-color: #f3f3f3; /* Lighter background for input and textarea */
+}
+
+/* Dark Mode Styles */
+.dark body {
+  background-color: #0C0C1E; /* Dark mode background */
+  color: #fff; /* Dark mode text color */
+}
+
+.dark input, .dark textarea {
+  background-color: hsl(240, 41%, 15%); /* Dark mode input and textarea */
+}

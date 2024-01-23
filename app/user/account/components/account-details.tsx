@@ -4,7 +4,7 @@ const AccountDetails = () => {
 
   return (
     <div className="uppercase">
-      <h2 className="text-white text-center text-2xl font-bold my-10">ACCOUNT DETAILS</h2>
+      <h2 className=" text-center text-2xl font-bold my-10">ACCOUNT DETAILS</h2>
       <form>
   <div className=" ">
     <label htmlFor="username" className="block mb-2 text-sm font-bold ">
@@ -73,7 +73,7 @@ const AccountDetails = () => {
       </div>
     </div>
 
-    <button className="w-full bg-secondary-color text-white py-2 px-4 rounded hover:bg-accent-color">
+    <button className="w-full bg-secondary-color  py-2 px-4 rounded hover:bg-accent-color">
       Update
     </button>
   </div>

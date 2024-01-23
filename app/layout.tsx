@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -17,14 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="flex flex-col">
-          <Navbar />
-          <div className="h-screen">{children}</div>
-          <Footer />
-        </div>
-      </body>
-    </html>
+    <div className={`flex flex-col ${inter.className}`}>
+      <Navbar />
+      <div className="h-screen">{children}</div>
+      <Footer />
+    </div>
   );
 }

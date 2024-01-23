@@ -34,7 +34,7 @@ export default function SignUp() {
       <div className="my-32 flex items-center justify-center">
       <div className="mx-auto p-8 border bg-transparent 	 border-white rounded-lg">
         <h2 className="text-3xl mb-6 text-center font-bold">JOIN OTHER WEBMASTERS</h2>
-        <button className="w-full flex items-center justify-center px-4 py-3 mb-5 bg-accent-color text-white rounded hover:bg-gray-900 focus:outline-none">
+        <button className="w-full flex items-center justify-center px-4 py-3 mb-5 bg-accent-color  rounded hover:bg-gray-900 focus:outline-none">
           SIGN UP WITH GOOGLE <Image src={GoogleLogo} alt="google logo" width="50" height="50" />
         </button>
         <hr />
@@ -45,7 +45,7 @@ export default function SignUp() {
           <button type="button" className="bg-secondary-color  px-4 py-3 w-full font-bold rounded hover:bg-accent-color" onClick={handleSignUp}>
             SIGN UP
           </button>
-          <div className="text-center text-white mt-6">
+          <div className="text-center  mt-6">
           ALREADY A MEMBER? <Link href="/login" className="hover:underline"> LOGIN HERE</Link>
         </div>
         </form>
