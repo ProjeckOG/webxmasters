@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import DarkModeToggle from "./darkmodetoggle";
+import { ModeToggle } from "./modetoggle";
 
 const Navbar: React.FC = () => {
   // State to manage the visibility of the menu
@@ -32,9 +32,7 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
         <div className="hidden md:flex justify-center">
-          <DarkModeToggle isDarkMode={false} toggleDarkMode={function (): void {
-            throw new Error("Function not implemented.");
-          } } />
+        
           <p className="mr-5 font-bold">
             <Link href="/login">LOGIN</Link>
           </p>
