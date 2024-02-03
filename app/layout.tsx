@@ -19,20 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <body>
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
-      <div className={`flex flex-col ${inter.className}`}>
-        <Navbar />
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className={`flex flex-col ${inter.className}`}>
+            <Navbar />
 
-        <div className="h-screen">{children}</div>
-        <Footer />
-      </div>
-    </ThemeProvider>
-    </body>
+            <div className="h-screen">{children}</div>
+            <Footer />
+          </div>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

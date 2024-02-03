@@ -31,13 +31,14 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
         </ul>
-        <div className="hidden md:flex justify-center">
         
+        <div className=" md:flex  items-center justify-center;">
+        <ModeToggle />
           <p className="mr-5 font-bold">
             <Link href="/login">LOGIN</Link>
           </p>
           <Link href="/signup">
-            <p className=" border hover:bg-primary-color font-bold  -mt-2 px-10 py-2  align-center rounded-full">
+            <p className=" border hover:bg-primary-color font-bold   px-10 py-2  rounded-full">
               SIGNUP
             </p>
           </Link>
