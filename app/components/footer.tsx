@@ -1,6 +1,7 @@
 "use client";
 import { FacebookIcon, Play, TwitterIcon } from "lucide-react";
 import Link from "next/link";
+import { ModeToggle } from "./modetoggle";
 
 const Footer = () => {
   return (
@@ -47,8 +48,10 @@ const Footer = () => {
           >
             <FacebookIcon fill="white" stroke="0" />
           </Link>
+          <ModeToggle />
         </div>
       </div>
+      
       <div className="text-center  text-sm mt-10">
         ©2023 WEBXMASTERS | ALL RIGHTS RESERVED
       </div>

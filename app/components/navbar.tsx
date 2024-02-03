@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
         </ul>
         
         <div className=" md:flex  items-center justify-center;">
-        <ModeToggle />
+        
           <p className="mr-5 font-bold">
             <Link href="/login">LOGIN</Link>
           </p>
