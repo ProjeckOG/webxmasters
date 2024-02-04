@@ -32,21 +32,21 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Play fill="white" stroke="0" />
+            <Play />
           </Link>
           <Link
             href="https://www.twitter.com/webxmasters"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TwitterIcon fill="white" stroke="0" />
+            <TwitterIcon />
           </Link>
           <Link
             href="https://www.facebook.com/webxmasters"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FacebookIcon fill="white" stroke="0" />
+            <FacebookIcon  />
           </Link>
           <ModeToggle />
         </div>

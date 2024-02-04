@@ -28,7 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className={`flex flex-col ${inter.className}`}>
+          <div className={`flex flex-col justify-between ${inter.className}`}>
             <Navbar />
 
             <div className="h-screen">{children}</div>
