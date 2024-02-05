@@ -10,6 +10,7 @@ import type { Database } from "@/lib/lib/database.types";
 import { Button } from "@/lib/@/components/ui/button";
 import { Form } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
+import { z } from "zod";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -30,6 +31,10 @@ export default function Login() {
     setPassword("");
   };
 
+  const formSchema = z.object({
+    username: z.string().min(2).max(50),
+  });
+
   return (
     <div className="my-32 flex items-center justify-center">
       <div className=" mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg">
@@ -43,11 +48,12 @@ export default function Login() {
         </Button>
         <hr />
         <div className="text-center  my-4">OR</div>
-        <Form>
+
+        <form className="space-y-4">
           <Input
             type="email"
             name="email"
-            placeholder="EMAIL"
+            placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             className="w-full p-2  bg-secondary rounded"
@@ -55,7 +61,7 @@ export default function Login() {
           <Input
             type="password"
             name="password"
-            placeholder="PASSWORD"
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             className="w-full p-2  mt-2 bg-secondary rounded"
@@ -67,7 +73,8 @@ export default function Login() {
           >
             LOG IN
           </Button>
-        </Form>
+        </form>
+
         <div className="text-center text-gray-400 mt-6 ">
           <Link href="/forgotpassword" className="hover:underline">
             FORGOT YOUR PASSWORD?

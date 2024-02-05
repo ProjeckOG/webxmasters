@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ModeToggle } from "./modetoggle";
+import { Button } from "@/lib/@/components/ui/button";
 
 const Navbar: React.FC = () => {
   // State to manage the visibility of the menu
@@ -31,18 +32,15 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
         </ul>
-        
-        <div className=" md:flex  items-center justify-center;">
-        
-          <p className="mr-5 font-bold">
+
+        <ul className=" hidden md:flex ">
+          <li className="mr-5 font-bold">
             <Link href="/login">LOGIN</Link>
-          </p>
-          <Link href="/signup">
-            <p className=" border hover:bg-primary-color font-bold   px-10 py-2  rounded-full">
-              SIGNUP
-            </p>
-          </Link>
-        </div>
+          </li>
+          <Button variant={"outline"} className="rounded-full -mt-2">
+            <Link href="/signup" className="font-bold px-5">SIGNUP</Link>
+          </Button>
+        </ul>
         <button className="md:hidden" onClick={toggleMenu}>
           <svg
             className="w-6 h-6"
