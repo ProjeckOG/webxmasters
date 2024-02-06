@@ -95,7 +95,7 @@ const SkillCard = ({ name }: SkillCardProps) => (
 
 const SkillTiles = () => {
   return (
-      <div className="flex flex-wrap mx-auto w-full md:w-3/4">
+      <div className="flex flex-wrap justify-around mx-auto w-full md:w-3/4">
         {skillCardsData.map((skill) => (
           <SkillCard
           key={skill.id}

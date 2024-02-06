@@ -1,23 +1,21 @@
 import { Button } from "@/lib/@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import Image from "next/image";
 import Link from "next/link";
 const UserNav = () => {
   return (
     <div className="flex items-center  p-2 mb-4">
-      <Image
-        className="rounded-full border mr-4 md:mr-10"
-        width={50}
-        height={50}
-        src="/googlelogo.png" // Replace with actual image path
-        alt="User Profile"
-      />
+     <Avatar>
+      <AvatarImage src="/dlb.jpg" alt="Profile Picture" className="flex items-center h-20 w-20 mr-4  rounded-full ring ring-bg-secondary" />
+      <AvatarFallback>Profile Picture</AvatarFallback>
+    </Avatar>
       <div>
         <h2 className="text-xl font-semibold ">Jerry Cullen</h2>
         <div className="flex mt-2">
           <Link href="user/account">
             <Button
               variant={"outline"}
-              className="bg-secondary-colorr  font-bold p-2 md:p-3 rounded-3xl mr-2 md:mr-10"
+              className="bg-secondary-colorr  md:font-bold p-0 md:p-3 rounded-3xl mr-2 md:mr-10"
             >
               EDIT ACCOUNT
             </Button>
@@ -25,7 +23,7 @@ const UserNav = () => {
           <Link href="user/profile">
             <Button
               variant={"outline"}
-              className="bg-secondary-color  font-bold  p-2 md:p-3  rounded-3xl mr-2 md:mr-10"
+              className="bg-secondary-color  md:font-bold  p-0 md:p-3  rounded-3xl mr-2 md:mr-10"
             >
               EDIT PROFILE
             </Button>

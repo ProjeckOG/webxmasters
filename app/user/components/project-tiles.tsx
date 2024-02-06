@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/lib/@/components/ui/button";
 interface Tool {
   id: number;
   name: string;
@@ -73,45 +74,36 @@ const projectCardsData: ProjectCardProps[] = [
   },
 ];
 
-const ProjectCard = ({ title, description, link, tools }: ProjectCardProps) => (
-  <div className="bg-primary-color flex flex-wrap rounded-lg items-center  justify-between p-5 m-4 ">
-    <div className="">
+const ProjectCard = ({ title, description, link }: ProjectCardProps) => (
+  <div className=" flex flex-wrap    p-5 m-4 ">
+    <div className="rounded-lg border text-center p-4">
       <h5 className="text-xl font-bold uppercase mb-2">{title}</h5>
       <p className="mb-4">{description}</p>
       <Link href={link}>
-        <button className="border p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs mr-2">
+        <Button variant={"outline"} className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs mr-2">
           View Project
-        </button>
+        </Button>
       </Link>
       <Link href={link}>
-        <button className="border p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs">
+        <Button variant={"outline"} className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs">
           Edit Project
-        </button>
+        </Button>
       </Link>
-    </div>
-    <div className="flex items-center mt-5 w-full">
-      <h5 className="uppercase mr-1 md:mr-5">Tool Stack:</h5>
-      {tools.map((tool) => (
-        <div key={tool.id} className="mr-2 w-full max-w-xs">
-          <Image src={tool.logo} width={50} height={50} alt={tool.name}  />
-        </div>
-      ))}
     </div>
   </div>
 );
 
 const ProjectTiles = () => {
   return (
-    <div className="flex md:flex-nowrap flex-wrap">
+    <div className="flex justify-around md:flex-nowrap flex-wrap">
       {projectCardsData.map((project) => (
         <ProjectCard
           id={project.id}
           title={project.title}
           description={project.description}
           link={project.link}
-          tools={project.tools}
-          key={project.id}
-        />
+
+          key={project.id} tools={[]}        />
       ))}
     </div>
   );

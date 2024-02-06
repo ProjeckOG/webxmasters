@@ -6,9 +6,11 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
 export default function TileNav() {
   return (
-    <Tabs defaultValue="tools" className="md:w-3/4 mx-auto ">
-      <TabsList className="bg-secondary w-full p-2 rounded flex font-bold justify-around">
-        <TabsTrigger value="projects">PROJECTS</TabsTrigger>
+    <Tabs defaultValue="projects" className="md:w-3/4 mx-auto ">
+      <TabsList className=" w-full p-2 rounded border flex font-bold justify-around mb-10">
+        <TabsTrigger value="projects" className="bg-secondary ">
+          PROJECTS
+        </TabsTrigger>
         <TabsTrigger value="tools">TOOLS</TabsTrigger>
         <TabsTrigger value="skills">SKILLS</TabsTrigger>
       </TabsList>
