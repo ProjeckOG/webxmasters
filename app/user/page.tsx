@@ -1,65 +1,37 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import UserNav from "./components/user-nav";
 import ProjectTiles from "./components/project-tiles";
 import ToolTiles from "./components/tools-tiles";
 import SkillTiles from "./components/skill-tiles";
-import { useState } from "react";
-
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
 export default function User() {
 
 
-  // State to keep track of the active tab
-  const [activeTab, setActiveTab] = useState("MyProjects");
-
-  // Function to change the active tab
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab);
-  };
   return (
-    <div className="  flex  flex-col  mx-auto mt-10  items-center justify-center">
+    <div className="  flex  flex-col  mt-10  items-center justify-center">
       <UserNav />
 
-      <div className="border-t  pt-2 flex overflow-x-auto text-center">
-        <Link
-          href="#"
-          className="hover:bg-secondary-color rounded-lg  px-4 py-2  md:px-10"
-          onClick={() => handleTabClick("MyProjects")}
-        >
-          MY PROJECTS
-        </Link>
-        <Link
-          href="#"
-          className=" hover:bg-secondary-color rounded-lg px-4 py-2 md:px-10"
-          onClick={() => handleTabClick("MyTools")}
-        >
-          MY TOOLS
-        </Link>
-        <Link
-          href="#"
-          className=" hover:bg-secondary-color rounded-lg px-4 py-2 md:px-10"
-          onClick={() => handleTabClick("MySkills")}
-        >
-          MY SKILLS
-        </Link>
-      </div>
-      {activeTab === "MyProjects" && (
-        <div className="">
+      <div className="border-t  pt-2 flex text-center">
+        <Tabs defaultValue="tools" className="md:w-3/4 mx-auto ">
+          <TabsList className="bg-secondary w-full p-2 rounded flex font-bold justify-around">
+            <TabsTrigger value="projects">PROJECTS</TabsTrigger>
+            <TabsTrigger value="tools">TOOLS</TabsTrigger>
+            <TabsTrigger value="skills">SKILLS</TabsTrigger>
+          </TabsList>
+          <TabsContent value="projects">
           <ProjectTiles />
-        </div>
-      )}
-      {activeTab === "MyTools" && (
-        <div className="">
+          </TabsContent>
+          <TabsContent value="tools">
           <ToolTiles />
-        </div>
-      )}
-      {activeTab === "MySkills" && (
-        <div className="">
+          </TabsContent>
+          <TabsContent value="skills">
           <SkillTiles />
+          </TabsContent>
+        </Tabs>
         </div>
-      )}
     </div>
   );
 }

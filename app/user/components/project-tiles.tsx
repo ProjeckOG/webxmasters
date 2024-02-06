@@ -36,7 +36,7 @@ const projectCardsData: ProjectCardProps[] = [
         logo: "/vercel.svg",
         link: "#",
         fav: false,
-      }
+      },
     ],
   },
   {
@@ -51,7 +51,7 @@ const projectCardsData: ProjectCardProps[] = [
         logo: "/next.svg",
         link: "#",
         fav: true,
-      }
+      },
       // Add more tools as needed
     ],
   },
@@ -67,16 +67,15 @@ const projectCardsData: ProjectCardProps[] = [
         logo: "/next.svg",
         link: "#",
         fav: true,
-      }
+      },
       // Add more tools as needed
     ],
   },
 ];
 
-
 const ProjectCard = ({ title, description, link, tools }: ProjectCardProps) => (
-  <div className="bg-primary-color flex flex-wrap rounded-lg items-center  justify-between p-5 m-4 w-full">
-    <div>
+  <div className="bg-primary-color flex flex-wrap rounded-lg items-center  justify-between p-5 m-4 ">
+    <div className="">
       <h5 className="text-xl font-bold uppercase mb-2">{title}</h5>
       <p className="mb-4">{description}</p>
       <Link href={link}>
@@ -93,18 +92,17 @@ const ProjectCard = ({ title, description, link, tools }: ProjectCardProps) => (
     <div className="flex items-center mt-5 w-full">
       <h5 className="uppercase mr-1 md:mr-5">Tool Stack:</h5>
       {tools.map((tool) => (
-        <div key={tool.id} className="mr-2">
-          <Image src={tool.logo} width={50} height={50} alt={tool.name} />
+        <div key={tool.id} className="mr-2 w-full max-w-xs">
+          <Image src={tool.logo} width={50} height={50} alt={tool.name}  />
         </div>
       ))}
     </div>
   </div>
 );
 
-
 const ProjectTiles = () => {
   return (
-    <div className="flex   md:flex-nowrap flex-wrap">
+    <div className="flex md:flex-nowrap flex-wrap">
       {projectCardsData.map((project) => (
         <ProjectCard
           id={project.id}

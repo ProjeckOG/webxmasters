@@ -1,3 +1,4 @@
+import { Button } from "@/lib/@/components/ui/button";
 
 
 interface SkillCardProps {
@@ -86,9 +87,9 @@ const skillCardsData: SkillCardProps[] = [
 ];
 
 const SkillCard = ({ name }: SkillCardProps) => (
-  <div className="bg-primary-color hover:bg-accent-color rounded-lg flex justify-center items-center p-4 m-2">
+  <Button variant={"outline"}className="bg-primary-color hover:bg-secondary rounded-lg flex justify-center items-center p-4 m-2">
     <h5 className=" text-xs md:text-lg font-bold uppercase">{name}</h5>
-  </div>
+  </Button>
 
 );
 

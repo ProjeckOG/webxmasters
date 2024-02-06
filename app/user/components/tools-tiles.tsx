@@ -33,42 +33,42 @@ const toolCardsData: ToolCardProps[] = [
     fav: true
   },
   {
-    id: 1,
+    id: 4,
     name: 'NextJS',
     logo: '/next.svg',
     link: '#',
     fav: false
   },
   {
-    id: 2,
+    id: 5,
     name: 'Vercel',
     logo: '/vercel.svg',
     link: '#',
     fav: false
   },
   {
-    id: 3,
+    id: 6,
     name: 'Google',
     logo: '/googlelogo.png',
     link: '#',
     fav: false
   },
   {
-    id: 1,
+    id: 7,
     name: 'NextJS',
     logo: '/next.svg',
     link: '#',
     fav: false
   },
   {
-    id: 2,
+    id: 8,
     name: 'Vercel',
     logo: '/vercel.svg',
     link: '#',
     fav: false
   },
   {
-    id: 3,
+    id: 9,
     name: 'Google',
     logo: '/googlelogo.png',
     link: '#',
@@ -98,7 +98,7 @@ const ToolTiles = () => {
             key={tool.id}
             name={tool.name}
             logo={tool.logo}
-            link={tool.link} id={0}  
+            link={tool.link} id={tool.id}  
             fav={tool.fav}
                     />
         ))}
