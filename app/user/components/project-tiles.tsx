@@ -75,8 +75,8 @@ const projectCardsData: ProjectCardProps[] = [
 ];
 
 const ProjectCard = ({ title, description, link }: ProjectCardProps) => (
-  <div className=" flex flex-wrap    p-5 m-4 ">
-    <div className="rounded-lg border text-center p-4">
+  <div className=" flex flex-wrap p-5 m-2 ">
+    <div className="rounded-lg border text-center p-10">
       <h5 className="text-xl font-bold uppercase mb-2">{title}</h5>
       <p className="mb-4">{description}</p>
       <Link href={link}>
