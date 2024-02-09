@@ -40,6 +40,12 @@ const ProfileDetails = () => {
       </div>
       <div className="mb-3">
         <label className="block text-sm font-bold mb-2" htmlFor="website-domain">
+        GITHUB
+        </label>
+        <input className="w-full p-2 rounded" id="website-domain" type="text" />
+      </div>
+      <div className="mb-3">
+        <label className="block text-sm font-bold mb-2" htmlFor="website-domain">
           LINKEDIN
         </label>
         <input className="w-full p-2 rounded" id="website-domain" type="text" />

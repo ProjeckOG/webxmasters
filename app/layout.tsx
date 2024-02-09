@@ -28,10 +28,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className={`flex flex-col justify-between ${inter.className}`}>
+          <div className={`flex flex-col min-h-screen ${inter.className}`}>
             <Navbar />
 
-            <div className="h-screen">{children}</div>
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
