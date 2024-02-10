@@ -41,7 +41,7 @@ export default function Login() {
         <h2 className="text-3xl mb-6 text-center font-bold">LOG IN</h2>
         <Button
           variant="outline"
-          className="w-full flex items-center justify-center px-4 py-3 mb-5 hover:bg-accent  rounded  focus:outline-none"
+          className="w-full flex items-center justify-center  mb-5  p-8"
         >
           LOG IN WITH GOOGLE{" "}
           <Image src={GoogleLogo} alt="google logo" width="50" height="50" />

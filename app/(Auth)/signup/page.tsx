@@ -37,7 +37,7 @@ export default function SignUp() {
         </h2>
         <Button
           variant="outline"
-          className="w-full flex items-center justify-center px-4 py-3 mb-5 hover:bg-accent  rounded  focus:outline-none"
+          className="w-full flex items-center justify-center p-8 mb-5 hover:bg-accent  rounded  focus:outline-none"
         >
           SIGN UP WITH GOOGLE{" "}
           <Image src={GoogleLogo} alt="google logo" width="50" height="50" />
