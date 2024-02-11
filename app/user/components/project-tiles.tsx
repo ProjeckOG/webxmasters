@@ -80,7 +80,7 @@ const ProjectCard = ({ title, description, link }: ProjectCardProps) => (
       <h5 className="text-xl font-bold uppercase mb-2">{title}</h5>
       <p className="mb-4">{description}</p>
       <Link href={link}>
-        <Button variant={"outline"} className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs mr-2">
+        <Button variant={"outline"} className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs mr-0 md:mr-2">
           View Project
         </Button>
       </Link>
