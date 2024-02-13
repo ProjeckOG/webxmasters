@@ -3,9 +3,6 @@ import Image from "next/image";
 const ResetPassword = () => {
   return (
     <div className="uppercase">
-      <h2 className=" text-center text-2xl font-bold my-10">
-        RESET PASSWORD
-      </h2>
       <form className="">
         <div className="mb-4">
           <label
