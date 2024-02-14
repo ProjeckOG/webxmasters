@@ -1,9 +1,12 @@
-
 export default function SearchListings() {
-    return (
-      <main className="">
-        <h1 className="text-center text-3xl font-bold my-10"> WEBMASTERS TOOLS LIST</h1>
-      </main>
-    )
-  }
-  
+  return (
+    <div className="">
+      <input
+        type="text"
+        placeholder="SEARCH FOR TOOLS"
+        className="w-full rounded-md border-2 border-gray-300 p-2 text-sm outline-none focus:border-blue-500"
+      />
+      );
+    </div>
+  );
+}
