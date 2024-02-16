@@ -69,7 +69,7 @@ export default function Login() {
           <Button
             variant="outline"
             onClick={handleSignIn}
-            className=" px-4 py-3 w-full mt-2 font-bold rounded hover:bg-accent-color"
+            className=" px-4 py-3 w-full mt-2  rounded hover:bg-accent-color"
           >
             LOG IN
           </Button>

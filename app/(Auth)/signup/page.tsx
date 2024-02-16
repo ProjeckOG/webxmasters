@@ -64,7 +64,7 @@ export default function SignUp() {
           <Button
             type="button"
             variant="outline"
-            className="bg-secondary-color  px-4 py-3 w-full font-bold rounded hover:bg-accent-color"
+            className="bg-secondary-color  px-4 py-3 w-full  rounded hover:bg-accent-color"
             onClick={handleSignUp}
           >
             SIGN UP
