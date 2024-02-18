@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { createBrowserClient } from "@supabase/ssr";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import GoogleLogo from "/public/googlelogo.png";
 
@@ -29,6 +29,7 @@ export default function Login() {
     router.refresh();
     setEmail("");
     setPassword("");
+   
   };
 
   const formSchema = z.object({

@@ -7,6 +7,8 @@ import { useState } from "react";
 import GoogleLogo from "/public/googlelogo.png";
 import { Button } from "@/lib/@/components/ui/button";
 import { Input } from "@/lib/@/components/ui/input";
+
+
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
