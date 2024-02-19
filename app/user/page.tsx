@@ -6,7 +6,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import UserNav from "./components/user-nav";
 import TileNav from "./components/tile-nav";
 
-export default function User() {
+export default async function User() {
+ 
   return (
     <div className="mx-auto items-center mt-10 flex flex-col">
      <UserNav /> 

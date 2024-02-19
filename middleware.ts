@@ -54,8 +54,8 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  await supabase.auth.getUser()
-
+ const user = await supabase.auth.getUser()
+  
   return response
 }
 
@@ -68,6 +68,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * Feel free to modify this pattern to include more paths.
      */
-    '/((?!_next/static|_next/image|favicon.ico).*)',
+    '/user/:path',
   ],
 }
