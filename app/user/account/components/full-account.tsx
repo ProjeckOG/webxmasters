@@ -1,3 +1,4 @@
+'use client'
 import ResetPassword from "./reset-password";
 import AccountDetails from "./account-details";
 import Logout from "./logout";

@@ -1,31 +1,21 @@
-"use client";
-import { ArrowBigLeftIcon } from "lucide-react";
-import ProfileDetails from "./components/profile-details";
-import WorkPreferences from "./components/work-preferences";
-import { useState } from "react";
-import Link from "next/link";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
-const Profile = () => {
-  // State to keep track of the active tab
-  const [activeTab, setActiveTab] = useState("ProfileDetails");
+import { createClient } from "@/lib/utils/supabase/server";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import FullProfile from "./components/full-profile";
 
-  // Function to change the active tab
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab);
-  };
+const Profile = async () => {
+  const cookieStore = cookies()
+  const supabase = createClient(cookieStore)
 
+  const { data, error } = await supabase.auth.getUser()
+  if (error || !data?.user) {
+    redirect('/login')
+  }
   return (
-    <Tabs defaultValue="profile-details" className="w-full md:w-1/2 my-5 mx-auto flex-col justify-around">
-      <TabsList className="grid w-full bg-secondary p-2 grid-cols-2 rounded-lg my-10  font-bold">
-        <TabsTrigger value="profile-details">Profile Details</TabsTrigger>
-        <TabsTrigger value="work-preferences">Work Preferences</TabsTrigger>
-      </TabsList>
-      <TabsContent value="profile-details" className="">
-        <ProfileDetails />
-      </TabsContent>
-      <TabsContent value="work-preferences" className=""> <WorkPreferences /></TabsContent>
-    </Tabs>
+    <>
+      <FullProfile />
+    </>
   );
 };
 

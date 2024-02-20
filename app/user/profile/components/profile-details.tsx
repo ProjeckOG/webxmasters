@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowBigLeftIcon } from "lucide-react";
 const ProfileDetails = () => {
 
   return (
