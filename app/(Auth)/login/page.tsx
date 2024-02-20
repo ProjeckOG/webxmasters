@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import GoogleLogo from "/public/googlelogo.png";
@@ -7,6 +6,7 @@ import { Button } from "@/lib/@/components/ui/button";
 import { Input } from "@/lib/@/components/ui/input";
 
 export default async function Login() {
+
   return (
     <div className="my-32 flex items-center justify-center">
       <div className=" mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg">
