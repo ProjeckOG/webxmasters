@@ -1,8 +1,7 @@
 "use client";
 import FullAccount from "./components/full-account";
 import Link from "next/link";
-import WorkPreferences from "../profile/components/work-preferences";
-import { ArrowBigDownIcon, ArrowBigLeftIcon } from "lucide-react";
+import {  ArrowBigLeftIcon } from "lucide-react";
 
 const Account = () => {
 

@@ -1,6 +1,6 @@
+'use client'
 import { Button } from "@/lib/@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
-import Image from "next/image";
 import Link from "next/link";
 const UserNav = () => {
   return (

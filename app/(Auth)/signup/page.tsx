@@ -1,35 +1,17 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { createBrowserClient } from "@supabase/ssr";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import GoogleLogo from "/public/googlelogo.png";
 import { Button } from "@/lib/@/components/ui/button";
 import { Input } from "@/lib/@/components/ui/input";
+import { signup } from "../auth/sign-up/actions";
 
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
-
-  const handleSignUp = async () => {
-    await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
-      },
-    });
-    router.refresh();
-    setEmail("");
-    setPassword("");
-  };
+  
 
   return (
     <div className="my-32 flex items-center justify-center">
@@ -64,10 +46,10 @@ export default function SignUp() {
             placeholder="Password"
           />
           <Button
-            type="button"
+            type="submit"
             variant="outline"
             className="bg-secondary-color  px-4 py-3 w-full  rounded hover:bg-accent-color"
-            onClick={handleSignUp}
+            formAction={signup}
           >
             SIGN UP
           </Button>

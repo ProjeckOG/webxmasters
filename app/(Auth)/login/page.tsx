@@ -1,41 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { createBrowserClient } from "@supabase/ssr";
-import { redirect, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 import GoogleLogo from "/public/googlelogo.png";
-
-import type { Database } from "@/lib/lib/database.types";
+import { login } from "../auth/login/actions";
 import { Button } from "@/lib/@/components/ui/button";
-import { Form } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
-import { z } from "zod";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
-
-  const handleSignIn = async () => {
-    await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    router.refresh();
-    setEmail("");
-    setPassword("");
-   
-  };
-
-  const formSchema = z.object({
-    username: z.string().min(2).max(50),
-  });
-
+export default async function Login() {
   return (
     <div className="my-32 flex items-center justify-center">
       <div className=" mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg">
@@ -55,21 +26,18 @@ export default function Login() {
             type="email"
             name="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
             className="w-full p-2  bg-secondary rounded"
           />
           <Input
             type="password"
             name="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
             className="w-full p-2  mt-2 bg-secondary rounded"
           />
           <Button
+            type="submit"
             variant="outline"
-            onClick={handleSignIn}
+            formAction={login}
             className=" px-4 py-3 w-full mt-2  rounded hover:bg-accent-color"
           >
             LOG IN
