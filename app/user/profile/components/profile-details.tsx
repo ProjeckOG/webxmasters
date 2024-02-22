@@ -1,3 +1,4 @@
+import { Button } from "@/lib/@/components/ui/button";
 import Image from "next/image";
 const ProfileDetails = () => {
 
@@ -66,9 +67,9 @@ const ProfileDetails = () => {
         </label>
         <input className="w-full p-2 rounded" id="website-domain" type="text" />
       </div>
-      <button className="w-full bg-secondary-color hover:bg-accent-color font-bold py-2 px-4 rounded">
+      <Button variant={"outline"} className="w-full bg-secondary-color hover:bg-accent-color font-bold py-2 px-4 rounded">
         UPDATE PROFILE
-      </button>
+      </Button>
     </div>
 
   );

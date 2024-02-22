@@ -1,3 +1,4 @@
+import { Button } from "@/lib/@/components/ui/button";
 import Image from "next/image";
 
 const WorkPreferences = () => {
@@ -118,9 +119,9 @@ const WorkPreferences = () => {
             ></label>
           </div>
         </div>
-        <button className="w-full bg-secondary-color py-2 px-4 rounded hover:bg-accent-color">
+        <Button variant={"outline"} className="w-full bg-secondary-color py-2 px-4 rounded hover:bg-accent-color">
           UPDATE
-        </button>
+        </Button>
       </form>
     </div>
   );
