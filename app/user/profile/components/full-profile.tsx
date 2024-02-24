@@ -17,9 +17,9 @@ const FullProfile = () => {
 
   return (
     <Tabs defaultValue="profile-details" className="w-full md:w-1/2 my-5 mx-auto flex-col justify-around">
-      <TabsList className="grid w-full bg-secondary p-2 grid-cols-2 rounded-lg my-10 font-bold">
-        <TabsTrigger value="profile-details">Profile Details</TabsTrigger>
-        <TabsTrigger value="work-preferences">Work Preferences</TabsTrigger>
+      <TabsList className="grid w-full bg-secondary p-1 grid-cols-2 rounded-lg my-10 font-bold">
+        <TabsTrigger value="profile-details" className="data-[state=active]:bg-muted p-2 rounded">Profile Details</TabsTrigger>
+        <TabsTrigger value="work-preferences" className="data-[state=active]:bg-black p-2  rounded">Work Preferences</TabsTrigger>
       </TabsList>
       <TabsContent value="profile-details" className="">
         <ProfileDetails />

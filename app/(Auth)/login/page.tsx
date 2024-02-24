@@ -38,7 +38,7 @@ export default async function Login() {
             type="submit"
             variant="outline"
             formAction={login}
-            className=" px-4 py-3 w-full mt-2  rounded hover:bg-accent-color"
+            className=" flex bg-secondary-color items-center p-8 w-full  rounded hover:bg-accent-color"
           >
             LOG IN
           </Button>
