@@ -8,9 +8,10 @@ const Logout = () => {
     <form
       action="/auth/logout"
       method="post"
-      className="w-full  py-2 px-4 rounded hover:bg-accent-color"
+      className="w-full  py-2 px-4 rounded"
     >
-      <Button type="submit" className="w-full" variant={"outline"}>LOGOUT</Button>
+    
+      <Button type="submit" className="w-full uppercase text-xl m-3 p-10 flex items-center font-bold hover:bg-destructive" variant={"outline"}>Do you want to Logout?</Button>
     </form>
   );
 };

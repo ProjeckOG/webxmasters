@@ -1,3 +1,4 @@
+import { Button } from "@/lib/@/components/ui/button";
 import Image from "next/image";
 
 const ResetPassword = () => {
@@ -41,9 +42,9 @@ const ResetPassword = () => {
             type="password"
           />
 
-          <button className="w-full bg-secondary-color  py-2 px-4 rounded hover:bg-accent-color">
-            Update
-          </button>
+          <Button variant={"outline"} className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary">
+            UPDATE PASSWORD
+          </Button>
         </div>
       </form>
     </div>
