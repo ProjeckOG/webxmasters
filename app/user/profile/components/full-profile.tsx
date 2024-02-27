@@ -12,13 +12,13 @@ const FullProfile = () => {
       <TabsList className="grid w-full bg-secondary p-1 grid-cols-2 rounded-lg my-10 font-bold">
         <TabsTrigger
           value="profile-details"
-          className="data-[state=active]:bg-background p-3 rounded"
+          className="data-[state=active]:bg-background p-2 rounded"
         >
           PROFILE DETAILS
         </TabsTrigger>
         <TabsTrigger
           value="work-preferences"
-          className="data-[state=active]:bg-background p-3  rounded"
+          className="data-[state=active]:bg-background p-2  rounded"
         >
           WORK PREFERENCES
         </TabsTrigger>

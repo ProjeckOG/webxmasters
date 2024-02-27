@@ -10,19 +10,19 @@ const FullAccount = () => {
       <TabsList className="w-full p-1 rounded border flex font-bold justify-around mb-10 bg-secondary">
         <TabsTrigger
           value="account-details"
-          className="data-[state=active]:bg-background p-3 rounded w-full"
+          className="data-[state=active]:bg-background p-2 rounded w-full"
         >
           ACCOUNT DETAILS
         </TabsTrigger>
         <TabsTrigger
           value="reset-password"
-          className="data-[state=active]:bg-background p-3 rounded w-full"
+          className="data-[state=active]:bg-background p-2 rounded w-full"
         >
           RESET PASSWORD
         </TabsTrigger>
         <TabsTrigger
           value="logout"
-          className="data-[state=active]:bg-background p-3 rounded w-full"
+          className="data-[state=active]:bg-background p-2 rounded w-full"
         >
           LOGOUT
         </TabsTrigger>
