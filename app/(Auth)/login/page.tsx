@@ -1,11 +1,41 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import GoogleLogo from "/public/googlelogo.png";
 import { login } from "../auth/login/actions";
 import { Button } from "@/lib/@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
 
 export default async function Login() {
+  const formSchema = z.object({
+    username: z.string().min(2).max(50),
+  });
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
 
   return (
     <div className="my-32 flex items-center justify-center">
@@ -20,29 +50,43 @@ export default async function Login() {
         </Button>
         <hr />
         <div className="text-center  my-4">OR</div>
+        <Form>
+          <form onSubmit={login} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        <form className="space-y-4">
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="w-full p-2  bg-secondary rounded"
-          />
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="w-full p-2  mt-2 bg-secondary rounded"
-          />
-          <Button
-            type="submit"
-            variant="outline"
-            formAction={login}
-            className=" flex bg-secondary-color items-center p-8 w-full  rounded hover:bg-accent-color"
-          >
-            LOG IN
-          </Button>
-        </form>
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="w-full p-2  bg-secondary rounded"
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="w-full p-2  mt-2 bg-secondary rounded"
+            />
+            <Button
+              type="submit"
+              variant="outline"
+              className=" flex bg-secondary-color items-center p-8 w-full  rounded hover:bg-accent-color"
+            >
+              LOG IN
+            </Button>
+          </form>
+        </Form>
 
         <div className="text-center text-gray-400 mt-6 ">
           <Link href="/forgotpassword" className="hover:underline">
