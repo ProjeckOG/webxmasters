@@ -21,12 +21,14 @@ import { Input } from "@/lib/@/components/ui/input";
 export default async function Login() {
   const formSchema = z.object({
     email: z.string().min(2).max(50),
+    password: z.string().min(8) 
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      password: "",
     },
   });
 
@@ -50,33 +52,33 @@ export default async function Login() {
         </Button>
         <hr />
         <div className="text-center  my-4">OR</div>
-        <Form>
-          <form onSubmit={login} className="space-y-4">
+        <Form {...form}>
+          <form  onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
+                <FormItem >
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your Email" {...field} />
+                    <Input className="w-full p-2  bg-secondary rounded" placeholder="Email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
-            <Input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="w-full p-2  bg-secondary rounded"
-            />
-            <Input
-              type="password"
+            <FormField
+              control={form.control}
               name="password"
-              placeholder="Password"
-              className="w-full p-2  mt-2 bg-secondary rounded"
+              render={({ field }) => (
+                <FormItem >
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input className="w-full p-2  bg-secondary rounded" placeholder="Password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
             <Button
               type="submit"
