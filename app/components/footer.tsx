@@ -26,7 +26,7 @@ const Footer = () => {
             SUPPORT
           </Link>
         </div>
-        <div className="flex flex-wrap justify-center gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-10">
           <Link
             href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ"
             target="_blank"

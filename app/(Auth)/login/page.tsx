@@ -60,7 +60,7 @@ export default function Login() {
         <hr />
         <div className="text-center  my-4">OR</div>
         <Form {...form}>
-          <form onSubmit={login} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="email"
@@ -86,6 +86,7 @@ export default function Login() {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
+                      type="password"
                       className="w-full p-2  bg-secondary rounded"
                       placeholder="Password"
                       {...field}
