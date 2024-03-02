@@ -18,10 +18,10 @@ import {
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
 
-export default async function Login() {
+export default function Login() {
   const formSchema = z.object({
     email: z.string().min(2).max(50),
-    password: z.string().min(8) 
+    password: z.string().min(8),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -32,11 +32,18 @@ export default async function Login() {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    try {
+      await login(values.email, values.password);
+      // Navigate to the dashboard or home page on successful login
+    } catch (error) {
+      // Handle errors (e.g., showing a message to the user)
+      console.error(error);
+      // Optionally, update state to show an error message on the UI
+    }
   }
 
   return (
@@ -53,15 +60,19 @@ export default async function Login() {
         <hr />
         <div className="text-center  my-4">OR</div>
         <Form {...form}>
-          <form  onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={login} className="space-y-4">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem >
+                <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input className="w-full p-2  bg-secondary rounded" placeholder="Email" {...field} />
+                    <Input
+                      className="w-full p-2  bg-secondary rounded"
+                      placeholder="Email"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -71,10 +82,14 @@ export default async function Login() {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem >
+                <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input className="w-full p-2  bg-secondary rounded" placeholder="Password" {...field} />
+                    <Input
+                      className="w-full p-2  bg-secondary rounded"
+                      placeholder="Password"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
