@@ -1,52 +1,98 @@
 import { Button } from "@/lib/@/components/ui/button";
-import Image from "next/image";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/lib/@/components/ui/form";
+import { Input } from "@/lib/@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const ResetPassword = () => {
+  const formSchema = z.object({
+    password: z.string().min(8, "You must enter a valid password"),
+  });
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      password: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
   return (
     <div className="uppercase">
-      <form className="">
-        <div className="mb-4">
-          <label
-            htmlFor="currentPassword"
-            className="block mb-2 text-sm font-bold "
-          >
-            Current Password
-          </label>
-          <input
-            id="currentPassword"
-            className="w-full p-2 mb-3 rounded"
-            type="password"
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Current Password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="w-full p-2  bg-secondary rounded"
+                    placeholder="Current Password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>New Password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="w-full p-2  bg-secondary rounded"
+                    placeholder="New Password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Repeat New Password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="w-full p-2  bg-secondary rounded"
+                    placeholder="Repeat New Password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
 
-          <label
-            htmlFor="newPassword"
-            className="block mb-2 text-sm font-bold "
+          <Button
+            variant={"outline"}
+            className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary"
           >
-            New Password
-          </label>
-          <input
-            id="newPassword"
-            className="w-full p-2 mb-3 rounded"
-            type="password"
-          />
-
-          <label
-            htmlFor="repeatNewPassword"
-            className="block mb-2 text-sm font-bold "
-          >
-            Repeat New Password
-          </label>
-          <input
-            id="repeatNewPassword"
-            className="w-full p-2 mb-3 rounded"
-            type="password"
-          />
-
-          <Button variant={"outline"} className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary">
             UPDATE PASSWORD
           </Button>
-        </div>
-      </form>
+        </form>
+      </Form>
     </div>
   );
 };
