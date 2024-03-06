@@ -8,7 +8,6 @@ import { signup } from "../auth/sign-up/actions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { login } from "../auth/login/actions";
 import {
   Form,
   FormField,
