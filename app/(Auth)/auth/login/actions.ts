@@ -15,11 +15,11 @@ export async function login(email: string, password: string) {
   // Attempt to sign in with email and password
   const { error } = await supabase.auth.signInWithPassword({ email, password })
 
-  // If there's an error, redirect to the error page without attempting to revalidate
-  if (error) {
-    redirect('/error')
-    return; // Ensure the function exits here to avoid further execution
-  }
+ // If there's an error, throw a custom error
+ if (error) {
+  throw new Error("Incorrect login credentials");
+  // No need to redirect here
+}
 
   // Revalidate the home page layout and redirect the user upon successful login
   revalidatePath('/', 'layout')

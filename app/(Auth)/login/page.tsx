@@ -21,7 +21,7 @@ import { Input } from "@/lib/@/components/ui/input";
 export default function Login() {
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
-    password:  z.string().min(8, "You must enter a valid password"),
+    password: z.string().min(1, "You must enter a valid password"),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -32,19 +32,25 @@ export default function Login() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values) {
     try {
       await login(values.email, values.password);
-      // Navigate to the dashboard or home page on successful login
+      // Reset login error if successful
+      setError("password", { type: "manual", message: "" }); // Clear previous error
     } catch (error) {
-      // Handle errors (e.g., showing a message to the user)
-      console.error(error);
-      // Optionally, update state to show an error message on the UI
+      // Use setError to display the login error under the password field
+      setError("password", {
+        type: "manual",
+        message: "Incorrect login credentials",
+      });
     }
   }
+  const {
+    handleSubmit,
+    control,
+    setError,
+    formState: { errors },
+  } = form;
 
   return (
     <div className="my-32 flex items-center justify-center">
@@ -83,7 +89,7 @@ export default function Login() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className="text-white">Password</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
@@ -92,7 +98,10 @@ export default function Login() {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+
+                  {errors.password && (
+                    <FormMessage className="m-2 italict text-destructive ">{errors.password.message}</FormMessage>
+                  )}
                 </FormItem>
               )}
             />
