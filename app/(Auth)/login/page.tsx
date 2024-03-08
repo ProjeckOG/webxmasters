@@ -32,7 +32,7 @@ export default function Login() {
     },
   });
 
-  async function onSubmit(values) {
+  async function onSubmit(values: { email: string; password: string; }) {
     try {
       await login(values.email, values.password);
       // Reset login error if successful
@@ -72,7 +72,7 @@ export default function Login() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className="text-white">Email</FormLabel>
                   <FormControl>
                     <Input
                       className="w-full p-2  bg-secondary rounded"

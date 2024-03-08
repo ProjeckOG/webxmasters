@@ -15,9 +15,11 @@ export async function signup(email: string, password: string) {
   const { error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
+    // Redirect to an error page if sign-up failed
     redirect("/error");
+    return; // Make sure to return here so that no further code is executed after a redirect
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  // Assuming the sign-up was successful, redirect to the check-email page
+  redirect("signup/check-email");
 }
