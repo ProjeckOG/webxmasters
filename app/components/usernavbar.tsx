@@ -1,9 +1,18 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/lib/@/components/ui/button";
+import { CircleUserRound } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuItem,
+} from "@radix-ui/react-dropdown-menu";
 
-const UserNavbar =  () => {
+const UserNavbar = () => {
   // State to manage the visibility of the menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -32,9 +41,27 @@ const UserNavbar =  () => {
         </ul>
 
         <ul className=" hidden md:flex ">
-          <Button variant={"outline"} className="rounded-full -mt-2">
-            <Link href="/user" className="font-bold px-5">PROFILE</Link>
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex ">
+              <CircleUserRound className="" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="border p-2">
+              <DropdownMenuLabel>
+                <Link href={"/user"}>Dashboard</Link>
+                <hr className="my-2"/>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Link href={"/user/profile"}>Profile</Link>
+                <hr className="my-2"/>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem>
+                <Link href={"/user/account"}>Account</Link>
+             
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </ul>
         <button className="md:hidden" onClick={toggleMenu}>
           <svg

@@ -1,14 +1,18 @@
-'use client'
+"use client";
 import { Button } from "@/lib/@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import Link from "next/link";
 const UserNav = () => {
   return (
     <div className="flex items-center text-center md:text-left	 flex-col md:flex-row p-2 mb-4">
-     <Avatar>
-      <AvatarImage src="/dlb.jpg" alt="Profile Picture" className="flex items-center h-20 w-20 mr-4 mb-5 md:mb-0 rounded-full ring ring-bg-secondary" />
-      <AvatarFallback>Profile Picture</AvatarFallback>
-    </Avatar>
+      <Avatar>
+        <AvatarImage
+          src="/default-photo.png"
+          alt="Profile Picture"
+          className="flex items-center  ring-secondary	h-20 w-20 mr-4 mb-5 md:mb-0 rounded-full ring "
+        />
+        <AvatarFallback>Profile Picture</AvatarFallback>
+      </Avatar>
       <div>
         <h2 className="text-xl font-semibold ">Jerry Cullen</h2>
         <div className="flex mt-2">
