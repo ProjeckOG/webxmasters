@@ -25,8 +25,8 @@ export async function GET(request: NextRequest) {
       token_hash,
     })
     if (!error) {
-      redirectTo.searchParams.delete('next')
-      return NextResponse.redirect(redirectTo)
+      // Here, if 'next' is provided, users will be redirected accordingly.
+      return NextResponse.redirect(redirectTo);
     }
   }
 
