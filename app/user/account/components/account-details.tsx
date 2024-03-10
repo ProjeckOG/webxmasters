@@ -1,15 +1,12 @@
+
 import { createClient } from "@/lib/utils/supabase/server";
+import { User } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const AccountDetails = async () => {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
 
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
-    redirect("/login");
-  }
+
+const AccountDetails =  () => {
   return (
     <div className="uppercase">
       <form>
@@ -52,7 +49,12 @@ const AccountDetails = async () => {
           <label htmlFor="email" className="block mb-2 text-sm font-bold ">
             Email
           </label>
-          <input id="email" className="w-full p-2 mb-3 rounded" type="email" value={data?.user.email} />
+          <input
+            id="email"
+            className="w-full p-2 mb-3 rounded"
+            type="email"
+            value="burs"
+          />
 
           <div className="flex mb-3">
             <div className="w-1/2 mr-2">

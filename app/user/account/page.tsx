@@ -4,6 +4,14 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AccountDetails from "./components/account-details";
 
+
+interface User {
+  email: string;
+  // Add other user properties as needed
+}
+
+
+
 const Account = async () => {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
@@ -16,7 +24,7 @@ const Account = async () => {
   return (
     <div className="w-full md:w-1/2 mx-auto mt-10">
 
-      <FullAccount />
+      <FullAccount  />
     </div>
   );
 };

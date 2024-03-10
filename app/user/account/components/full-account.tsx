@@ -1,9 +1,12 @@
-"use client";
+'use client';
 import ResetPassword from "./reset-password";
 import AccountDetails from "./account-details";
 import Logout from "./logout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
-import { Suspense } from "react";
+import { User } from "@supabase/supabase-js";
+
+
+
 const FullAccount = () => {
   return (
     <Tabs defaultValue="account-details">

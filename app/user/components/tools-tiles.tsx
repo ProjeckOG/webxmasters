@@ -89,7 +89,7 @@ const ToolCard = ({ name, logo, link, fav }: ToolCardProps) => (
           <AvatarImage
             src={logo}
             alt={name}
-            className="flex items-center h-10 w-10 mr-4  rounded-full ring ring-bg-secondary"
+            className="flex items-center h-10 w-10 mr-4  rounded-full ring ring-white"
           />
           <AvatarFallback>Profile Picture</AvatarFallback>
         </Avatar>

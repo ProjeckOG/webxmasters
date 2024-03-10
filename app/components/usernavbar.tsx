@@ -40,12 +40,12 @@ const UserNavbar = () => {
           </li>
         </ul>
 
-        <ul className=" hidden md:flex ">
+        <ul className=" hidden md:flex mr-5">
           <DropdownMenu>
             <DropdownMenuTrigger className="flex ">
               <CircleUserRound className="" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="border p-2">
+            <DropdownMenuContent className="border text-center p-2">
               <DropdownMenuLabel>
                 <Link href={"/user"}>Dashboard</Link>
                 <hr className="my-2"/>
