@@ -31,7 +31,7 @@ export default function RootLayout({
           <div className={`flex flex-col min-h-screen ${inter.className}`}>
             <Navbar />
 
-            <main className="flex-grow">{children}</main>
+            <main className="flex-grow border">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

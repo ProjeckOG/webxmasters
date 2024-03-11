@@ -1,73 +1,48 @@
+// pages/about.tsx
+import { Button } from "@/lib/@/components/ui/button";
+import { Home, Link } from "lucide-react";
+import React from "react";
 
-// AboutPage.tsx
-import React from 'react';
-
-// You might want to create separate files for each of these components and import them instead.
-// For brevity, they are included directly here.
-
-const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-  <div className="my-8">
-    <h2 className="text-3xl font-bold text-center mb-4">{title}</h2>
-    {children}
-  </div>
-);
-
-const WelcomeSection: React.FC = () => (
-  <Section title="Welcome to Our Forum">
-    <p className="text-center text-lg">
-      A community dedicated to empowering webmasters and developers by providing the latest in webmaster tools,
-      including website builders, mobile app builders, AI tools, and more.
-    </p>
-  </Section>
-);
-
-const MissionSection: React.FC = () => (
-  <Section title="Our Mission">
-    <p className="text-center text-lg">
-      We're committed to offering a platform where professionals can discover, evaluate, and discuss the best tools
-      for web development and management, fostering innovation and efficiency in the digital space.
-    </p>
-  </Section>
-);
-
-const OfferSection: React.FC = () => (
-  <Section title="What We Offer">
-    <div className="text-lg">
-      <ul className="list-disc list-inside">
-        <li>Expert Reviews and Comparisons</li>
-        <li>User Testimonials and Success Stories</li>
-        <li>Community-Driven Insights and Recommendations</li>
-      </ul>
+const AboutPage = () => {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen  p-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-5xl font-extrabold uppercase  justify-start mb-10">
+          About Us
+        </h1>
+        <p className="text-lg text-gray-500 tracking-wide	leading-9  mb-6">
+          Welcome to WebXMasters, the premier community-driven platform
+          dedicated to empowering webmasters with the tools and knowledge needed
+          to excel online. Whether you're exploring website builders, delving
+          into email marketing, or seeking the best web hosting solutions,
+          WebXMasters is your go-to resource.
+        </p>
+        <hr />
+        <h2 className="text-xl uppercase font-bold   my-10">Our Mission</h2>
+        <p className="text-lg text-gray-500 tracking-wide leading-9		 mb-6">
+          Our mission is to create a vibrant, informative, and supportive
+          community where webmasters can discover, discuss, and share the best
+          tools and practices for online success. We aim to demystify the
+          digital world, making technology accessible and manageable for
+          professionals and enthusiasts alike.
+        </p>
+        <h2 className="text-xl uppercase font-bold  my-10">
+          Join Our Community
+        </h2>
+        <p className="text-lg text-gray-500 tracking-wide leading-9	 mb-8">
+          Ready to elevate your online presence? Join WebXMasters today and
+          start exploring the limitless possibilities of the web. Together, we
+          can build, grow, and thrive in the digital age.
+        </p>
+        <a href="/signup" className="flex justify-center items-center">
+          <Button className=" flex justify-center border font-bold p-10 uppercase hover:bg-primary-foreground mx-auto rounded-full  transition duration-300 ease-in-out transform hover:-translate-y-1">
+            <Home className="mr-3" />
+            Join Now
+          </Button>
+        </a>
+      </div>
     </div>
-  </Section>
-);
-
-const CommunitySection: React.FC = () => (
-  <Section title="Community Highlights">
-    <p className="text-center text-lg">
-      Our forum thrives on the active participation of its members. From sharing personal success stories to helping
-      others solve technical challenges, every contribution enriches our community.
-    </p>
-  </Section>
-);
-
-const JoinUsSection: React.FC = () => (
-  <Section title="Join Us">
-    <p className="text-center text-lg">
-      Ready to dive in? Sign up today to become part of a vibrant community of webmasters and tech enthusiasts,
-      gain access to exclusive content, and stay updated on the latest tools.
-    </p>
-  </Section>
-);
-
-const AboutPage: React.FC = () => (
-  <div className="max-w-4xl mx-auto p-4">
-    <WelcomeSection />
-    <MissionSection />
-    <OfferSection />
-    <CommunitySection />
-    <JoinUsSection />
-  </div>
-);
+  );
+};
 
 export default AboutPage;
