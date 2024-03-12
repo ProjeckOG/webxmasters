@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/lib/@/components/ui/button";
-import { CircleUserRound } from "lucide-react";
+import { CircleUserRound, Cog, Home, PanelTop } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -42,22 +42,30 @@ const UserNavbar = () => {
 
         <ul className=" hidden md:flex mr-5">
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex ">
-              <CircleUserRound className="" />
+            <DropdownMenuTrigger className="flex font-bold uppercase">
+              <CircleUserRound className="mr-3" />MENU
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="border text-center p-2">
+            <DropdownMenuContent className="border hover:bg-primary-foreground rounded  p-2">
               <DropdownMenuLabel>
-                <Link href={"/user"}>Dashboard</Link>
-                <hr className="my-2"/>
+                <Link href={"/user"} className="my-3 flex text-left hover:underline hover:shadow">
+                  <Home size={25} className="mr-3"/>
+                  Dashboard
+                  </Link>
+                <hr />
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
+          
+
               <DropdownMenuItem>
-                <Link href={"/user/profile"}>Profile</Link>
-                <hr className="my-2"/>
+                <Link href={"/user/profile"} className="my-3 flex text-left ">
+                  <PanelTop size={25} className="mr-3"/>
+                  Profile</Link>
+                <hr />
               </DropdownMenuItem>
 
               <DropdownMenuItem>
-                <Link href={"/user/account"}>Account</Link>
+                <Link href={"/user/account"} className="my-3 flex text-left ">
+                <Cog size={25} className="mr-3"/>
+                  Account</Link>
              
               </DropdownMenuItem>
             </DropdownMenuContent>

@@ -35,7 +35,7 @@ const GuestNavbar =  () => {
           <li className="mr-5 font-bold">
             <Link href="/login">LOGIN</Link>
           </li>
-          <Button variant={"outline"} className="rounded-full -mt-2">
+          <Button variant={"outline"} className="rounded-full hover:bg-primary-foreground -mt-2">
             <Link href="/signup" className="font-bold px-5">SIGNUP</Link>
           </Button>
         </ul>
