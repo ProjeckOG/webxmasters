@@ -45,25 +45,23 @@ const UserNavbar = () => {
             <DropdownMenuTrigger className="flex font-bold uppercase">
               <CircleUserRound className="mr-3" />MENU
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="border hover:bg-primary-foreground rounded  p-2">
-              <DropdownMenuLabel>
-                <Link href={"/user"} className="my-3 flex text-left hover:underline hover:shadow">
+            <DropdownMenuContent className="bg-primary-foreground rounded  p-2">
+              <DropdownMenuItem>
+                <Link href={"/user"} className="my-3 hover:underline	flex text-left">
                   <Home size={25} className="mr-3"/>
                   Dashboard
                   </Link>
                 <hr />
-              </DropdownMenuLabel>
-          
-
+              </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href={"/user/profile"} className="my-3 flex text-left ">
+                <Link href={"/user/profile"} className="my-3 hover:underline	flex text-left ">
                   <PanelTop size={25} className="mr-3"/>
                   Profile</Link>
                 <hr />
               </DropdownMenuItem>
 
               <DropdownMenuItem>
-                <Link href={"/user/account"} className="my-3 flex text-left ">
+                <Link href={"/user/account"} className="my-3 hover:underline	flex text-left ">
                 <Cog size={25} className="mr-3"/>
                   Account</Link>
              
