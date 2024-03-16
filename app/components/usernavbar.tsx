@@ -40,7 +40,7 @@ const UserNavbar = () => {
           </li>
         </ul>
 
-        <ul className=" hidden md:flex mr-5">
+        <div className=" hidden md:flex mr-5">
           <DropdownMenu>
             <DropdownMenuTrigger className="flex font-bold uppercase">
               <CircleUserRound className="mr-3" />MENU
@@ -68,7 +68,7 @@ const UserNavbar = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </ul>
+        </div>
         <button className="md:hidden" onClick={toggleMenu}>
           <svg
             className="w-6 h-6"
