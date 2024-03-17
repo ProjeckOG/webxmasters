@@ -43,46 +43,7 @@ const skillCardsData: SkillCardProps[] = [
   {
     id: 9,
     name: 'Google',
-  },
-  {
-    id: 1,
-    name: 'HTml',
-
-  },
-  {
-    id: 2,
-    name: 'css',
-  },
-  {
-    id: 3,
-    name: 'javascript',
-  },
-  {
-    id: 4,
-    name: 'NextJS',
-  },
-  {
-    id: 5,
-    name: 'reactjs',
-  },
-  {
-    id: 6,
-    name: 'supabase',
-  },
-  {
-    id: 7,
-    name: 'typescript',
-  },
-  {
-    id: 8,
-    name: 'Vercel',
-  },
-  {
-    id: 9,
-    name: 'Google',
-  },
-  
-  
+  }
   
 ];
 

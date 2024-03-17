@@ -4,6 +4,7 @@ import ToolTiles from "./tools-tiles";
 import SkillTiles from "./skill-tiles";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import { Button } from "@/lib/@/components/ui/button";
+import Link from "next/link";
 
 export default function TileNav() {
   return (
@@ -33,14 +34,13 @@ export default function TileNav() {
         <Button
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 w-32"
-        >
-          + New Project
+        ><Link href={"/user/new-project"}>+ New Project</Link>
+          
         </Button>
-
         <ProjectTiles />
       </TabsContent>
       <TabsContent value="tools" className="flex flex-col items-center">
-      <h2 className="font-bold  uppercase text-3xl">Your Tools</h2>
+        <h2 className="font-bold  uppercase text-3xl">Your Tools</h2>
         <Button
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 w-32"
@@ -50,7 +50,7 @@ export default function TileNav() {
         <ToolTiles />
       </TabsContent>
       <TabsContent value="skills" className="flex flex-col items-center">
-      <h2 className="font-bold  uppercase text-3xl">Your Skills</h2>
+        <h2 className="font-bold  uppercase text-3xl">Your Skills</h2>
         <Button
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 w-32"

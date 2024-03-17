@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/lib/@/components/ui/button";
+import NewProject from "./popup-btns";
 interface Tool {
   id: number;
   name: string;
@@ -80,12 +81,18 @@ const ProjectCard = ({ title, description, link }: ProjectCardProps) => (
       <h5 className="text-xl font-bold uppercase mb-2">{title}</h5>
       <p className="mb-4">{description}</p>
       <Link href={link}>
-        <Button variant={"outline"} className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs mr-0 md:mr-2">
+        <Button
+          variant={"outline"}
+          className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs mr-0 md:mr-2"
+        >
           View Project
         </Button>
       </Link>
       <Link href={link}>
-        <Button variant={"outline"} className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs">
+        <Button
+          variant={"outline"}
+          className=" p-3 font-bold rounded-xl hover:bg-accent-color uppercase text-xs"
+        >
           Edit Project
         </Button>
       </Link>
@@ -102,8 +109,9 @@ const ProjectTiles = () => {
           title={project.title}
           description={project.description}
           link={project.link}
-
-          key={project.id} tools={[]}        />
+          key={project.id}
+          tools={[]}
+        />
       ))}
     </div>
   );

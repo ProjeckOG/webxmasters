@@ -21,7 +21,7 @@ const UserNav = () => {
               variant={"outline"}
               className="bg-secondary-color flex  justify-center  p-3 rounded-3xl mr-2 md:mr-10"
             >
-              EDIT ACCOUNT
+              Edit Account
             </Button>
           </Link>
           <Link href="user/profile">
@@ -29,7 +29,7 @@ const UserNav = () => {
               variant={"outline"}
               className="bg-secondary-color flex  justify-center   p-3  rounded-3xl mr-2 md:mr-10"
             >
-              EDIT PROFILE
+              Edit Profile
             </Button>
           </Link>
         </div>
