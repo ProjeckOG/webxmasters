@@ -1,81 +1,160 @@
-import React, { useState } from 'react';
+// pages/ProjectForm.tsx or components/ProjectForm.tsx
+
+import React from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/lib/@/components/ui/form";
+import { Input } from "@/lib/@/components/ui/input";
+import { Button } from "@/lib/@/components/ui/button";
+import { Textarea } from "@/lib/@/components/ui/textarea";
+
+// Define the validation schema using zod
+const formSchema = z.object({
+  name: z.string().min(1, "Project name is required"),
+  headline: z.string().min(1, "Headline is required"),
+  description: z.string().min(1, "Description is required"),
+  startDate: z.string().optional(),
+  skills: z.string(),
+  tools: z.string().min(1, "Tools are required"),
+});
 
 interface ProjectFormValues {
   name: string;
+  headline: string;
   description: string;
-  startDate: string;
-  endDate: string;
+  startDate?: string;
+  skills: string;
   tools: string;
 }
 
-const ProjectForm: React.FC = async () => {
-  const [formData, setFormData] = useState<ProjectFormValues>({
-    name: '',
-    description: '',
-    startDate: '',
-    endDate: '',
-    tools: '',
+const ProjectForm = () => {
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      headline: "",
+      description: "",
+      startDate: "",
+      skills: "",
+      tools: "",
+    },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  // 2. Define a submit handler.
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    // Here, you can handle the submission, e.g., post to an API.
-  };
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-xl m-auto">
-      <input
-        type="text"
+
+  function handleSubmit(onSubmit: (values: { name: string; headline: string; description: string; skills: string; tools: string; startDate?: string | undefined; }) => void): React.FormEventHandler<HTMLFormElement> | undefined {
+    throw new Error("Function not implemented.");
+  }
+
+return (
+  <Form {...form}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-6 max-w-xl mx-auto p-4"
+    >
+      <FormField
+        control={form.control}
         name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Project Name"
-        className="input input-bordered w-full"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Project Name</FormLabel>
+            <FormControl>
+              <Input  className="w-full p-2  bg-secondary rounded" placeholder="Enter Your Project Name" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
       />
-      <textarea
+      <FormField
+        control={form.control}
+        name="headline"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Project Headline</FormLabel>
+            <FormControl>
+              <Input className="w-full p-2  bg-secondary rounded" placeholder="Enter one line Description" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
         name="description"
-        value={formData.description}
-        onChange={handleChange}
-        placeholder="Project Description"
-        className="textarea textarea-bordered w-full"
-        rows={4}
-      ></textarea>
-      <div className="flex gap-4">
-        <input
-          type="date"
-          name="startDate"
-          value={formData.startDate}
-          onChange={handleChange}
-          className="input input-bordered"
-        />
-        <input
-          type="date"
-          name="endDate"
-          value={formData.endDate}
-          onChange={handleChange}
-          className="input input-bordered"
-        />
-      </div>
-      <input
-        type="text"
-        name="tools"
-        value={formData.tools}
-        onChange={handleChange}
-        placeholder="Software Tools"
-        className="input input-bordered w-full"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Project Description</FormLabel>
+            <FormControl>
+              <Textarea
+                className="w-full p-2  bg-secondary rounded" placeholder="Enter Your Project Description"
+                {...field}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
       />
-      <button type="submit" className="btn btn-primary w-full">Submit Project</button>
+      <FormField
+        control={form.control}
+        name="startDate"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Project Start Date</FormLabel>
+            <FormControl>
+              <Input className="w-full p-2  bg-secondary rounded" type="date" id="startDate" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="skills"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Skills I used</FormLabel>
+            <FormControl>
+              <Input className="w-full p-2  bg-secondary rounded" type="text" id="skills" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="tools"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Project Start Date</FormLabel>
+            <FormControl>
+              <Input  className="w-full p-2  bg-secondary rounded" type="text" id="tools" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <Button variant={"outline"} type="submit" className="mt-4 w-full">
+        Submit
+      </Button>
     </form>
-  );
+  </Form>
+);
 };
-
 export default ProjectForm;

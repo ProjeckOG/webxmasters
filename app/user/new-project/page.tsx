@@ -5,7 +5,7 @@ import ProjectForm from "./components/project-form";
 
 
 
-export default async function NewProject() {
+export default  function NewProject() {
     
   return (
     <div>
