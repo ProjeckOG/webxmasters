@@ -58,9 +58,8 @@ const ProjectForm = () => {
   }
 
 
-
   function handleSubmit(onSubmit: (values: { name: string; headline: string; description: string; skills: string; tools: string; startDate?: string | undefined; }) => void): React.FormEventHandler<HTMLFormElement> | undefined {
-    throw new Error("Function not implemented.");
+    console.log(Error)
   }
 
 return (
@@ -76,7 +75,7 @@ return (
           <FormItem>
             <FormLabel>Project Name</FormLabel>
             <FormControl>
-              <Input  className="w-full p-2  bg-secondary rounded" placeholder="Enter Your Project Name" {...field} />
+              <Input  className="w-full p-2  bg-secondary rounded"  {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -89,7 +88,7 @@ return (
           <FormItem>
             <FormLabel>Project Headline</FormLabel>
             <FormControl>
-              <Input className="w-full p-2  bg-secondary rounded" placeholder="Enter one line Description" {...field} />
+              <Input className="w-full p-2  bg-secondary rounded"  {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -103,7 +102,7 @@ return (
             <FormLabel>Project Description</FormLabel>
             <FormControl>
               <Textarea
-                className="w-full p-2  bg-secondary rounded" placeholder="Enter Your Project Description"
+                className="w-full p-2  bg-secondary rounded"
                 {...field}
               />
             </FormControl>
