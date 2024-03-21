@@ -45,7 +45,7 @@ export default function TileNav() {
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 w-32"
         >
-          + New Tool
+          <Link href={"/tool"}>+ New Tool</Link>
         </Button>
         <ToolTiles />
       </TabsContent>
@@ -55,7 +55,7 @@ export default function TileNav() {
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 w-32"
         >
-          + New Skill
+          <Link href={"/tool"}>+ New Skill</Link>
         </Button>
         <SkillTiles />
       </TabsContent>
