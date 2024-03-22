@@ -45,7 +45,7 @@ export default function TileNav() {
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 w-32"
         >
-          <Link href={"/tool"}>+ New Tool</Link>
+          <Link href={"/tools"}>+ New Tool</Link>
         </Button>
         <ToolTiles />
       </TabsContent>
