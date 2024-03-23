@@ -16,6 +16,7 @@ export async function signup(email: string, password: string) {
 
   if (error) {
     // Redirect to an error page if sign-up failed
+    console.log(error)
     redirect("/error");
     return; // Make sure to return here so that no further code is executed after a redirect
   }
