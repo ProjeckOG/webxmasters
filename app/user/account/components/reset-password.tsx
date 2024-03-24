@@ -8,7 +8,10 @@ import {
   FormMessage,
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
+import { createClient } from "@/lib/utils/supabase/server";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -24,7 +27,7 @@ const ResetPassword = () => {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);

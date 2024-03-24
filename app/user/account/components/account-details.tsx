@@ -12,11 +12,11 @@ import {
 } from "@/lib/@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/utils/supabase/server";
 
 
-const AccountDetails = async () => {
+
+const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
+
   
 
   const formSchema = z.object({
@@ -29,10 +29,10 @@ const AccountDetails = async () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      name: "",
-      email: "",
-      phone: ""
+      username: userData.username || "", // Adjust according to the actual user data structure
+      name: userData.name || "",
+      email: userData.email || "",
+      phone: userData.phone || "",
     },
   });
 
@@ -54,7 +54,7 @@ const AccountDetails = async () => {
                 <FormLabel>Username</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -70,7 +70,7 @@ const AccountDetails = async () => {
                 <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -86,7 +86,7 @@ const AccountDetails = async () => {
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -102,7 +102,7 @@ const AccountDetails = async () => {
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -112,7 +112,7 @@ const AccountDetails = async () => {
           />
           <Button
             variant={"outline"}
-            className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary"
+            className="w-full bg-secondary hover:bg-primary-foreground  font-bold p-4 flex items-center rounded"
           >
             UPDATE ACCOUNT
           </Button>
