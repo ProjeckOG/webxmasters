@@ -33,6 +33,9 @@
     --ring: 222.2 84% 4.9%;
  
     --radius: 0.5rem;
+
+    --success: 145, 77%, 73%; /* Tailwind's green-300 */
+    --failure: 0, 93%, 82%; /* Tailwind's red-300 */
   }
  
   .dark {
@@ -63,6 +66,9 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --success: 134, 64%, 24%; /* Adjusted approximation for Tailwind's green-600 */
+    --failure: 0, 83%, 47%; /* Approximation of Tailwind's red-600 */
   }
 }
  

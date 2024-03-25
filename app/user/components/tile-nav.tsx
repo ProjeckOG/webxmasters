@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function TileNav() {
   return (
     <Tabs defaultValue="projects" className="md:w-3/4 mx-auto ">
-      <TabsList className=" w-full p-1 rounded border flex font-bold justify-around mb-10 bg-secondary">
+      <TabsList className=" w-full p-1 rounded border flex font-bold justify-around mb-10 bg-primary-foreground">
         <TabsTrigger
           value="projects"
           className="data-[state=active]:bg-background p-2 rounded w-full"
@@ -33,7 +33,7 @@ export default function TileNav() {
         <h2 className="font-bold  uppercase text-3xl">Your Projects</h2>
         <Button
           variant={"outline"}
-          className="rounded hover:bg-primary-foreground m-5 w-32"
+          className="rounded hover:bg-primary-foreground m-5 "
         ><Link href={"/user/new-project"}>+ New Project</Link>
           
         </Button>
@@ -43,7 +43,7 @@ export default function TileNav() {
         <h2 className="font-bold  uppercase text-3xl">Your Tools</h2>
         <Button
           variant={"outline"}
-          className="rounded hover:bg-primary-foreground m-5 w-32"
+          className="rounded hover:bg-primary-foreground m-5 "
         >
           <Link href={"/tools"}>+ New Tool</Link>
         </Button>
@@ -53,7 +53,7 @@ export default function TileNav() {
         <h2 className="font-bold  uppercase text-3xl">Your Skills</h2>
         <Button
           variant={"outline"}
-          className="rounded hover:bg-primary-foreground m-5 w-32"
+          className="rounded hover:bg-primary-foreground m-5 "
         >
           <Link href={"/tool"}>+ New Skill</Link>
         </Button>

@@ -14,6 +14,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 
+// Define AccountDetailsProps type here
+interface AccountDetailsProps {
+  userData: {
+    username?: string;
+    name?: string;
+    email?: string;
+    phone?: string;
+  };
+}
 
 const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
 
@@ -112,7 +121,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
           />
           <Button
             variant={"outline"}
-            className="w-full bg-secondary hover:bg-primary-foreground  font-bold p-4 flex items-center rounded"
+            className="w-full  hover:bg-secondary  font-bold p-4 flex items-center rounded"
           >
             UPDATE ACCOUNT
           </Button>

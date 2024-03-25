@@ -44,7 +44,7 @@ const ResetPassword = () => {
                 <FormLabel>Current Password</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     
                     {...field}
                   />
@@ -61,7 +61,7 @@ const ResetPassword = () => {
                 <FormLabel>New Password</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     
                     {...field}
                   />
@@ -78,7 +78,7 @@ const ResetPassword = () => {
                 <FormLabel>Repeat New Password</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     
                     {...field}
                   />

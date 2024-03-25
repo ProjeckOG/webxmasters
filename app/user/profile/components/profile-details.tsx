@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
 const ProfileDetails = () => {
 
   const formSchema = z.object({
@@ -37,9 +38,10 @@ const ProfileDetails = () => {
     <div>
       <div className="mb-3 ">
       <Image width={50} height={50} src='/googlelogo.png'className="bg-gray-300 rounded-3xl mx-auto mb-3" alt="Profile Picture"/>
-        <label className="block text-sm text-center font-bold mb-2" htmlFor="profile-picture">
+        <h2 className="block text-sm text-center font-bold mb-2">
           PROFILE PICTURE
-        </label>
+        </h2>
+       
       </div>
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -52,7 +54,7 @@ const ProfileDetails = () => {
                 <FormControl>
                   <Input
                   type="file"
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -72,7 +74,7 @@ const ProfileDetails = () => {
                 <FormLabel>Title</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -89,7 +91,7 @@ const ProfileDetails = () => {
                 <FormLabel>Short Description</FormLabel>
                 <FormControl>
                   <Textarea
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -106,7 +108,7 @@ const ProfileDetails = () => {
                 <FormLabel>Website</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -123,7 +125,7 @@ const ProfileDetails = () => {
                 <FormLabel>Github</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -140,7 +142,7 @@ const ProfileDetails = () => {
                 <FormLabel>LinkedIn</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -157,7 +159,7 @@ const ProfileDetails = () => {
                 <FormLabel>Facebook</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -174,7 +176,7 @@ const ProfileDetails = () => {
                 <FormLabel>Instagram</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />
@@ -191,7 +193,7 @@ const ProfileDetails = () => {
                 <FormLabel>Twitter</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     placeholder=""
                     {...field}
                   />

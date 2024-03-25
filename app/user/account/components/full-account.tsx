@@ -22,7 +22,7 @@ const FullAccount: React.FC<FullAccountProps> = ({ userData }) => {
   
   return (
     <Tabs defaultValue="account-details">
-      <TabsList className="w-full p-1 rounded border flex font-bold justify-around mb-10 bg-secondary">
+      <TabsList className="w-full p-1 rounded border flex font-bold justify-around mb-10 bg-primary-foreground">
         <TabsTrigger
           value="account-details"
           className="data-[state=active]:bg-background p-2 rounded w-full"

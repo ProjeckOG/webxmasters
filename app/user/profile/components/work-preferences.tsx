@@ -1,4 +1,5 @@
 import { Button } from "@/lib/@/components/ui/button";
+import { Checkbox } from "@/lib/@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -9,31 +10,42 @@ import {
   FormMessage,
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
+import { Switch } from "@/lib/@/components/ui/switch";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const WorkPreferences = () => {
   const formSchema = z.object({
-    profilePicture: z.string(),
-    title: z.string().min(1, "Your Title must be longer than 1 character"),
-    shortDescription: z
-      .string()
-      .min(20, "Your short description must be longer 20 characters"),
-    website: z.string(),
-    github: z.string(),
-    linkedin: z.string(),
-    facebook: z.string(),
-    instagram: z.string(),
-    twitter: z.string(),
+    availability: z.enum([
+      "FULL-TIME",
+      "PART-TIME",
+      "FREELANCE/CONTRACT",
+      "FLEXIBLE",
+      "UNAVAILABLE",
+    ]),
+    jobPosition: z.string(),
+    company: z.string(),
+    dateStarted: z.string(),
+    dateEnded: z.string(),
+    college: z.string(),
+    degreeType: z.string(),
+    gradYear: z.string(),
+    lookingForWork: z.boolean(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      shortDescription: "",
+      availability: "UNAVAILABLE",
+      jobPosition: "",
+      company: "",
+      dateStarted: "",
+      dateEnded: "",
+      college: "",
+      degreeType: "",
+      gradYear: "",
+      lookingForWork: false,
     },
   });
 
@@ -44,23 +56,22 @@ const WorkPreferences = () => {
   }
   return (
     <div className="flex flex-col justify-center mb-10 ">
-      <h2 className="  text-center text-2xl font-bold my-10">
+      <h1 className="  text-center text-2xl font-bold my-10">
         WORK PREFERENCES
-      </h2>
+      </h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormField
+          <h2 className="text-xl font-bold block mt-10">WORK AVAILABILITY</h2>
+          <FormField
             control={form.control}
-            name="dateEnd"
+            name="jobPosition"
             render={({ field }) => (
-              <FormItem>
-                
+              <FormItem className="flex items-center">
                 <FormControl>
                   <Input
-                  type="radio"
-                    className="w-full p-2  bg-secondary rounded"
-                    placeholder="Full-Time"
-                    {...field}
+                    type="radio"
+                    name="availability"
+                    className="form-radio h-5 w-5 mr-2"
                   />
                 </FormControl>
                 <FormLabel>Full-time</FormLabel>
@@ -72,12 +83,81 @@ const WorkPreferences = () => {
             control={form.control}
             name="jobPosition"
             render={({ field }) => (
+              <FormItem className="flex items-center">
+                <FormControl>
+                  <Input
+                    type="radio"
+                    name="availability"
+                    className="form-radio h-5 w-5 mr-2"
+                  />
+                </FormControl>
+                <FormLabel>Part-time</FormLabel>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="jobPosition"
+            render={({ field }) => (
+              <FormItem className="flex items-center">
+                <FormControl>
+                  <Input
+                    type="radio"
+                    name="availability"
+                    className="form-radio h-5 w-5 mr-2"
+                  />
+                </FormControl>
+                <FormLabel>Freelance / Contract</FormLabel>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="jobPosition"
+            render={({ field }) => (
+              <FormItem className="flex items-center">
+                <FormControl>
+                  <Input
+                    type="radio"
+                    name="availability"
+                    className="form-radio h-5 w-5 mr-2"
+                  />
+                </FormControl>
+                <FormLabel>Flexible</FormLabel>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="jobPosition"
+            render={({ field }) => (
+              <FormItem className="flex items-center">
+                <FormControl>
+                  <Input
+                    type="radio"
+                    name="availability"
+                    className="form-radio h-5 w-5 mr-2"
+                  />
+                </FormControl>
+                <FormLabel>Unavailable</FormLabel>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <h2 className="text-xl font-bold mb-3 block mt-10">WORK HISTORY</h2>
+
+          <FormField
+            control={form.control}
+            name="jobPosition"
+            render={({ field }) => (
               <FormItem>
                 <FormLabel>Job Position</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
-                    placeholder=""
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -93,8 +173,64 @@ const WorkPreferences = () => {
                 <FormLabel>Company</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
-                    placeholder=""
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex w-full md:w-3/4 justify-between mb-3">
+            <FormField
+              control={form.control}
+              name="dateStarted"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Date Started</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="month"
+                      className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="dateEnded"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Date Ended</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="month"
+                      className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button variant={"outline"} className="flex items-center p-3 rounded">
+            + Add Another Job
+          </Button>
+
+          <h2 className="text-xl font-bold mb-3 block mt-10">Education</h2>
+          <FormField
+            control={form.control}
+            name="college"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>School / University</FormLabel>
+                <FormControl>
+                  <Input
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -104,14 +240,13 @@ const WorkPreferences = () => {
           />
           <FormField
             control={form.control}
-            name="dateStart"
+            name="degreeType"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Date Started</FormLabel>
-                <FormControl className="w-full md:w-1/2">
+                <FormLabel>Degree Type</FormLabel>
+                <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
-                    placeholder=""
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -121,14 +256,13 @@ const WorkPreferences = () => {
           />
           <FormField
             control={form.control}
-            name="dateEnd"
+            name="gradYear"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Date End</FormLabel>
-                <FormControl className="w-full md:w-1/2">
+                <FormLabel>Completion Year</FormLabel>
+                <FormControl>
                   <Input
-                    className="w-full p-2  bg-secondary rounded"
-                    placeholder=""
+                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -136,131 +270,39 @@ const WorkPreferences = () => {
               </FormItem>
             )}
           />
-          <div className="mb-6">
-            <label className="text-xl font-bold mb-3 block mt-10">
-              WORK AVAILABILITY
-            </label>
-            <div className="mb-3">
-              <label className="block ">
-                <input
-                  type="radio"
-                  name="availability"
-                  className="form-radio h-5 w-5"
-                />{" "}
-                FULL-TIME
-              </label>
-              <label className="block ">
-                <input
-                  type="radio"
-                  name="availability"
-                  className="form-radio h-5 w-5"
-                />{" "}
-                PART-TIME
-              </label>
-              <label className="block ">
-                <input
-                  type="radio"
-                  name="availability"
-                  className="form-radio h-5 w-5"
-                />{" "}
-                FREELANCE/CONTRACT
-              </label>
-              <label className="block ">
-                <input
-                  type="radio"
-                  name="availability"
-                  className="form-radio h-5 w-5"
-                />{" "}
-                ANY
-              </label>
-            </div>
-          </div>
-          <div className="uppercase">
-            <label className="text-xl font-bold mb-3 block mt-10">
-              Work History
-            </label>
-
-            <label className="block mb-3 text-sm font-bold ">
-              Job Position
-            </label>
-            <input className="w-full p-2  bg-secondary rounded" type="text" />
-
-            <label className="block mb-3 text-sm font-bold">Company</label>
-            <input className="w-full p-2  bg-secondary rounded" type="text" />
-            <div className="flex mb-3">
-              <div className="w-full md:w-1/2 mr-2">
-                <label className="block mb-2 text-sm font-bold">
-                  Date Started
-                </label>
-                <input
-                  className="w-full p-2  bg-secondary rounded"
-                  type="text"
-                />
-              </div>
-              <div className="w-full md:w-1/2">
-                <label className="block mb-2 text-sm font-bold">Date EnD</label>
-                <input
-                  className="w-full p-2  bg-secondary rounded"
-                  type="text"
-                />
-              </div>
-            </div>
-            <button className="text-sm bg-blue-600 hover:bg-blue-700 py-1 px-2 rounded">
-              + Add Another Job
-            </button>
-          </div>
-          <div className="mb-6 uppercase">
-            <label className="text-xl font-bold mb-3 block mt-10">
-              Education
-            </label>
-
-            <label className="block mb-2 text-sm font-bold">
-              School / University
-            </label>
-            <input className="w-full p-2  bg-secondary rounded" type="text" />
-
-            <div className="flex mb-3">
-              <div className="w-full md:w-1/2 mr-2">
-                <label className="block mb-2 text-sm font-bold">
-                  DEGREE TYPE
-                </label>
-                <input
-                  className="w-full p-2  bg-secondary rounded"
-                  type="text"
-                />
-              </div>
-              <div className="w-full md:w-1/2">
-                <label className="block mb-2 text-sm font-bold">
-                  COMPLETION YEAR
-                </label>
-                <input
-                  className="w-full p-2  bg-secondary rounded"
-                  type="text"
-                />
-              </div>
-            </div>
-
-            <button className="text-sm bg-blue-600 hover:bg-blue-700 py-1 px-2 rounded">
-              + Add More Education
-            </button>
-          </div>
-
-          <div className="mb-6">
-            <label className="block mb-2 text-sm font-bold">
-              ARE YOU LOOKING FOR WORK
-            </label>
-            <div className="relative inline-block w-10 align-middle select-none">
-              <input
-                type="checkbox"
-                name="looking_for_work"
-                className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
-              />
-              <label
-                htmlFor="looking_for_work"
-                className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
-              ></label>
-            </div>
-          </div>
+          <Button variant={"outline"} className="flex items-center p-3 rounded">
+            + Add Another School
+          </Button>
+          <FormField
+            control={form.control}
+            name="lookingForWork"
+            render={({ field }) => (
+              <FormItem
+                className={`flex flex-row items-center justify-between rounded-lg border p-4 hover:ring ${
+                  field.value ? "bg-secondary " : "bg-primary-foreground"
+                }`}
+              >
+                <FormLabel className="text-base font-bold underline">
+                  {`${
+                    field.value
+                      ? "You are available for Work"
+                      : "You are unavaible for Work"
+                  }`}
+                </FormLabel>
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                    className={`w-12 ring-current rounded-full ${
+                      field.value
+                        ? "bg-success"
+                        : "bg-primary-foreground"
+                    }`}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
           <Button
             variant={"outline"}
             className="w-full bg-secondary-color py-2 px-4 rounded hover:bg-accent-color"
