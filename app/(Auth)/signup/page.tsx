@@ -16,6 +16,7 @@ import {
   FormControl,
   FormMessage,
 } from "@/lib/@/components/ui/form";
+import { toast } from "sonner";
 
 export default function SignUp() {
   const formSchema = z.object({
@@ -37,6 +38,7 @@ export default function SignUp() {
     console.log(values);
     try {
       await signup(values.email, values.password);
+      toast("You have successfully signed up! Now go Check your email")
       // Navigate to the dashboard or home page on successful login
     } catch (error) {
       // Handle errors (e.g., showing a message to the user)

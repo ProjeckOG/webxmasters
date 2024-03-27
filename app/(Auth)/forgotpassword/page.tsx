@@ -14,10 +14,12 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import supabase from "@/lib/utils/supabase/client";
+import { toast } from "sonner";
 
 const ForgotPassword = () => {
-  const [resetPassword, setResetPassword] = useState<boolean>(false);
 
+  
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
   });
@@ -31,8 +33,22 @@ const ForgotPassword = () => {
 
   async function onSubmit(values: { email: string }) {
     try {
-    } catch (error) {}
+      
+      const { error } = await supabase.auth.resetPasswordForEmail(values.email, {
+        redirectTo: 'http://localhost:3000/resetpassword',
+      });
+      if (error) throw error;
+      toast("Check your email for the reset password link!");
+    } catch (error) {
+      if (error instanceof Error) {
+        toast(error.message);
+      } else {
+        // Handle cases where the error might not be an Error instance
+        toast("An unexpected error occurred");
+      }
+    }
   }
+  
   return (
     <div className="my-32  flex items-center justify-center ">
       <div className="w-full max-w-md p-8 border rounded-lg">
