@@ -14,11 +14,13 @@ import supabase from "@/lib/utils/supabase/client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { Toaster } from "@/lib/@/components/ui/sonner";
 import { toast } from "sonner";
 
 const ResetPassword = () => {
+  const router = useRouter();
+
 
   const formSchema = z.object({
     password: z.string().min(8, "Your password must be 8 characters long"),
@@ -51,7 +53,7 @@ const ResetPassword = () => {
       if (error) throw error;
 
       toast("Your password updated successfully!");
-      redirect('/login')
+      router.push('/login');
     } catch (error) {
       if (error instanceof Error) {
         toast(error.message);

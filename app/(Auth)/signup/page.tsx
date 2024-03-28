@@ -72,7 +72,7 @@ export default function SignUp() {
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
-                      className="w-full p-2  bg-secondary rounded"
+                      className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                       placeholder="Email"
                       {...field}
                     />
@@ -90,7 +90,7 @@ export default function SignUp() {
                   <FormControl>
                     <Input
                       type="password"
-                      className="w-full p-2  bg-secondary rounded"
+                      className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                       placeholder="Password"
                       {...field}
                     />

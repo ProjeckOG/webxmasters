@@ -18,9 +18,15 @@ import {
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
 import { useState } from "react";
+import supabase from "@/lib/utils/supabase/client";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/utils/supabase/server";
+
+
 
 export default function Login() {
 
+ 
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
     password: z.string().min(1, "You must enter a valid password"),
@@ -77,7 +83,7 @@ export default function Login() {
                   <FormLabel className="text-white">Email</FormLabel>
                   <FormControl>
                     <Input
-                      className="w-full p-2  bg-secondary rounded"
+                      className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                       placeholder="Email"
                       {...field}
                     />
@@ -95,7 +101,7 @@ export default function Login() {
                   <FormControl>
                     <Input
                       type="password"
-                      className="w-full p-2  bg-secondary rounded"
+                      className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                       placeholder="Password"
                       {...field}
                     />

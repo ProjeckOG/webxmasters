@@ -39,6 +39,10 @@ const ForgotPassword = () => {
       });
       if (error) throw error;
       toast("Check your email for the reset password link!");
+
+      form.reset({
+        email: "", // You can set the email field back to an empty string or to its default value
+      });
     } catch (error) {
       if (error instanceof Error) {
         toast(error.message);
