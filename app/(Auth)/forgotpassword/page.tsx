@@ -16,10 +16,12 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import supabase from "@/lib/utils/supabase/client";
 import { toast } from "sonner";
+import { Mail } from "lucide-react";
 
 const ForgotPassword = () => {
 
-  
+  const [emailSent, setEmailSent] = useState(false);
+
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
   });
@@ -39,20 +41,32 @@ const ForgotPassword = () => {
       });
       if (error) throw error;
       toast("Check your email for the reset password link!");
-
+      setEmailSent(true);
       form.reset({
         email: "", // You can set the email field back to an empty string or to its default value
       });
+
     } catch (error) {
       if (error instanceof Error) {
         toast(error.message);
       } else {
-        // Handle cases where the error might not be an Error instance
         toast("An unexpected error occurred");
       }
     }
   }
-  
+  if (emailSent) {
+    return (
+      <div className="my-32 flex items-center justify-center">
+        <div className="w-full max-w-md p-8 border rounded-lg text-center">
+          <Mail size={32} className="mx-auto my-5" />
+          <h1 className="text-xl font-bold mb-6">
+            Email Sent Successfully!
+          </h1>
+          <p>Please check your email for the reset password reset link.</p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="my-32  flex items-center justify-center ">
       <div className="w-full max-w-md p-8 border rounded-lg">

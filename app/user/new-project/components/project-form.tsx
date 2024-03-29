@@ -23,6 +23,7 @@ const formSchema = z.object({
   headline: z.string().min(1, "Headline is required"),
   description: z.string().min(1, "Description is required"),
   startDate: z.string().optional(),
+  endDate: z.string().optional(),
   skills: z.string(),
   tools: z.string().min(1, "Tools are required"),
 });
@@ -32,6 +33,7 @@ interface ProjectFormValues {
   headline: string;
   description: string;
   startDate?: string;
+  endDate?: string;
   skills: string;
   tools: string;
 }
@@ -45,6 +47,7 @@ const ProjectForm = () => {
       headline: "",
       description: "",
       startDate: "",
+      endDate: "",
       skills: "",
       tools: "",
     },
@@ -58,14 +61,11 @@ const ProjectForm = () => {
   }
 
 
-  function handleSubmit(onSubmit: (values: { name: string; headline: string; description: string; skills: string; tools: string; startDate?: string | undefined; }) => void): React.FormEventHandler<HTMLFormElement> | undefined {
-    console.log(Error)
-  }
 
 return (
   <Form {...form}>
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={form.handleSubmit(onSubmit)}
       className="space-y-6 max-w-xl mx-auto p-4"
     >
       <FormField
@@ -75,7 +75,7 @@ return (
           <FormItem>
             <FormLabel>Project Name</FormLabel>
             <FormControl>
-              <Input  className="w-full p-2  bg-secondary rounded"  {...field} />
+              <Input  className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"  {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -88,7 +88,7 @@ return (
           <FormItem>
             <FormLabel>Project Headline</FormLabel>
             <FormControl>
-              <Input className="w-full p-2  bg-secondary rounded"  {...field} />
+              <Input className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"  {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -102,7 +102,7 @@ return (
             <FormLabel>Project Description</FormLabel>
             <FormControl>
               <Textarea
-                className="w-full p-2  bg-secondary rounded"
+                className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                 {...field}
               />
             </FormControl>
@@ -117,7 +117,20 @@ return (
           <FormItem>
             <FormLabel>Project Start Date</FormLabel>
             <FormControl>
-              <Input className="w-full p-2  bg-secondary rounded" type="date" id="startDate" {...field} />
+              <Input className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded" type="date" id="startDate" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="endDate"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Project End Date</FormLabel>
+            <FormControl>
+              <Input className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded" type="date" id="startDate" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -130,27 +143,27 @@ return (
           <FormItem>
             <FormLabel>Skills I used</FormLabel>
             <FormControl>
-              <Input className="w-full p-2  bg-secondary rounded" type="text" id="skills" {...field} />
+              <Input className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded" type="text" id="skills" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
-      <FormField
+       <FormField
         control={form.control}
         name="tools"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Project Start Date</FormLabel>
+            <FormLabel>Tools I used</FormLabel>
             <FormControl>
-              <Input  className="w-full p-2  bg-secondary rounded" type="text" id="tools" {...field} />
+              <Input className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded" type="text" id="skills" {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
       <Button variant={"outline"} type="submit" className="mt-4 w-full">
-        Submit
+        Create New Project
       </Button>
     </form>
   </Form>
