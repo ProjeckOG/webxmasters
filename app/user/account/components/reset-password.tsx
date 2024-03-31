@@ -9,19 +9,29 @@ import {
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
 import { Toaster } from "@/lib/@/components/ui/sonner";
+import { login } from "@/lib/app/(Auth)/auth/login/actions";
 import supabase from "@/lib/utils/supabase/client";
 import { createClient } from "@/lib/utils/supabase/server";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+interface ResetPasswordProps {
+  userData: {
+    app_metadata: {
+      // Changed from raw_app_meta_data to app_metadata
+      provider: string;
+      providers: string[];
+    };
+  };
+}
 
-
-const ResetPassword: React.FC = () => {
+const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
   const formSchema = z.object({
-    currentPassword: z.string().min(8, "Enter your current Password"),
+    provider: z.string(),
     password: z.string().min(8, "You must enter a valid password"),
     confirmPassword: z.string().min(8, "Repeat your new password!"),
   });
@@ -29,20 +39,16 @@ const ResetPassword: React.FC = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      currentPassword: "",
+      provider: "",
       password: "",
       confirmPassword: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (values.currentPassword !== userData?.password) {
-      toast("Your current password is incorrect");
-      return;
-    }
-     // Check if the new password and confirm password match
-     if (values.password !== values.confirmPassword) {
-      toast("Your passwords do not match");
+    // Check if the new password and confirm password match
+    if (values.password !== values.confirmPassword) {
+      toast("Your new passwords do not match");
       return;
     }
     try {
@@ -68,15 +74,17 @@ const ResetPassword: React.FC = () => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
             control={form.control}
-            name="currentPassword"
+            name="provider"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Current Password</FormLabel>
+                <FormLabel>Provider</FormLabel>
                 <FormControl>
                   <Input
-                  type="password"
-                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                    type="text"
+                    className="w-full p-2  bg-primary-color hover:bg-secondary rounded uppercase"
                     {...field}
+                    value={userData.app_metadata.provider}
+                    disabled
                   />
                 </FormControl>
                 <FormMessage />
@@ -91,7 +99,7 @@ const ResetPassword: React.FC = () => {
                 <FormLabel>New Password</FormLabel>
                 <FormControl>
                   <Input
-                  type="password"
+                    type="password"
                     className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
@@ -108,7 +116,7 @@ const ResetPassword: React.FC = () => {
                 <FormLabel>Repeat New Password</FormLabel>
                 <FormControl>
                   <Input
-                  type="password"
+                    type="password"
                     className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
@@ -119,7 +127,7 @@ const ResetPassword: React.FC = () => {
           />
 
           <Button
-          type="submit"
+            type="submit"
             variant={"outline"}
             className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary"
           >

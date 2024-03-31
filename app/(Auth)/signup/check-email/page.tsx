@@ -1,7 +1,10 @@
 "use client";
+import activeUser from "@/lib/app/api/activeuser";
 import { Inbox } from "lucide-react";
 import { Wrench } from "lucide-react";
 export default function CheckEmail() {
+   //CHeck for active user
+   activeUser();
   return (
     <div className=" items-center w-full sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 mx-auto mt-5 p-10 border shadow-lg rounded-lg">
       <div className="flex justify-center mb-4">

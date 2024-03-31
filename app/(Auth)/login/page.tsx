@@ -17,13 +17,13 @@ import {
   FormMessage,
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
-
-
+import activeUser from "../../api/activeuser";
 
 
 export default function Login() {
+   //CHeck for active user
+   activeUser();
 
- 
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
     password: z.string().min(1, "You must enter a valid password"),
@@ -37,7 +37,7 @@ export default function Login() {
     },
   });
 
-  async function onSubmit(values: { email: string; password: string; }) {
+  async function onSubmit(values: { email: string; password: string }) {
     try {
       await login(values.email, values.password);
       // Reset login error if successful
@@ -81,7 +81,6 @@ export default function Login() {
                   <FormControl>
                     <Input
                       className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
-                      placeholder="Email"
                       {...field}
                     />
                   </FormControl>
@@ -99,13 +98,14 @@ export default function Login() {
                     <Input
                       type="password"
                       className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
-                      placeholder="Password"
                       {...field}
                     />
                   </FormControl>
 
                   {errors.password && (
-                    <FormMessage className="m-2 italict text-destructive ">{errors.password.message}</FormMessage>
+                    <FormMessage className="m-2 italict text-destructive ">
+                      {errors.password.message}
+                    </FormMessage>
                   )}
                 </FormItem>
               )}

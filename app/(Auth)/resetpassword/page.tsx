@@ -11,16 +11,16 @@ import {
 import { Input } from "@/lib/@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import supabase from "@/lib/utils/supabase/client";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { redirect, useRouter } from "next/navigation";
-import { Toaster } from "@/lib/@/components/ui/sonner";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import activeUser from "../../api/activeuser";
 
 const ResetPassword = () => {
   const router = useRouter();
-
+   //CHeck for active user
+   activeUser();
 
   const formSchema = z.object({
     password: z.string().min(8, "Your password must be 8 characters long"),
@@ -53,7 +53,7 @@ const ResetPassword = () => {
       if (error) throw error;
 
       toast("Your password updated successfully!");
-      router.push('/login');
+      router.push("/login");
     } catch (error) {
       if (error instanceof Error) {
         toast(error.message);

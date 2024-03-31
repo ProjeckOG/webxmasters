@@ -4,17 +4,17 @@ import AccountDetails from "./account-details";
 import Logout from "./logout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 
-interface UserData {
-  username?: string;
-  name?: string;
-  email?: string;
-  phone?: string;
-  // Add other fields as necessary
+interface FullAccountProps {
+  userData: {
+    email: string;
+    app_metadata: {
+      provider: string;
+      providers: string[];
+    };
+    // Include other properties as necessary
+  };
 }
 
-interface FullAccountProps {
-  userData: UserData;
-}
 
 
 
@@ -46,7 +46,7 @@ const FullAccount: React.FC<FullAccountProps> = ({ userData }) => {
         <AccountDetails userData={userData} />
       </TabsContent>
       <TabsContent value="reset-password">
-        <ResetPassword />
+        <ResetPassword userData={userData} />
       </TabsContent>
       <TabsContent value="logout">
         <Logout />

@@ -6,6 +6,11 @@ import { cookies } from "next/headers";
 interface User {
   email: string;
   // Add other user properties as needed
+  password?: string; // Assuming you might not always have password in this context
+  raw_app_meta_data: {
+    provider: string;
+    providers: string[];
+  };
 }
 
 const Account = async () => {

@@ -17,8 +17,14 @@ import {
   FormMessage,
 } from "@/lib/@/components/ui/form";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import supabase from "@/lib/utils/supabase/client";
+import activeUser from "../../api/activeuser";
 
 export default function SignUp() {
+  //CHeck for active user
+  activeUser();
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
     password: z.string().min(8, "You password must be 8 characters long"),
@@ -38,7 +44,7 @@ export default function SignUp() {
     console.log(values);
     try {
       await signup(values.email, values.password);
-      toast("You have successfully signed up! Now go Check your email")
+      toast("You have successfully signed up! Now go Check your email");
       // Navigate to the dashboard or home page on successful login
     } catch (error) {
       // Handle errors (e.g., showing a message to the user)
@@ -73,7 +79,6 @@ export default function SignUp() {
                   <FormControl>
                     <Input
                       className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
-                      placeholder="Email"
                       {...field}
                     />
                   </FormControl>
@@ -91,7 +96,6 @@ export default function SignUp() {
                     <Input
                       type="password"
                       className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
-                      placeholder="Password"
                       {...field}
                     />
                   </FormControl>
