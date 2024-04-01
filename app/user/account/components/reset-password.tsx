@@ -13,7 +13,9 @@ import { login } from "@/lib/app/(Auth)/auth/login/actions";
 import supabase from "@/lib/utils/supabase/client";
 import { createClient } from "@/lib/utils/supabase/server";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Mail } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -21,6 +23,7 @@ import { z } from "zod";
 
 interface ResetPasswordProps {
   userData: {
+    email: string;
     app_metadata: {
       // Changed from raw_app_meta_data to app_metadata
       provider: string;
@@ -30,43 +33,51 @@ interface ResetPasswordProps {
 }
 
 const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
+  const [emailSent, setEmailSent] = useState(false);
+
   const formSchema = z.object({
     provider: z.string(),
-    password: z.string().min(8, "You must enter a valid password"),
-    confirmPassword: z.string().min(8, "Repeat your new password!"),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       provider: "",
-      password: "",
-      confirmPassword: "",
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Check if the new password and confirm password match
-    if (values.password !== values.confirmPassword) {
-      toast("Your new passwords do not match");
-      return;
-    }
+  async function onSubmit() {
     try {
-      const { error } = await supabase.auth.updateUser({
-        password: values.password,
-      });
-
+      const { error } = await supabase.auth.resetPasswordForEmail(
+        userData.email,
+        {
+          redirectTo: "http://localhost:3000/resetpassword",
+        }
+      );
       if (error) throw error;
-
-      toast("Your password was updated successfully!");
+      toast("Check your email for the reset password link!");
+      setEmailSent(true);
     } catch (error) {
       if (error instanceof Error) {
         toast(error.message);
       } else {
-        // Handle cases where the error might not be an Error instance
         toast("An unexpected error occurred");
       }
     }
+  }
+
+  if (emailSent) {
+    return (
+      <div className="my-32 flex items-center justify-center">
+        <div className="w-full max-w-md p-8 border rounded-lg text-center">
+          <Mail size={32} className="mx-auto my-5" />
+          <h1 className="text-xl font-bold mb-6">
+            Email Sent Successfully!
+          </h1>
+          <p>Please check your email for the reset password reset link.</p>
+        </div>
+      </div>
+    );
   }
   return (
     <div className="">
@@ -81,44 +92,10 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
                 <FormControl>
                   <Input
                     type="text"
-                    className="w-full p-2  bg-primary-color hover:bg-secondary rounded uppercase"
+                    className="w-full p-2   hover:bg-secondary rounded uppercase"
                     {...field}
-                    value={userData.app_metadata.provider}
+                    value={userData.app_metadata.providers}
                     disabled
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>New Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Repeat New Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
-                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -129,9 +106,9 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
           <Button
             type="submit"
             variant={"outline"}
-            className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary"
+            className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary uppercase"
           >
-            UPDATE PASSWORD
+            SEND PASSWORD RESET TO {userData.app_metadata.provider}
           </Button>
         </form>
       </Form>
@@ -140,3 +117,6 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
 };
 
 export default ResetPassword;
+function setEmailSent(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}

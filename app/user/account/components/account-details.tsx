@@ -17,6 +17,9 @@ import { z } from "zod";
 // Define AccountDetailsProps type here
 interface AccountDetailsProps {
   userData: {
+    raw_user_meta_data: {
+      name: string;
+    }
     username?: string;
     name?: string;
     email?: string;
@@ -39,7 +42,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: userData.username || "", // Adjust according to the actual user data structure
-      name: userData.name || "",
+      name: userData.raw_user_meta_data?.name || "",
       email: userData.email || "",
       phone: userData.phone || "",
     },

@@ -14,8 +14,8 @@ export default async function User() {
   }
   return (
     <div className="mx-auto items-center mt-10 flex flex-col">
-      <UserNav />
-
+      <UserNav userData={data?.user} />
+      
       <TileNav />
     </div>
   );

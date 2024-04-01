@@ -21,6 +21,6 @@ export async function signup(email: string, password: string) {
     return; // Make sure to return here so that no further code is executed after a redirect
   }
 
-  // Assuming the sign-up was successful, redirect to the check-email page
-  redirect("signup/check-email");
+ return 
+
 }

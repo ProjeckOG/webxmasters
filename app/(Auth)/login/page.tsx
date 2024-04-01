@@ -17,12 +17,21 @@ import {
   FormMessage,
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
-import activeUser from "../../api/activeuser";
-
+import supabase from "@/lib/utils/supabase/client";
 
 export default function Login() {
-   //CHeck for active user
-   activeUser();
+  
+  async function googleAuth() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+    })
+    if (error) {
+      console.error("Login error", error.message);
+    } else if (data) {
+      console.log("Login success", data);
+      // You might want to redirect the user to the homepage or dashboard here
+    }
+  }
 
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
@@ -62,6 +71,7 @@ export default function Login() {
       <div className=" mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg">
         <h2 className="text-3xl mb-6 text-center font-bold">LOG IN</h2>
         <Button
+          onClick={googleAuth}
           variant="outline"
           className="w-full flex items-center justify-center  mb-5  p-8"
         >

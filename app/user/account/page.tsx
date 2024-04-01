@@ -2,15 +2,16 @@ import { redirect } from "next/navigation";
 import FullAccount from "./components/full-account";
 import { createClient } from "@/lib/utils/supabase/server";
 import { cookies } from "next/headers";
+import { User as SupabaseAuthUser } from "@supabase/supabase-js";
 
-interface User {
-  email: string;
-  // Add other user properties as needed
-  password?: string; // Assuming you might not always have password in this context
-  raw_app_meta_data: {
-    provider: string;
-    providers: string[];
+export interface ExtendedUser extends SupabaseAuthUser {
+  raw_user_meta_data: {
+    name: string;
   };
+}
+
+export interface FullAccountProps {
+  userData: ExtendedUser;
 }
 
 const Account = async () => {
@@ -23,7 +24,7 @@ const Account = async () => {
   }
   return (
     <div className="w-full md:w-1/2 mx-auto mt-10">
-      <FullAccount userData={data?.user} />
+      <FullAccount userData={data?.user as FullAccountProps["userData"]} />
     </div>
   );
 };

@@ -15,12 +15,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import activeUser from "../../api/activeuser";
 
 const ResetPassword = () => {
   const router = useRouter();
-   //CHeck for active user
-   activeUser();
 
   const formSchema = z.object({
     password: z.string().min(8, "Your password must be 8 characters long"),
@@ -46,24 +43,32 @@ const ResetPassword = () => {
     }
 
     try {
-      const { error } = await supabase.auth.updateUser({
+      // Update the user's password
+      const { error: updateError } = await supabase.auth.updateUser({
         password: password,
       });
 
-      if (error) throw error;
+      if (updateError) throw updateError;
 
-      toast("Your password updated successfully!");
+      // Sign the user out after successfully updating the password
+      const { error: signOutError } = await supabase.auth.signOut();
+
+      if (signOutError) throw signOutError;
+
+      // If everything goes well, notify the user and redirect
+      toast("Your password was updated successfully. Please log in again.");
       router.push("/login");
     } catch (error) {
-      if (error instanceof Error) {
-        toast(error.message);
-      } else {
-        // Handle cases where the error might not be an Error instance
-        toast("An unexpected error occurred");
+      {
+        if (error instanceof Error) {
+          toast(error.message);
+        } else {
+          // Handle cases where the error might not be an Error instance
+          toast("An unexpected error occurred");
+        }
       }
     }
   }
-
   return (
     <div className="my-32  flex items-center justify-center ">
       <div className="mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg ">
