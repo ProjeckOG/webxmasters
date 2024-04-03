@@ -18,18 +18,23 @@ import {
 } from "@/lib/@/components/ui/form";
 import { Input } from "@/lib/@/components/ui/input";
 import supabase from "@/lib/utils/supabase/client";
+import { useRouter } from "next/navigation";
+
 
 export default function Login() {
+  const router = useRouter()
   
   async function googleAuth() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
     })
     if (error) {
+      console.log(error)
       console.error("Login error", error.message);
     } else if (data) {
       console.log("Login success", data);
-      // You might want to redirect the user to the homepage or dashboard here
+      // You might want to redirect the user to the homepage or dashboard here  
+      router.push("/user")
     }
   }
 
@@ -70,6 +75,7 @@ export default function Login() {
     <div className="my-32 flex items-center justify-center">
       <div className=" mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg">
         <h2 className="text-3xl mb-6 text-center font-bold">LOG IN</h2>
+        
         <Button
           onClick={googleAuth}
           variant="outline"
