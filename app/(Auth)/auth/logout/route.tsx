@@ -1,33 +1,22 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { cookies } from 'next/headers'
-import { NextResponse } from 'next/server'
 
-import type { Database } from '@/lib/lib/database.types'
+import { createClient } from '@/lib/utils/supabase/server'
+import { revalidatePath } from 'next/cache'
+import { type NextRequest, NextResponse } from 'next/server'
 
-export async function POST(request: Request) {
-  const requestUrl = new URL(request.url)
-  const cookieStore = cookies()
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value
-        },
-        set(name: string, value: string, options: CookieOptions) {
-          cookieStore.set({ name, value, ...options })
-        },
-        remove(name: string, options: CookieOptions) {
-          cookieStore.set({ name, value: '', ...options })
-        },
-      },
-    }
-  )
+export async function POST(req: NextRequest) {
+  const supabase = createClient()
 
-  await supabase.auth.signOut()
+  // Check if a user's logged in
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
-  return NextResponse.redirect(`${requestUrl.origin}/login`, {
-    status: 301,
+  if (user) {
+    await supabase.auth.signOut()
+  }
+
+  revalidatePath('/', 'layout')
+  return NextResponse.redirect(new URL('/login', req.url), {
+    status: 302,
   })
 }
