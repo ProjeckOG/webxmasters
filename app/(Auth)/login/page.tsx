@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import GoogleLogo from "/public/googlelogo.png";
 import { login } from "../auth/login/actions";
 import { Button } from "@/lib/@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,24 +17,10 @@ import {
 import { Input } from "@/lib/@/components/ui/input";
 import supabase from "@/lib/utils/supabase/client";
 import { useRouter } from "next/navigation";
-
+import GoogleAuth from "./components/googleAuth";
 
 export default function Login() {
-  const router = useRouter()
-  
-  async function googleAuth() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-    })
-    if (error) {
-      console.log(error)
-      console.error("Login error", error.message);
-    } else if (data) {
-      console.log("Login success", data);
-      // You might want to redirect the user to the homepage or dashboard here  
-      router.push("/user")
-    }
-  }
+  const router = useRouter();
 
   const formSchema = z.object({
     email: z.string().min(2, "You need to enter a valid email address").max(50),
@@ -75,15 +59,8 @@ export default function Login() {
     <div className="my-32 flex items-center justify-center">
       <div className=" mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg">
         <h2 className="text-3xl mb-6 text-center font-bold">LOG IN</h2>
-        
-        <Button
-          onClick={googleAuth}
-          variant="outline"
-          className="w-full flex items-center justify-center  mb-5  p-8"
-        >
-          LOG IN WITH GOOGLE{" "}
-          <Image src={GoogleLogo} alt="google logo" width="50" height="50" />
-        </Button>
+
+        <GoogleAuth />
         <hr />
         <div className="text-center  my-4">OR</div>
         <Form {...form}>
