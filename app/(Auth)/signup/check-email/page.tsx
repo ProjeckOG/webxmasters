@@ -1,12 +1,8 @@
-"use client";
-import activeUser from "@/lib/app/api/activeuser";
-import { Inbox } from "lucide-react";
-import { Wrench } from "lucide-react";
+import { Inbox, Wrench } from "lucide-react";
+
 export default function CheckEmail() {
-   //CHeck for active user
-   activeUser();
   return (
-    <div className=" items-center w-full sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 mx-auto mt-5 p-10 border shadow-lg rounded-lg">
+    <div className="my-20 items-center w-full sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 mx-auto mt-5 p-10 border shadow-lg rounded-lg">
       <div className="flex justify-center mb-4">
         <Inbox size={50} />
       </div>
@@ -14,12 +10,13 @@ export default function CheckEmail() {
         Please Check Your Inbox!
       </h2>
       <p className="text-base leading-relaxed">
-        To complete your signup process and <b>activate</b> your account, we've sent a
-        confirmation email. 
-        <br /><br />
-        Please check your inbox (and the spam/junk folder,
-        just in case) for an email from us and click on the "Confirm your email"
-        button within that email.
+        To complete your signup process and <b>activate</b> your account, we've
+        sent a confirmation email.
+        <br />
+        <br />
+        Please check your inbox (and the spam/junk folder, just in case) for an
+        email from us and click on the "Confirm your email" button within that
+        email.
       </p>
       <hr className="my-10" />
       <div className="flex justify-center mb-4">
