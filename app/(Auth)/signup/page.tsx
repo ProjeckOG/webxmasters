@@ -6,7 +6,7 @@ import EmailForm from "./components/emailForm";
 export default function SignUp() {
   return (
     <div className="my-32 flex items-center justify-center">
-      <div className="mx-auto p-8 border  md:w-1/3 w-full	 rounded-lg">
+      <div className="mx-auto p-8 border  lg:w-1/3 w-full	 rounded-lg">
         <h2 className="text-3xl mb-6 text-center font-bold">
           JOIN OTHER WEBMASTERS
         </h2>
