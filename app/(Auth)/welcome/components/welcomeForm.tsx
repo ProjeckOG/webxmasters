@@ -17,21 +17,39 @@ import { redirect, useRouter } from "next/navigation";
 import supabase from "@/lib/utils/supabase/client";
 
 export default function WelcomeForm() {
-    const router = useRouter()
+   const getUser = async () => {
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+  }
+  getUser()
+
+  const MAX_UPLOAD_SIZE = 1024 * 1024 * 3; // 3MB
+  const ACCEPTED_FILE_TYPES = ['image/jpeg','image/jpg','image/png','image/webp'];
+  const router = useRouter()
   const formSchema = z.object({
+    avatar: z
+    .instanceof(File)
+    .optional()
+    .refine((file) => {
+      return !file || file.size <= MAX_UPLOAD_SIZE;
+    }, 'File size must be less than 3MB')
+    .refine((file) => {
+      return ACCEPTED_FILE_TYPES.includes(file.type);
+    }, 'File must be a jpg, png, jpeg, or webp'),
     username: z
       .string()
       .min(3, "Your username must be 3 characters long")
       .max(50),
     birthdate: z
-      .string()
-      .min(3, "Your username must be 3 characters long")
-      .max(50),
+    .date()
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      avatar: user?.avatar_url || 'public/default-photo.png',
       username: "",
       birthdate: "",
     },
@@ -39,10 +57,7 @@ export default function WelcomeForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      console.log(user)
+      
       const { error } = await supabase
         .from("users")
         .update({ username: values.username, birthdate: values.birthdate })
@@ -57,6 +72,23 @@ export default function WelcomeForm() {
   return (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+              control={form.control}
+              name="avatar"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Profile Picture</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="file"
+                      className="w-1/4 p-2  bg-primary-foreground hover:bg-secondary rounded-full"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="username"
@@ -65,6 +97,7 @@ export default function WelcomeForm() {
                   <FormLabel>Choose your Username!</FormLabel>
                   <FormControl>
                     <Input
+                    type="text"
                       className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                       {...field}
                     />
