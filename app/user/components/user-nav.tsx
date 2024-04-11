@@ -4,13 +4,14 @@ import supabase from "@/lib/utils/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import PropTypes from 'prop-types'; // First, import PropTypes
 
 const UserNav = ({user}) => {
   return (
     <div className="flex items-center text-center md:text-left	 flex-col md:flex-row p-2 mb-4">
       <Avatar>
         <AvatarImage
-          src={user?.avatar_url || "/default-photo.png"}
+          src={user?.user_metadata.avatar_url|| "/default-photo.png"}
           alt="Profile Picture"
           className="flex items-center  ring-secondary	h-20 w-20 mr-4 mb-5 md:mb-0 rounded-full ring "
         />
@@ -18,7 +19,7 @@ const UserNav = ({user}) => {
       </Avatar>
       <div>
         <h2 className="text-xl font-semibold ">
-          {user?.raw_user_meta_data.full_name || "John Doe"}
+          {user?.user_metadata.full_name || "John Doe"}
         </h2>
         <div className="flex mt-2">
           <Link href="user/account">
@@ -41,6 +42,14 @@ const UserNav = ({user}) => {
       </div>
     </div>
   );
+};
+
+// Define PropTypes
+UserNav.propTypes = {
+  user: PropTypes.shape({
+    avatar_url: PropTypes.string,
+    full_name: PropTypes.string
+  })
 };
 
 export default UserNav;
