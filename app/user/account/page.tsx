@@ -15,8 +15,8 @@ export interface FullAccountProps {
 }
 
 const Account = async () => {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+
+  const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
   if (error || !data?.user) {
@@ -24,7 +24,7 @@ const Account = async () => {
   }
   return (
     <div className="w-full md:w-1/2 mx-auto mt-10">
-      <FullAccount userData={data?.user as FullAccountProps["userData"]} />
+      <FullAccount userData={data?.user} />
     </div>
   );
 };

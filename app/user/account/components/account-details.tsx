@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/lib/@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { Input } from "@/lib/@/components/ui/input";
@@ -12,15 +12,19 @@ import {
 } from "@/lib/@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
+import supabase from "@/lib/utils/supabase/client";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 // Define AccountDetailsProps type here
 interface AccountDetailsProps {
   userData: {
-    raw_user_meta_data: {
-      name: string;
-    }
-    username?: string;
+    id: any;
+    user_metadata: {
+      birthdate: Date | undefined;
+      username: string;
+      full_name: string;
+    };
     name?: string;
     email?: string;
     phone?: string;
@@ -28,32 +32,50 @@ interface AccountDetailsProps {
 }
 
 const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
-
   
-
+  const router = useRouter()
   const formSchema = z.object({
-    username: z.string().min(2, "Your username"),
-    name: z.string().min(2, "Your full name"),
-    email: z.string().min(2, "Your full name"),
-    phone: z.string().min(2),
+    username: z.string().min(2, "Username must be at least 2 characters long"),
+    name: z.string().min(2, "Full name must be at least 2 characters long"),
+    email: z.string().min(2, "Enter a valid email address"),
+    birthdate: z.date().optional()
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: userData.username || "", // Adjust according to the actual user data structure
-      name: userData.raw_user_meta_data?.name || "",
+      username: userData.user_metadata.username || "", // Adjust according to the actual user data structure
+      name: userData.user_metadata.full_name || "",
       email: userData.email || "",
-      phone: userData.phone || "",
+      birthdate: userData.user_metadata.birthdate ? new Date(userData.user_metadata.birthdate) : undefined
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    const { data, error } = await supabase
+      .from("users")
+      .update({ full_name: values.name, username: values.username, email: values.email, birthdate: values.birthdate})
+      .eq("id", userData.id)
+      .select();
+      if (error) {
+        toast("Failed to update: " + error.message); // Simple alert, consider integrating with a UI component for better UX
+      } else {
+        
+        router.refresh()
+        toast("Update successful!");
+      }
+      
   }
-
+  
+  useEffect(() => {
+    form.reset({
+      username: userData.user_metadata.username || "",
+      name: userData.user_metadata.full_name || "",
+      email: userData.email || "",
+      birthdate: userData.user_metadata.birthdate ? new Date(userData.user_metadata.birthdate) : undefined
+    });
+  }, [userData, form]);
+  
   return (
     <div>
       <Form {...form}>
@@ -108,12 +130,13 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
           />
           <FormField
             control={form.control}
-            name="phone"
+            name="birthdate"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>BirthDate</FormLabel>
                 <FormControl>
                   <Input
+                    type="date"
                     className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />

@@ -1,9 +1,7 @@
 "use client";
 import { Button } from "@/lib/@/components/ui/button";
-import supabase from "@/lib/utils/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import PropTypes from 'prop-types'; // First, import PropTypes
 
 const UserNav = ({user}) => {
