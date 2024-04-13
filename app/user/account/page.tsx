@@ -22,6 +22,7 @@ const Account = async () => {
   if (error || !data?.user) {
     redirect("/login");
   }
+  
   return (
     <div className="w-full md:w-1/2 mx-auto mt-10">
       <FullAccount userData={data?.user} />

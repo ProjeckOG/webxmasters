@@ -9,7 +9,7 @@ const UserNav = ({user}) => {
     <div className="flex items-center text-center md:text-left	 flex-col md:flex-row p-2 mb-4">
       <Avatar>
         <AvatarImage
-          src={user?.user_metadata.avatar_url|| "/default-photo.png"}
+          src={user?.avatar_url|| "/default-photo.png"}
           alt="Profile Picture"
           className="flex items-center  ring-secondary	h-20 w-20 mr-4 mb-5 md:mb-0 rounded-full ring "
         />

@@ -1,15 +1,21 @@
-'use client'
-import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import supabase from '@/lib/utils/supabase/client';
-import { toast } from 'sonner';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/lib/@/components/ui/form';
-import { Button } from '@/lib/@/components/ui/button';
-import { Input } from '@/lib/@/components/ui/input';
-import { useRouter } from 'next/navigation';
-
+"use client";
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import supabase from "@/lib/utils/supabase/client";
+import { toast } from "sonner";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/lib/@/components/ui/form";
+import { Button } from "@/lib/@/components/ui/button";
+import { Input } from "@/lib/@/components/ui/input";
+import { useRouter } from "next/navigation";
 
 // Define AccountDetailsProps type here
 interface AccountDetailsProps {
@@ -28,9 +34,13 @@ const formSchema = z.object({
   username: z.string().min(2, "Username must be at least 2 characters long"),
   name: z.string().min(2, "Full name must be at least 2 characters long"),
   email: z.string().email("Enter a valid email address"),
-  birthdate: z.string().optional().nullable().refine((date) => {
-    return !date || !isNaN(new Date(date).getTime());
-  }, "Invalid date format"),
+  birthdate: z
+    .string()
+    .optional()
+    .nullable()
+    .refine((date) => {
+      return !date || !isNaN(new Date(date).getTime());
+    }, "Invalid date format"),
 });
 
 const usePersistedForm = (defaultValues: z.infer<typeof formSchema>) => {
@@ -40,7 +50,7 @@ const usePersistedForm = (defaultValues: z.infer<typeof formSchema>) => {
   });
 
   useEffect(() => {
-    const storedData = localStorage.getItem('formData');
+    const storedData = localStorage.getItem("formData");
     if (storedData) {
       form.reset(JSON.parse(storedData));
     }
@@ -48,7 +58,7 @@ const usePersistedForm = (defaultValues: z.infer<typeof formSchema>) => {
 
   useEffect(() => {
     const subscription = form.watch((value) => {
-      localStorage.setItem('formData', JSON.stringify(value));
+      localStorage.setItem("formData", JSON.stringify(value));
     });
     return () => subscription.unsubscribe();
   }, [form]);
@@ -63,21 +73,34 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
     username: userData.user_metadata.username || "",
     name: userData.user_metadata.full_name || "",
     email: userData.email || "",
-    birthdate: userData.user_metadata.birthdate ? new Date(userData.user_metadata.birthdate).toISOString().slice(0, 10) : undefined,
+    birthdate: userData.user_metadata.birthdate
+      ? new Date(userData.user_metadata.birthdate).toISOString().slice(0, 10)
+      : undefined,
   };
 
   const form = usePersistedForm(defaultValues);
+  useEffect(() => {
+    // Update form default values on userData change
+    form.reset({
+      username: userData.user_metadata.username || "",
+      name: userData.user_metadata.full_name || "",
+      email: userData.email || "",
+      birthdate: userData.user_metadata.birthdate
+        ? new Date(userData.user_metadata.birthdate).toISOString().slice(0, 10)
+        : "",
+    });
+  }, [userData, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { data, error } = await supabase
-      .from('users')
+      .from("users")
       .update({
         username: values.username,
         full_name: values.name,
         email: values.email,
-        birthdate: values.birthdate,
+        birthdate: values.birthdate ? values.birthdate : null,
       })
-      .eq('id', userData.id);
+      .eq("id", userData.id);
 
     if (error) {
       toast.error("Failed to update: " + error.message);
