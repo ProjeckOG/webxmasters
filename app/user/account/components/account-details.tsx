@@ -1,20 +1,15 @@
-import React, { useEffect } from "react";
-import { Button } from "@/lib/@/components/ui/button";
-import { useForm } from "react-hook-form";
-import { Input } from "@/lib/@/components/ui/input";
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  Form,
-  FormControl,
-  FormMessage,
-} from "@/lib/@/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import supabase from "@/lib/utils/supabase/client";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+'use client'
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import supabase from '@/lib/utils/supabase/client';
+import { toast } from 'sonner';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/lib/@/components/ui/form';
+import { Button } from '@/lib/@/components/ui/button';
+import { Input } from '@/lib/@/components/ui/input';
+import { useRouter } from 'next/navigation';
+
 
 // Define AccountDetailsProps type here
 interface AccountDetailsProps {
@@ -25,57 +20,74 @@ interface AccountDetailsProps {
       username: string;
       full_name: string;
     };
-    name?: string;
     email?: string;
-    phone?: string;
   };
 }
 
-const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
-  
-  const router = useRouter()
-  const formSchema = z.object({
-    username: z.string().min(2, "Username must be at least 2 characters long"),
-    name: z.string().min(2, "Full name must be at least 2 characters long"),
-    email: z.string().min(2, "Enter a valid email address"),
-    birthdate: z.date().optional()
-  });
+const formSchema = z.object({
+  username: z.string().min(2, "Username must be at least 2 characters long"),
+  name: z.string().min(2, "Full name must be at least 2 characters long"),
+  email: z.string().email("Enter a valid email address"),
+  birthdate: z.string().optional().nullable().refine((date) => {
+    return !date || !isNaN(new Date(date).getTime());
+  }, "Invalid date format"),
+});
 
+const usePersistedForm = (defaultValues: z.infer<typeof formSchema>) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      username: userData.user_metadata.username || "", // Adjust according to the actual user data structure
-      name: userData.user_metadata.full_name || "",
-      email: userData.email || "",
-      birthdate: userData.user_metadata.birthdate ? new Date(userData.user_metadata.birthdate) : undefined
-    },
+    defaultValues,
   });
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('formData');
+    if (storedData) {
+      form.reset(JSON.parse(storedData));
+    }
+  }, [form]);
+
+  useEffect(() => {
+    const subscription = form.watch((value) => {
+      localStorage.setItem('formData', JSON.stringify(value));
+    });
+    return () => subscription.unsubscribe();
+  }, [form]);
+
+  return form;
+};
+
+const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
+  const router = useRouter();
+
+  const defaultValues = {
+    username: userData.user_metadata.username || "",
+    name: userData.user_metadata.full_name || "",
+    email: userData.email || "",
+    birthdate: userData.user_metadata.birthdate ? new Date(userData.user_metadata.birthdate).toISOString().slice(0, 10) : undefined,
+  };
+
+  const form = usePersistedForm(defaultValues);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { data, error } = await supabase
-      .from("users")
-      .update({ full_name: values.name, username: values.username, email: values.email, birthdate: values.birthdate})
-      .eq("id", userData.id)
-      .select();
-      if (error) {
-        toast("Failed to update: " + error.message); // Simple alert, consider integrating with a UI component for better UX
-      } else {
-        
-        router.refresh()
-        toast("Update successful!");
-      }
-      
+      .from('users')
+      .update({
+        username: values.username,
+        full_name: values.name,
+        email: values.email,
+        birthdate: values.birthdate,
+      })
+      .eq('id', userData.id);
+
+    if (error) {
+      toast.error("Failed to update: " + error.message);
+    } else {
+      toast.success("Update successful!");
+      // Consider commenting out the next line if you want to avoid refreshing.
+      // router.refresh();
+    }
   }
-  
-  useEffect(() => {
-    form.reset({
-      username: userData.user_metadata.username || "",
-      name: userData.user_metadata.full_name || "",
-      email: userData.email || "",
-      birthdate: userData.user_metadata.birthdate ? new Date(userData.user_metadata.birthdate) : undefined
-    });
-  }, [userData, form]);
-  
+
   return (
     <div>
       <Form {...form}>
@@ -88,7 +100,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
                 <FormLabel>Username</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                    className="w-full p-2 bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -104,7 +116,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
                 <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                    className="w-full p-2 bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -120,7 +132,8 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                    type="email"
+                    className="w-full p-2 bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -133,11 +146,11 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
             name="birthdate"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>BirthDate</FormLabel>
+                <FormLabel>Birthdate</FormLabel>
                 <FormControl>
                   <Input
                     type="date"
-                    className="w-full p-2  bg-primary-foreground hover:bg-secondary rounded"
+                    className="w-full p-2 bg-primary-foreground hover:bg-secondary rounded"
                     {...field}
                   />
                 </FormControl>
@@ -146,10 +159,11 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ userData }) => {
             )}
           />
           <Button
-            variant={"outline"}
-            className="w-full  hover:bg-secondary  font-bold p-4 flex items-center rounded"
+            type="submit"
+            variant="outline"
+            className="w-full hover:bg-secondary uppercase text-xl font-bold p-10 flex items-center justify-center rounded"
           >
-            UPDATE ACCOUNT
+            Update Account
           </Button>
         </form>
       </Form>

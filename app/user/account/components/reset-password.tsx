@@ -71,9 +71,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
       <div className="my-32 flex items-center justify-center">
         <div className="w-full max-w-md p-8 border rounded-lg text-center">
           <Mail size={32} className="mx-auto my-5" />
-          <h1 className="text-xl font-bold mb-6">
-            Email Sent Successfully!
-          </h1>
+          <h1 className="text-xl font-bold mb-6">Email Sent Successfully!</h1>
           <p>Please check your email for the reset password reset link.</p>
         </div>
       </div>
@@ -83,30 +81,10 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
     <div className="">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <FormField
-            control={form.control}
-            name="provider"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Provider</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="w-full p-2   hover:bg-secondary rounded uppercase"
-                    {...field}
-                    value={userData.app_metadata.providers}
-                    disabled
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
           <Button
             type="submit"
             variant={"outline"}
-            className="w-full bg-secondary-color font-bold p-4 flex items-center rounded hover:bg-secondary uppercase"
+            className="w-full uppercase text-xl m-3 p-10 flex items-center font-bold hover:bg-destructive"
           >
             SEND PASSWORD RESET TO {userData.app_metadata.provider}
           </Button>

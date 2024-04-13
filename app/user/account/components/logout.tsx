@@ -5,7 +5,6 @@ const Logout = () => {
     <form
       action="/auth/logout"
       method="post"
-      className="w-full  py-2 px-4 rounded"
     >
       <Button
         type="submit"
