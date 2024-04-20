@@ -16,6 +16,24 @@ import { z } from "zod";
 import { signup } from "../../auth/sign-up/actions";
 import { useRouter } from "next/navigation";
 
+async function checkAvailability(type: 'username' | 'email', value: string): Promise<boolean> {
+  try {
+    const response = await fetch("/api/auth-check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ type: 'username', value: 'yourUsername' }),
+    });
+    const data = await response.json();
+    return data.available;
+  } catch (error) {
+    console.error(`Failed to check ${type}:`, error);
+    toast(`Error checking ${type}. Please try again.`);
+    return false;
+  }
+}
+
 export default function EmailForm() {
   const router = useRouter();
 
@@ -41,6 +59,17 @@ export default function EmailForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      const isUsernameAvailable = await checkAvailability('username', values.username);
+      if (!isUsernameAvailable) {
+        toast("Username is already taken, please choose another one.");
+        return;
+      }
+  
+      const isEmailAvailable = await checkAvailability('email', values.email);
+      if (!isEmailAvailable) {
+        toast("Email is already registered, please use another one.");
+        return;
+      }
       await signup(
         values.full_name,
         values.username,
