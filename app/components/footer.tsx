@@ -25,6 +25,9 @@ const Footer = () => {
           <Link href="/support" className="font-bold hover:text-gray-300">
             SUPPORT
           </Link>
+          <Link href="/legal" className="font-bold hover:text-gray-300">
+            LEGAL
+          </Link>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-10">
           <Link
