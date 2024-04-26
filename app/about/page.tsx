@@ -8,7 +8,7 @@ const AboutPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen  p-4">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-5xl font-extrabold uppercase  justify-start mb-10">
-          About Us
+          About Us YEah
         </h1>
         <p className="text-lg text-gray-500 tracking-wide	leading-9  mb-6">
           Welcome to WebXMasters, the premier community-driven platform
