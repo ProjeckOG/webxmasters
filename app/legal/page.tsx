@@ -5,7 +5,7 @@ import React from "react";
 
 const Legal = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen py-20">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-5xl font-extrabold uppercase justify-start mb-10">
           Legal Pages
