@@ -1,10 +1,13 @@
+import SearchBar from "./components/searchBar";
+
 export default function Tools() {
   return (
-    <main className="">
+    <div className="">
       <h1 className="text-center text-4xl font-bold my-10">
-        {" "}
+        
         WEBMASTERS TOOLS LIST
       </h1>
-    </main>
+      <SearchBar />
+    </div>
   );
 }
