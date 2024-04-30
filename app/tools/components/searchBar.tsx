@@ -46,32 +46,33 @@ export default function Tools() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-wrap mx-auto justify-around md:w-3/4 gap-4"
+          className="flex flex-wrap justify-around items-center w-full md:w-3/4 mx-auto gap-4"
         >
-          <FormField
-            control={form.control}
-            name="searchTerm"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  {/* Use flex-grow and a min-width class */}
-                  <Input
-                    placeholder="Search Tools by Name"
-                    className="flex-grow min-w-0 bg-primary-foreground p-2"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="flex-grow">
+            <FormField
+              control={form.control}
+              name="searchTerm"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Search Tools by Name"
+                      className="w-full bg-primary-foreground p-2"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
           <Controller
             name="category"
             control={form.control}
             render={({ field }) => (
               <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger className="w-full md:w-40 px-4 py-2 border rounded">
+                <SelectTrigger className="px-4 py-2 border rounded w-40">
                   <SelectValue placeholder="All Categories" />
                 </SelectTrigger>
                 <SelectContent>
@@ -95,7 +96,7 @@ export default function Tools() {
             control={form.control}
             render={({ field }) => (
               <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger className="w-full md:w-40 px-4 py-2 border rounded">
+                <SelectTrigger className="px-4 py-2 border rounded w-40">
                   <SelectValue placeholder="All Features" />
                 </SelectTrigger>
                 <SelectContent>
@@ -114,7 +115,7 @@ export default function Tools() {
 
           <Button
             type="submit"
-            variant={"outline"}
+            variant="outline"
             className="hover:bg-primary-foreground font-bold py-2 px-4 rounded"
           >
             Search
