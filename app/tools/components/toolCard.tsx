@@ -1,3 +1,4 @@
+import { Button } from "@/lib/@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -32,7 +33,10 @@ const ToolCard = ({ tool }) => {
               #{category}
             </span>
           ))}
+  
+          
         </div>
+        <div><Button variant={"outline"} className="rounded-full  font-bold mt-5">View Tool</Button></div>
       </CardContent>
     </Card>
   );

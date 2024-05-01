@@ -44,7 +44,48 @@ const toolData = [
     imageUrl: "https://cdn-icons-png.flaticon.com/512/5968/5968779.png",
     categories: ["UI/UX Design", "Prototyping", "Creative"],
   },
+  {
+    id: "mailchimp",
+    name: "Mailchimp",
+    description:
+      "Mailchimp is an all-in-one marketing platform that helps you manage and talk to your clients, customers, and other interested parties.",
+    imageUrl: "https://cdn-icons-png.flaticon.com/512/5968/5968514.png",
+    categories: ["Email Marketing", "Automation", "Campaigns"],
+  },
+  {
+    id: "canva",
+    name: "Canva",
+    description:
+      "Canva is a graphic design platform, used to create social media graphics, presentations, posters, documents, and other visual content.",
+    imageUrl: "https://cdn-icons-png.flaticon.com/512/5968/5968701.png",
+    categories: ["Design", "Templates", "Creativity"],
+  },
+  {
+    id: "hubspot",
+    name: "HubSpot",
+    description:
+      "HubSpot offers a full platform of marketing, sales, customer service, and CRM software — plus the methodology, resources, and support — to help businesses.",
+    imageUrl: "https://cdn-icons-png.flaticon.com/512/5968/5968342.png",
+    categories: ["CRM", "Marketing", "Sales"],
+  },
+  {
+    id: "zendesk",
+    name: "Zendesk",
+    description:
+      "Zendesk is a service-first CRM company that builds software designed to improve customer relationships.",
+    imageUrl: "https://cdn-icons-png.flaticon.com/512/5968/5968337.png",
+    categories: ["Customer Support", "CRM", "Help Desk"],
+  },
+  {
+    id: "figma",
+    name: "Figma",
+    description:
+      "Figma is a cloud-based design tool that is similar to Sketch in functionality and features, but with big differences that make Figma better for team collaboration.",
+    imageUrl: "https://cdn-icons-png.flaticon.com/512/5968/5968865.png",
+    categories: ["Design", "Prototyping", "Collaboration", "Design", "Prototyping", "Collaboration"],
+  }
 ];
+
 
 export default function Tools() {
   const [tools, setTools] = useState(toolData);
@@ -56,7 +97,7 @@ export default function Tools() {
     </h1>
     <SearchBar />
     <div className="container mx-auto px-4">
-      <div className="flex flex-wrap gap-5 justify-center mt-5">
+      <div className="flex flex-wrap gap-5 justify-around mt-5">
         {tools.map((tool) => (
           <ToolCard key={tool.id} tool={tool} />
         ))}
