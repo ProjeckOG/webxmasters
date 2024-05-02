@@ -6,6 +6,7 @@ import {
   CardContent,
   CardDescription,
 } from "@/lib/@/components/ui/card";
+import Link from "next/link";
 import React from "react";
 
 const ToolCard = ({ tool }) => {
@@ -36,7 +37,7 @@ const ToolCard = ({ tool }) => {
   
           
         </div>
-        <div><Button variant={"outline"} className="rounded-full  font-bold mt-5">View Tool</Button></div>
+        <div><Link href={"/tools/1"}><Button variant={"outline"} className="rounded-full  font-bold mt-5">View Tool</Button></Link></div>
       </CardContent>
     </Card>
   );
