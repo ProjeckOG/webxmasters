@@ -36,6 +36,14 @@ const UserNav = ({user}) => {
               Edit Profile
             </Button>
           </Link>
+          <Link href="profile/username">
+            <Button
+              variant={"outline"}
+              className="bg-secondary-color flex  justify-center   p-3  rounded-3xl mr-2 md:mr-10"
+            >
+              View Profile
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
