@@ -1,6 +1,7 @@
 "use client";
 import supabase from "@/lib/utils/supabase/client";
 import { useState, useEffect } from "react";
+import ProfileHeader from "./components/profileHeader";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [username, setUsername] = useState<string | null>(null);
@@ -33,13 +34,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      {username ? (
-        <div>
-          My Post: {username}
-        </div>
-      ) : (
-        <div>Loading...</div>
-      )}
+      <ProfileHeader username={""} jobTitle={""} description={""} twitterUrl={""} linkedinUrl={""} facebookUrl={""} instagramUrl={""} avatarUrl={""} />
     </div>
   );
 }
