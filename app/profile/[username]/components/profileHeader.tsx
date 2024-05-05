@@ -1,5 +1,23 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/@/components/ui/card";
-import Image from "next/image";
+import { Button } from "@/lib/@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/lib/@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
+import {
+  Facebook,
+  Github,
+  Instagram,
+  Linkedin,
+  ScreenShare,
+  ShieldEllipsis,
+  Twitter,
+  UserCog,
+} from "lucide-react";
 import React from "react";
 
 interface ProfileHeaderProps {
@@ -24,16 +42,42 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   avatarUrl,
 }) => {
   return (
-    <Card>
+    <Card className="text-center bg-primary-foreground p-2 mx-auto md:w-1/2">
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <Avatar className="my-4">
+          <AvatarImage
+            src="https://github.com/shadcn.png"
+            alt="Profile Picture"
+            className="rounded-full w-1/4 mx-auto ring-4 ring-secondary"
+          />
+          <AvatarFallback>Profile Picture</AvatarFallback>
+        </Avatar>
+        <p className="text-base">@Deezxus</p>
+        <CardTitle className="">Entrepreneur</CardTitle>
+        <CardDescription className="text-sm my-3">
+          I am here to build things that will change the world
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card Content</p>
+        <div className="flex items-center justify-center gap-3 my-3">
+          <Button variant={"outline"} className="rounded-full 	border-2		">
+            Follow
+          </Button>
+          <Button variant={"outline"} className="rounded-full border-2 	 	">
+            <UserCog />
+            
+          </Button>
+        </div>
       </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
+      <CardFooter className="my-2">
+        <div className="flex mx-auto gap-5 ">
+          <ScreenShare />
+          <Github />
+          <Twitter />
+          <Facebook />
+          <Instagram />
+          <Linkedin />
+        </div>
       </CardFooter>
     </Card>
   );
