@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/lib/@/components/ui/button";
-import { CircleUserRound, Cog, Home, PanelTop } from "lucide-react";
+import { CircleUserRound, Cog, Home, Menu, PanelTop } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -43,9 +43,9 @@ const UserNavbar = () => {
         <div className=" hidden md:flex mr-5">
           <DropdownMenu>
             <DropdownMenuTrigger className="flex font-bold uppercase">
-              <CircleUserRound className="mr-3" />MENU
+              <Menu className="" color="white" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-primary-foreground rounded  p-2">
+            <DropdownMenuContent className="bg-primary-foreground rounded  p-2 mt-2 mr-5">
               <DropdownMenuItem>
                 <Link href={"/user"} className="my-3 hover:underline	flex text-left">
                   <Home size={25} className="mr-3"/>
@@ -102,7 +102,7 @@ const UserNavbar = () => {
             </li>
             <hr />
             <li className="p-2">
-              <Link href="/user">Profile</Link>
+              <Link href="/user">PROFILE</Link>
             </li>
           </ul>
         </nav>
