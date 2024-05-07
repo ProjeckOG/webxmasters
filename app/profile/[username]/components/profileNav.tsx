@@ -27,12 +27,6 @@ export default function ProfileNav() {
         >
           PROJECTS
         </TabsTrigger>
-        <TabsTrigger
-          value="activity"
-          className="data-[state=active]:bg-background p-2 rounded w-full"
-        >
-          ACTIVITY
-        </TabsTrigger>
       </TabsList>
       <TabsContent value="about">
         <div className="flex flex-col gap-5 ">
@@ -44,7 +38,6 @@ export default function ProfileNav() {
       <TabsContent value="projects">
           <ProjectCard />
       </TabsContent>
-      <TabsContent value="activity"></TabsContent>
     </Tabs>
   );
 }

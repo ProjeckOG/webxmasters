@@ -86,7 +86,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ userData }) => {
             variant={"outline"}
             className="w-full uppercase text-xl m-3 p-10 flex items-center font-bold hover:bg-destructive"
           >
-            SEND PASSWORD RESET TO {userData.app_metadata.provider}
+            SEND PASSWORD RESET TO YOUR EMAIL
           </Button>
         </form>
       </Form>

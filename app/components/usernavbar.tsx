@@ -43,28 +43,55 @@ const UserNavbar = () => {
         <div className=" hidden md:flex mr-5">
           <DropdownMenu>
             <DropdownMenuTrigger className="flex font-bold uppercase">
-              <Menu className="" color="white" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={
+                    isMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
+                />
+              </svg>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-primary-foreground rounded  p-2 mt-2 mr-5">
               <DropdownMenuItem>
-                <Link href={"/user"} className="my-3 hover:underline	flex text-left">
-                  <Home size={25} className="mr-3"/>
+                <Link
+                  href={"/user"}
+                  className="my-3 hover:underline	flex text-left"
+                >
+                  <Home size={25} className="mr-3" />
                   Dashboard
-                  </Link>
+                </Link>
                 <hr />
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href={"/user/profile"} className="my-3 hover:underline	flex text-left ">
-                  <PanelTop size={25} className="mr-3"/>
-                  Profile</Link>
+                <Link
+                  href={"/profile/username"}
+                  className="my-3 hover:underline	flex text-left "
+                >
+                  <PanelTop size={25} className="mr-3" />
+                  Profile
+                </Link>
                 <hr />
               </DropdownMenuItem>
 
               <DropdownMenuItem>
-                <Link href={"/user/account"} className="my-3 hover:underline	flex text-left ">
-                <Cog size={25} className="mr-3"/>
-                  Account</Link>
-             
+                <Link
+                  href={"/user/account"}
+                  className="my-3 hover:underline	flex text-left "
+                >
+                  <Cog size={25} className="mr-3" />
+                  Account
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -102,7 +129,7 @@ const UserNavbar = () => {
             </li>
             <hr />
             <li className="p-2">
-              <Link href="/user">PROFILE</Link>
+              <Link href="/profile/username">PROFILE</Link>
             </li>
           </ul>
         </nav>

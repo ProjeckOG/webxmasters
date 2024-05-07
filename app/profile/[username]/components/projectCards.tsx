@@ -28,21 +28,21 @@ const projects = [
 
 export function ProjectCard() {
   return (
-    <Card className="text-center mx-auto md:w-1/2">
+    <Card className="text-center border-0 mx-auto md:w-1/2">
       <CardHeader>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-5">
         {projects.map((project) => (
           <div
             key={project.title}
-            className="bg-primary-foreground rounded-lg p-3 w-full"
+            className="bg-primary-foreground border rounded-lg p-3 w-full"
           >
-            <p className="text-lg font-bold">{project.title}</p>
+            <p className="text-2xl font-bold  my-3">{project.title}</p>
             <p className="text-sm ">{project.description}</p>
             <div className="flex justify-around mt-4">
               <Button
                 variant="outline"
-                className="rounded-full font-bold py-2 px-10"
+                className="rounded-full bg-background font-bold py-2 px-10"
               >
                 View
               </Button>
