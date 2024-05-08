@@ -27,6 +27,9 @@ const UserNavbar = () => {
           <Link href="/">WEBXMASTERS</Link>
         </div>
         <ul className="hidden md:flex font-bold ">
+        <li className="mr-5">
+            <Link href="/community">COMMUNITY</Link>
+          </li>
           <li className="mr-5">
             <Link href="/tools">TOOLS</Link>
           </li>
