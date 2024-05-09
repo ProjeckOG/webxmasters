@@ -122,6 +122,10 @@ const UserNavbar = () => {
         <nav className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
           <ul className="flex flex-col text-center bg-primary-color w-full">
             <li className="p-2">
+              <Link href="/community">COMMUNITY</Link>
+            </li>
+            <hr />
+            <li className="p-2">
               <Link href="/tools">TOOLS</Link>
             </li>
             <hr />
