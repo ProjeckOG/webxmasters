@@ -1,5 +1,9 @@
 // components/PostDetail.tsx
-import { Avatar, AvatarFallback, AvatarImage } from "@/lib/@/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/lib/@/components/ui/avatar";
 import Image from "next/image";
 import React from "react";
 
@@ -19,23 +23,24 @@ const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
     <div className="flex flex-col justify-center ">
       <div className="flex items-center space-x-4 mb-4">
         <div className="flex flex-col justify-center items-center w-full">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
-          <p className="text-sm ">{`By ${post.author} on ${post.date}`}</p>
+          <h1 className="text-3xl font-bold text-center">{post.title}</h1>
+          <p className=" ">{`By ${post.author} on ${post.date}`}</p>
         </div>
       </div>
       {post.imageUrl && (
         <div className="my-4 mx-auto">
           <Image
-          className=" rounded-lg"
+            className=" rounded-lg"
             src={post.imageUrl}
             alt={post.imageAlt || "Post image"}
-            width={800}
-            height={100}
-         
+            width={200}
+            height={300}
+            
+            layout="responsive"
           />
         </div>
       )}
-      <p className="text-lg">{post.content}</p>
+      <p className="">{post.content}</p>
     </div>
   );
 };

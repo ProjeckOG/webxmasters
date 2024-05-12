@@ -19,15 +19,17 @@ const CommentsSection = () => {
   return (
     <div className="mt-6">
       <h2 className="text-lg font-bold mb-4">Comments</h2>
+      <form className='flex justify-center items-center rounded-lg'>
       <Input
         placeholder="Write a comment..."
         value={comment}
         onChange={handleCommentChange}
+        className='w-full p-2'
       />
-      <Button onClick={submitComment} variant="solid" color="primary" className="mt-2">
+      <Button onClick={submitComment} variant="outline"  className="flex text-xs">
         Post Comment
       </Button>
-      {/* Display comments here */}
+      </form>
     </div>
   );
 };
