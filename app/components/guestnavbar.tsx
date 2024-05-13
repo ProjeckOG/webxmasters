@@ -18,16 +18,14 @@ const GuestNavbar =  () => {
           <Link href="/">WEBXMASTERS</Link>
         </div>
         <ul className="hidden md:flex font-bold ">
+        <li className="mr-5">
+            <Link href="/news">NEWS</Link>
+          </li>
+          <li className="mr-5">
+            <Link href="/jobs">Jobs</Link>
+          </li>
           <li className="mr-5">
             <Link href="/tools">TOOLS</Link>
-          </li>
-          <li>
-            <Link
-              href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ"
-              target="_blank"
-            >
-              VIDEOS
-            </Link>
           </li>
         </ul>
 
@@ -62,13 +60,15 @@ const GuestNavbar =  () => {
         <nav className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
           <ul className="flex flex-col text-center bg-primary-color w-full">
             <li className="p-2">
-              <Link href="/tools">TOOLS</Link>
+              <Link href="/news">NEWS</Link>
             </li>
             <hr />
             <li className="p-2">
-              <Link href="https://www.youtube.com/channel/UC0tOXEjEygR30GEnIBYN3HQ">
-                VIDEOS
-              </Link>
+              <Link href="/jobs">JOBS</Link>
+            </li>
+            <hr />
+            <li className="p-2">
+              <Link href="/tools">TOOLS</Link>
             </li>
             <hr />
             <li className="p-2">
