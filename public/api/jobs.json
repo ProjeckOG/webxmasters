@@ -1,27 +1,32 @@
 [
-    {
-      "id": 1,
-      "title": "Frontend Developer",
-      "company": "Tech Company",
-      "location": "Remote",
-      "description": "We are looking for a frontend developer with experience in React and Tailwind CSS.",
-      "applyLink": "https://example.com/apply"
-    },
-    {
-      "id": 2,
-      "title": "Backend Developer",
-      "company": "Software Inc.",
-      "location": "New York, NY",
-      "description": "Join our backend team to work on scalable web applications using Node.js.",
-      "applyLink": "https://example.com/apply"
-    },
-    {
-      "id": 3,
-      "title": "Full Stack Developer",
-      "company": "Web Solutions",
-      "location": "San Francisco, CA",
-      "description": "Looking for a full stack developer proficient in React and Node.js.",
-      "applyLink": "https://example.com/apply"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "Frontend Developer",
+    "company": "Tech Company",
+    "location": "Remote",
+    "description": "We are looking for a frontend developer with experience in React and Tailwind CSS.",
+    "applyLink": "/jobs/id",
+    "tools": ["React", "Tailwind CSS"],
+    "date": "2024-05-15"
+  },
+  {
+    "id": 2,
+    "title": "Backend Developer",
+    "company": "Software Inc.",
+    "location": "New York, NY",
+    "description": "Join our backend team to work on scalable web applications using Node.js.",
+    "applyLink": "/jobs/id",
+    "tools": ["Node.js"],
+    "date": "2024-05-10"
+  },
+  {
+    "id": 3,
+    "title": "Full Stack Developer",
+    "company": "Web Solutions",
+    "location": "San Francisco, CA",
+    "description": "Looking for a full stack developer proficient in React and Node.js.",
+    "applyLink": "/jobs/id",
+    "tools": ["React", "Node.js"],
+    "date": "2024-05-12"
+  }
+]

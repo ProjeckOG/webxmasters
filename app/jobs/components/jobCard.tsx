@@ -1,6 +1,7 @@
-import { Button } from '@/lib/@/components/ui/button';
-import { Card, CardContent, CardTitle, CardDescription } from '@/lib/@/components/ui/card';
-import { FC } from 'react';
+import { Button } from "@/lib/@/components/ui/button";
+import { Card, CardContent, CardDescription, CardTitle } from "@/lib/@/components/ui/card";
+import Link from "next/link";
+import { FC } from "react";
 
 interface JobCardProps {
   title: string;
@@ -8,22 +9,32 @@ interface JobCardProps {
   location: string;
   description: string;
   applyLink: string;
+  tools?: string[]; // Make tools optional
 }
 
-const JobCard: FC<JobCardProps> = ({ title, company, location, description, applyLink }) => {
+const JobCard: FC<JobCardProps> = ({ title, company, location, description, applyLink, tools = [] }) => { // Default to an empty array if tools is undefined
   return (
-    <Card className="flex items-center border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-      <CardContent className="flex flex-col md:flex-row w-full">
-        <div className="md:w-1/3">
-          <CardTitle className="text-xl font-semibold">{title}</CardTitle>
-          <CardDescription className="">{company}</CardDescription>
-          <p className="">{location}</p>
+    <Card className="flex flex-col md:flex-row items-start border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+      <CardContent className="w-full flex flex-col md:flex-row">
+        <div className="md:w-1/3 flex flex-col mb-4 md:mb-0">
+          <CardTitle className="text-xl font-semibold mb-2">{title}</CardTitle>
+          <CardDescription className="text-sm text-gray-600 mb-2">{company}</CardDescription>
+          <p className="text-sm text-gray-600">{location}</p>
         </div>
-        <div className="md:w-2/3 flex-col md:flex-row flex items-center justify-between mt-2 md:mt-0 md:ml-4">
-          <p className="text-sm flex-grow">{description}</p>
-          <Button  variant="outline" className="ml-4 rounded-full whitespace-nowrap">
-            Apply Now
-          </Button>
+        <div className="md:w-2/3 flex flex-col justify-between">
+          <p className="text-sm mb-4">{description}</p>
+          <div className="flex items-center justify-between">
+            <div className="flex flex-wrap gap-2">
+              {tools.map(tool => (
+                <span key={tool} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+                  {tool}
+                </span>
+              ))}
+            </div>
+            <Button variant="outline" className="ml-4 rounded-full whitespace-nowrap">
+              <Link href={applyLink}>Apply Now</Link>
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>
