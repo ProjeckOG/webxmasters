@@ -40,12 +40,6 @@ const FilterComponent: FC<FilterProps> = ({
         onChange={(e) => setSearchTerm(e.target.value)}
         className="p-2 border rounded"
       />
-      <input
-        type="date"
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
-        className="p-2 border rounded"
-      />
       <div className="flex gap-4">
         {tools.map(tool => (
           <label key={tool} className="flex items-center space-x-2">

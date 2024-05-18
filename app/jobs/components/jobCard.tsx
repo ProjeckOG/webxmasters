@@ -26,7 +26,7 @@ const JobCard: FC<JobCardProps> = ({ title, company, location, description, appl
           <div className="flex items-center justify-between">
             <div className="flex flex-wrap gap-2">
               {tools.map(tool => (
-                <span key={tool} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+                <span key={tool} className="border bg-secondary px-2 py-1 rounded text-xs">
                   {tool}
                 </span>
               ))}

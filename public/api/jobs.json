@@ -5,7 +5,7 @@
     "company": "Tech Company",
     "location": "Remote",
     "description": "We are looking for a frontend developer with experience in React and Tailwind CSS.",
-    "applyLink": "/jobs/id",
+    "applyLink": "https://example.com/apply",
     "tools": ["React", "Tailwind CSS"],
     "date": "2024-05-15"
   },
@@ -15,7 +15,7 @@
     "company": "Software Inc.",
     "location": "New York, NY",
     "description": "Join our backend team to work on scalable web applications using Node.js.",
-    "applyLink": "/jobs/id",
+    "applyLink": "https://example.com/apply",
     "tools": ["Node.js"],
     "date": "2024-05-10"
   },
@@ -25,7 +25,7 @@
     "company": "Web Solutions",
     "location": "San Francisco, CA",
     "description": "Looking for a full stack developer proficient in React and Node.js.",
-    "applyLink": "/jobs/id",
+    "applyLink": "https://example.com/apply",
     "tools": ["React", "Node.js"],
     "date": "2024-05-12"
   }
