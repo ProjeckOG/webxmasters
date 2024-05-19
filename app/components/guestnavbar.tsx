@@ -22,7 +22,7 @@ const GuestNavbar =  () => {
             <Link href="/news">NEWS</Link>
           </li>
           <li className="mr-5">
-            <Link href="/jobs">Jobs</Link>
+            <Link href="/jobs">JOBS</Link>
           </li>
           <li className="mr-5">
             <Link href="/tools">TOOLS</Link>

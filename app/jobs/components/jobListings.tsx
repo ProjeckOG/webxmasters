@@ -78,6 +78,7 @@ export default function JobListings() {
       {filteredJobs.map(job => (
         <JobCard
           key={job.id}
+          id={job.id} // Pass the id prop
           title={job.title}
           company={job.company}
           location={job.location}
