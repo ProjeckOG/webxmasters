@@ -1,0 +1,92 @@
+[
+    {
+        "id": "1",
+        "name": "Wix",
+        "description": "Wix offers a versatile website builder platform with customizable templates and drag-and-drop simplicity, ideal for personal and small business websites.",
+        "website": "https://www.wix.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
+        "categories": ["Website Builders"],
+        "features": ["Drag-and-Drop", "Business", "eCommerce"]
+    },
+    {
+        "id": "2",
+        "name": "Squarespace",
+        "description": "Squarespace provides beautiful templates and an all-in-one solution for building professional websites, blogs, and online stores.",
+        "website": "https://www.squarespace.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968672.png",
+        "categories": ["Website Builders"],
+        "features": ["Templates", "Professional", "Portfolio"]
+    },
+    {
+        "id": "3",
+        "name": "WordPress",
+        "description": "WordPress is a powerful content management system known for its flexibility and vast plugin ecosystem, making it a top choice for blogs and complex websites.",
+        "website": "https://www.wordpress.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968646.png",
+        "categories": ["Website Builders", "CMS"],
+        "features": ["CMS", "Open Source", "Customizable"]
+    },
+    {
+        "id": "4",
+        "name": "Shopify",
+        "description": "Shopify offers an easy-to-use ecommerce platform that allows anyone to set up an online store and sell their products.",
+        "website": "https://www.shopify.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968827.png",
+        "categories": ["eCommerce Platforms"],
+        "features": ["eCommerce", "Store Builder", "Business"]
+    },
+    {
+        "id": "5",
+        "name": "Adobe XD",
+        "description": "Adobe XD is a powerful tool for designing and prototyping user experiences for web and mobile apps.",
+        "website": "https://www.adobe.com/products/xd.html",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968779.png",
+        "categories": ["Design Tools"],
+        "features": ["UI/UX Design", "Prototyping", "Creative"]
+    },
+    {
+        "id": "6",
+        "name": "Mailchimp",
+        "description": "Mailchimp is an all-in-one marketing platform that helps you manage and talk to your clients, customers, and other interested parties.",
+        "website": "https://www.mailchimp.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968514.png",
+        "categories": ["Marketing Tools"],
+        "features": ["Email Marketing", "Automation", "Campaigns"]
+    },
+    {
+        "id": "7",
+        "name": "Canva",
+        "description": "Canva is a graphic design platform, used to create social media graphics, presentations, posters, documents, and other visual content.",
+        "website": "https://www.canva.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968701.png",
+        "categories": ["Design Tools"],
+        "features": ["Design", "Templates", "Creativity"]
+    },
+    {
+        "id": "8",
+        "name": "HubSpot",
+        "description": "HubSpot offers a full platform of marketing, sales, customer service, and CRM software — plus the methodology, resources, and support — to help businesses.",
+        "website": "https://www.hubspot.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968342.png",
+        "categories": ["CRM Systems"],
+        "features": ["CRM", "Marketing", "Sales"]
+    },
+    {
+        "id": "9",
+        "name": "Zendesk",
+        "description": "Zendesk is a service-first CRM company that builds software designed to improve customer relationships.",
+        "website": "https://www.zendesk.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968337.png",
+        "categories": ["Customer Support Tools"],
+        "features": ["Customer Support", "CRM", "Help Desk"]
+    },
+    {
+        "id": "10",
+        "name": "Figma",
+        "description": "Figma is a cloud-based design tool that is similar to Sketch in functionality and features, but with big differences that make Figma better for team collaboration.",
+        "website": "https://www.figma.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968865.png",
+        "categories": ["Design Tools"],
+        "features": ["Design", "Prototyping", "Collaboration"]
+    }
+]

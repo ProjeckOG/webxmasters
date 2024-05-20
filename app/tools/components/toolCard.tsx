@@ -1,43 +1,35 @@
-import { Button } from "@/lib/@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/lib/@/components/ui/card";
-import Link from "next/link";
-import React from "react";
+import React from 'react';
+import Link from 'next/link';
+import { Button } from '@/lib/@/components/ui/button';
+import { Card, CardContent, CardTitle, CardDescription } from '@/lib/@/components/ui/card';
 
-const ToolCard = ({ tool }) => {
+interface ToolCardProps {
+  tool: {
+    id: string;
+    name: string;
+    description: string;
+    imageUrl: string;
+    categories?: string[]; // Make categories optional
+  };
+}
+
+const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
-    // Use Tailwind CSS to adjust the card width and spacing for different breakpoints
-    <Card className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <CardHeader className="flex flex-col items-center justify-center">
-        <img
-          className="w-24 h-24 object-cover rounded-full"
-          src={tool.imageUrl}
-          alt={`Logo of ${tool.name}`}
-        />
-        <CardTitle className="text-center text-lg font-bold mt-2">
-          {tool.name}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="text-center">
-        <CardDescription className="mb-2">{tool.description}</CardDescription>
-        <div className="flex flex-wrap justify-center gap-1">
-          {tool.categories.map((category, index) => (
-            <span
-              key={index}
-              className="inline-block bg-primary-foreground rounded-full px-2 py-1 text-xs font-semibold text-white"
-            >
-              #{category}
+    <Card className="w-full md:w-1/3 lg:w-1/4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+      <CardContent className="flex flex-col items-center p-4">
+        <img src={tool.imageUrl} alt={tool.name} className="w-16 h-16 mb-4" />
+        <CardTitle className="text-xl font-semibold">{tool.name}</CardTitle>
+        <CardDescription className="text-center text-sm text-gray-600 my-2">{tool.description}</CardDescription>
+        <div className="flex flex-wrap gap-2 mt-2 justify-center">
+          {(tool.categories || []).map((category, index) => (
+            <span key={index} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+              {category}
             </span>
           ))}
-  
-          
         </div>
-        <div><Link href={"/tools/1"}><Button variant={"outline"} className="rounded-full  font-bold mt-5">View Tool</Button></Link></div>
+        <Button variant="outline" className="mt-4 rounded-full">
+          <Link href={`/tools/${tool.id}`}>Learn More</Link>
+        </Button>
       </CardContent>
     </Card>
   );
