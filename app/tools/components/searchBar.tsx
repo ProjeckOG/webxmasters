@@ -13,7 +13,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
         placeholder="Search tools..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="p-2 border rounded w-full max-w-md"
+        className="p-2 border rounded bg-primary-foreground"
       />
     </div>
   );

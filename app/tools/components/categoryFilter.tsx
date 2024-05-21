@@ -1,11 +1,14 @@
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from '@radix-ui/react-dropdown-menu';
-import React from 'react';
+import { Button } from "@/lib/@/components/ui/button";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "@radix-ui/react-dropdown-menu";
+import React from "react";
+
+
 
 const categories = [
-  "Drag-and-Drop", "Business", "eCommerce", "Templates", "Professional", 
-  "Portfolio", "CMS", "Open Source", "Customizable", "UI/UX Design", 
-  "Prototyping", "Creative", "Email Marketing", "Automation", "Campaigns", 
-  "Design", "Creativity", "CRM", "Marketing", "Sales", "Customer Support", 
+  "Drag-and-Drop", "Business", "eCommerce", "Templates", "Professional",
+  "Portfolio", "CMS", "Open Source", "Customizable", "UI/UX Design",
+  "Prototyping", "Creative", "Email Marketing", "Automation", "Campaigns",
+  "Design", "Creativity", "CRM", "Marketing", "Sales", "Customer Support",
   "Help Desk", "Collaboration"
 ];
 
@@ -24,17 +27,17 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ selectedCategories, set
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        Categories
+    <DropdownMenu >
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Categories</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="p-2 max-h-60 overflow-y-auto">
+      <DropdownMenuContent className="max-h-60 overflow-y-auto bg-black p-2">
         {categories.map(category => (
           <DropdownMenuCheckboxItem
             key={category}
             checked={selectedCategories.includes(category)}
             onCheckedChange={() => handleCategoryChange(category)}
-            className="flex items-center space-x-2"
+            
           >
             {category}
           </DropdownMenuCheckboxItem>

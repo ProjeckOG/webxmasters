@@ -8,8 +8,9 @@ interface ToolCardProps {
     id: string;
     name: string;
     description: string;
-    imageUrl: string;
-    categories?: string[]; // Make categories optional
+    logo: string;
+    categories?: string[];
+    features?: string[];
   };
 }
 
@@ -17,13 +18,18 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
     <Card className="w-full md:w-1/3 lg:w-1/4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
       <CardContent className="flex flex-col items-center p-4">
-        <img src={tool.imageUrl} alt={tool.name} className="w-16 h-16 mb-4" />
+        <img src={tool.logo} alt={tool.name} className="w-16 h-16 mb-4" />
         <CardTitle className="text-xl font-semibold">{tool.name}</CardTitle>
         <CardDescription className="text-center text-sm text-gray-600 my-2">{tool.description}</CardDescription>
         <div className="flex flex-wrap gap-2 mt-2 justify-center">
           {(tool.categories || []).map((category, index) => (
             <span key={index} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
               {category}
+            </span>
+          ))}
+          {(tool.features || []).map((feature, index) => (
+            <span key={index} className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+              {feature}
             </span>
           ))}
         </div>

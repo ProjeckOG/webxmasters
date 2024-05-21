@@ -6,14 +6,14 @@ import SearchBar from "./components/searchBar";
 import ToolCard from "./components/toolCard";
 
 
-// Define the types for the tools
 interface Tool {
   id: string;
   name: string;
   description: string;
   website: string;
   logo: string;
-  categories?: string[]; // Make categories optional
+  categories?: string[];
+  features?: string[];
 }
 
 const fetchTools = async (): Promise<Tool[]> => {
@@ -35,18 +35,40 @@ export default function Tools() {
   const filteredTools = tools.filter(tool => {
     const matchesSearchTerm = tool.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategories = selectedCategories.length === 0 || selectedCategories.some(category => tool.categories?.includes(category));
-    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.every(feature => tool.categories?.includes(feature));
+    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.every(feature => tool.features?.includes(feature));
 
     return matchesSearchTerm && matchesCategories && matchesFeatures;
   });
 
+  const handleCategoryRemove = (category: string) => {
+    setSelectedCategories(selectedCategories.filter(c => c !== category));
+  };
+
+  const handleFeatureRemove = (feature: string) => {
+    setSelectedFeatures(selectedFeatures.filter(f => f !== feature));
+  };
+
   return (
     <div className="md:w-3/4 mx-auto">
       <h1 className="text-center text-4xl font-bold my-10">WEBMASTERS TOOLS LIST</h1>
-      <div className="flex justify-center gap-4 my-4">
+      <div className="flex justify-center gap-4 items-center flex-wrap">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <CategoryFilter selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories} />
         <FeatureFilter selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
+      </div>
+      <div className="flex flex-wrap justify-center gap-2 my-4">
+        {selectedCategories.map(category => (
+          <span key={category} className="flex items-center bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+            {category}
+            <button className="ml-2 text-red-500" onClick={() => handleCategoryRemove(category)}>✕</button>
+          </span>
+        ))}
+        {selectedFeatures.map(feature => (
+          <span key={feature} className="flex items-center bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+            {feature}
+            <button className="ml-2 text-red-500" onClick={() => handleFeatureRemove(feature)}>✕</button>
+          </span>
+        ))}
       </div>
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap gap-5 justify-around mt-5">
