@@ -1,5 +1,3 @@
-// pages/tools/[id].tsx
-
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -15,22 +13,31 @@ interface Tool {
   description: string;
   imageUrl: string;
   categories: string[];
+  features: string[];
 }
 
 const ToolPage = () => {
-  const { id } = useParams();
+  const params = useParams();
+  const toolId = params?.tool; // Use the correct parameter name
   const [tool, setTool] = useState<Tool | null>(null);
+  
+  console.log('Page params:', params); // Debug log
+  console.log('Tool ID:', toolId); // Debug log
 
   useEffect(() => {
-    if (id) {
+    if (toolId) {
+      console.log('Fetching tool with id:', toolId); // Debug log
       fetch('/api/tools.json')
         .then(response => response.json())
         .then((data: Tool[]) => {
-          const tool = data.find(tool => tool.id === id);
+          console.log('Fetched data:', data); // Debug log
+          const tool = data.find(tool => tool.id === toolId);
+          console.log('Found tool:', tool); // Debug log
           setTool(tool || null);
-        });
+        })
+        .catch(error => console.error('Error fetching data:', error)); // Debug log
     }
-  }, [id]);
+  }, [toolId]);
 
   if (!tool) {
     return <div>Loading...</div>;
@@ -42,7 +49,7 @@ const ToolPage = () => {
         <CardContent className="flex flex-col gap-4">
           <ToolHeader name={tool.name} imageUrl={tool.imageUrl} />
           <ToolDescription description={tool.description} />
-          <ToolDetails categories={tool.categories} />
+          <ToolDetails categories={tool.categories} features={tool.features} />
         </CardContent>
       </Card>
     </div>
