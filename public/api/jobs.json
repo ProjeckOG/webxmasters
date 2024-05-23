@@ -3,30 +3,90 @@
     "id": 1,
     "title": "Frontend Developer",
     "company": "Tech Company",
+    "companyLogo": "https://example.com/logo.png",
     "location": "Remote",
     "description": "We are looking for a frontend developer with experience in React and Tailwind CSS.",
     "applyLink": "https://example.com/apply",
     "tools": ["React", "Tailwind CSS"],
-    "date": "2024-05-15"
+    "date": "2024-05-15",
+    "jobType": "Full-Time",
+    "salaryRange": "$70,000 - $90,000",
+    "experienceLevel": "Mid-Level",
+    "responsibilities": [
+      "Develop new user-facing features",
+      "Build reusable code and libraries for future use",
+      "Ensure the technical feasibility of UI/UX designs"
+    ],
+    "requirements": [
+      "Proven experience as a Frontend Developer",
+      "Experience with React and Tailwind CSS",
+      "Understanding of web markup, including HTML5 and CSS3"
+    ],
+    "benefits": [
+      "Health insurance",
+      "401(k) matching",
+      "Remote work options"
+    ],
+    "applicationDeadline": "2024-06-15"
   },
   {
     "id": 2,
     "title": "Backend Developer",
     "company": "Software Inc.",
+    "companyLogo": "https://example.com/logo2.png",
     "location": "New York, NY",
     "description": "Join our backend team to work on scalable web applications using Node.js.",
     "applyLink": "https://example.com/apply",
     "tools": ["Node.js"],
-    "date": "2024-05-10"
+    "date": "2024-05-10",
+    "jobType": "Full-Time",
+    "salaryRange": "$80,000 - $100,000",
+    "experienceLevel": "Senior",
+    "responsibilities": [
+      "Develop and maintain server-side applications",
+      "Collaborate with front-end developers",
+      "Optimize applications for maximum speed and scalability"
+    ],
+    "requirements": [
+      "Proven experience as a Backend Developer",
+      "In-depth understanding of Node.js",
+      "Knowledge of database systems"
+    ],
+    "benefits": [
+      "Health insurance",
+      "Stock options",
+      "Gym membership"
+    ],
+    "applicationDeadline": "2024-06-10"
   },
   {
     "id": 3,
     "title": "Full Stack Developer",
     "company": "Web Solutions",
+    "companyLogo": "https://example.com/logo3.png",
     "location": "San Francisco, CA",
     "description": "Looking for a full stack developer proficient in React and Node.js.",
     "applyLink": "https://example.com/apply",
     "tools": ["React", "Node.js"],
-    "date": "2024-05-12"
+    "date": "2024-05-12",
+    "jobType": "Contract",
+    "salaryRange": "$90,000 - $120,000",
+    "experienceLevel": "Mid-Level",
+    "responsibilities": [
+      "Work across the full stack",
+      "Build and maintain web applications",
+      "Collaborate with designers and other developers"
+    ],
+    "requirements": [
+      "Proven experience as a Full Stack Developer",
+      "Proficiency in React and Node.js",
+      "Strong problem-solving skills"
+    ],
+    "benefits": [
+      "Flexible working hours",
+      "Health insurance",
+      "Paid time off"
+    ],
+    "applicationDeadline": "2024-06-12"
   }
 ]
