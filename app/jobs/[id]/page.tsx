@@ -59,10 +59,10 @@ const JobPage = () => {
             </div>
           </div>
           <div className="flex gap-4">
-            <span className="bg-gray-200 px-2 py-1 rounded text-xs">{job.jobType}</span>
-            {job.salaryRange && <span className="bg-gray-200 px-2 py-1 rounded text-xs">{job.salaryRange}</span>}
-            {job.experienceLevel && <span className="bg-gray-200 px-2 py-1 rounded text-xs">{job.experienceLevel}</span>}
-            <span className="bg-gray-200 px-2 py-1 rounded text-xs">{new Date(job.date).toLocaleDateString()}</span>
+            <span className="border px-2 py-1 rounded text-xs">{job.jobType}</span>
+            {job.salaryRange && <span className="border px-2 py-1 rounded text-xs">{job.salaryRange}</span>}
+            {job.experienceLevel && <span className="border px-2 py-1 rounded text-xs">{job.experienceLevel}</span>}
+            <span className="border px-2 py-1 rounded text-xs">{new Date(job.date).toLocaleDateString()}</span>
           </div>
           <p className="text-sm">{job.description}</p>
           <div className="flex flex-wrap gap-2 mt-2">
