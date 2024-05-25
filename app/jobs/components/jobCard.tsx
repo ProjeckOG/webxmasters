@@ -1,10 +1,5 @@
 import { Button } from "@/lib/@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/lib/@/components/ui/card";
+import { Card, CardContent, CardDescription, CardTitle } from "@/lib/@/components/ui/card";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -16,6 +11,8 @@ interface JobCardProps {
   description: string;
   applyLink: string;
   tools?: string[]; // Make tools optional
+  date: string; // Add date property
+  profilePicture: string; // Add profile picture property
 }
 
 const JobCard: FC<JobCardProps> = ({
@@ -26,17 +23,22 @@ const JobCard: FC<JobCardProps> = ({
   description,
   applyLink,
   tools = [],
+  date,
+  profilePicture,
 }) => {
-  // Default to an empty array if tools is undefined
   return (
     <Card className="flex flex-col md:flex-row items-start border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
       <CardContent className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/3 flex flex-col mb-4 md:mb-0">
           <CardTitle className="text-xl font-semibold mb-2">{title}</CardTitle>
-          <CardDescription className="text-sm text-gray-600 mb-2">
-            {company}
+          <CardDescription className="flex flex-col gap-2 mb-2">
+            <div className="flex items-center gap-2">
+              <img src={profilePicture} alt={company} className="w-10 h-10 rounded-full object-cover" />
+              <span>{company}</span>
+            </div>
+            <span className="italic text-sm">{location}</span>
+            <span className="text-xs text-gray-500">Posted on {new Date(date).toLocaleDateString()}</span>
           </CardDescription>
-          <p className="text-sm text-gray-600">{location}</p>
         </div>
         <div className="md:w-2/3 flex flex-col justify-between">
           <p className="text-sm mb-4">{description}</p>

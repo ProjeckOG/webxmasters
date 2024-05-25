@@ -38,7 +38,7 @@ const FilterComponent: FC<FilterProps> = ({
         placeholder="Search by job title"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="p-2 border rounded"
+        className="p-2 border rounded bg-primary-foreground"
       />
       <div className="flex gap-4">
         {tools.map(tool => (
@@ -47,7 +47,7 @@ const FilterComponent: FC<FilterProps> = ({
               type="checkbox"
               checked={selectedTools.includes(tool)}
               onChange={() => handleToolChange(tool)}
-              className="form-checkbox"
+              className="form-checkbox bg-primary-foreground"
             />
             <span>{tool}</span>
           </label>
@@ -56,7 +56,7 @@ const FilterComponent: FC<FilterProps> = ({
       <select
         value={sortOption}
         onChange={(e) => setSortOption(e.target.value)}
-        className="p-2 border rounded"
+        className="p-2 border rounded bg-primary-foreground"
       >
         <option value="recent">Recent</option>
         <option value="oldest">Oldest</option>

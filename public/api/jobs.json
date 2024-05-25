@@ -4,6 +4,7 @@
     "title": "Frontend Developer",
     "company": "Tech Company",
     "companyLogo": "https://cdn-icons-png.flaticon.com/512/1055/1055672.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
     "location": "Remote",
     "description": "We are looking for a frontend developer with experience in React and Tailwind CSS.",
     "applyLink": "https://example.com/apply",
@@ -34,6 +35,7 @@
     "title": "Backend Developer",
     "company": "Software Inc.",
     "companyLogo": "https://cdn-icons-png.flaticon.com/512/1055/1055675.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
     "location": "New York, NY",
     "description": "Join our backend team to work on scalable web applications using Node.js.",
     "applyLink": "https://example.com/apply",
@@ -64,6 +66,7 @@
     "title": "Full Stack Developer",
     "company": "Web Solutions",
     "companyLogo": "https://cdn-icons-png.flaticon.com/512/1055/1055666.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
     "location": "San Francisco, CA",
     "description": "Looking for a full stack developer proficient in React and Node.js.",
     "applyLink": "https://example.com/apply",
@@ -88,5 +91,98 @@
       "Paid time off"
     ],
     "applicationDeadline": "2024-06-12"
+  },
+  {
+    "id": 4,
+    "title": "UI/UX Designer",
+    "company": "Creative Agency",
+    "companyLogo": "https://cdn-icons-png.flaticon.com/512/1055/1055669.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+    "location": "Los Angeles, CA",
+    "description": "We are seeking a talented UI/UX Designer to create amazing user experiences.",
+    "applyLink": "https://example.com/apply",
+    "tools": ["Figma", "Sketch"],
+    "date": "2024-05-14",
+    "jobType": "Full-Time",
+    "salaryRange": "$60,000 - $80,000",
+    "experienceLevel": "Mid-Level",
+    "responsibilities": [
+      "Gather and evaluate user requirements",
+      "Illustrate design ideas using storyboards and process flows",
+      "Design graphic user interface elements"
+    ],
+    "requirements": [
+      "Proven experience as a UI/UX Designer",
+      "Proficiency in design software like Figma and Sketch",
+      "Portfolio of design projects"
+    ],
+    "benefits": [
+      "Health insurance",
+      "401(k) matching",
+      "Creative work environment"
+    ],
+    "applicationDeadline": "2024-06-14"
+  },
+  {
+    "id": 5,
+    "title": "DevOps Engineer",
+    "company": "Cloud Services",
+    "companyLogo": "https://cdn-icons-png.flaticon.com/512/1055/1055678.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+    "location": "Remote",
+    "description": "We are looking for a DevOps Engineer to manage our cloud infrastructure.",
+    "applyLink": "https://example.com/apply",
+    "tools": ["AWS", "Docker", "Kubernetes"],
+    "date": "2024-05-09",
+    "jobType": "Full-Time",
+    "salaryRange": "$90,000 - $110,000",
+    "experienceLevel": "Senior",
+    "responsibilities": [
+      "Implement and manage CI/CD pipelines",
+      "Monitor and manage cloud infrastructure",
+      "Collaborate with development teams to streamline processes"
+    ],
+    "requirements": [
+      "Proven experience as a DevOps Engineer",
+      "Experience with AWS, Docker, and Kubernetes",
+      "Strong scripting skills"
+    ],
+    "benefits": [
+      "Health insurance",
+      "Remote work",
+      "Paid time off"
+    ],
+    "applicationDeadline": "2024-06-09"
+  },
+  {
+    "id": 6,
+    "title": "Product Manager",
+    "company": "E-commerce Corp",
+    "companyLogo": "https://cdn-icons-png.flaticon.com/512/1055/1055673.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+    "location": "Chicago, IL",
+    "description": "We are looking for a Product Manager to oversee our e-commerce platform.",
+    "applyLink": "https://example.com/apply",
+    "tools": ["JIRA", "Confluence"],
+    "date": "2024-05-08",
+    "jobType": "Full-Time",
+    "salaryRange": "$100,000 - $130,000",
+    "experienceLevel": "Senior",
+    "responsibilities": [
+      "Define product vision and strategy",
+      "Collaborate with cross-functional teams",
+      "Manage product lifecycle from ideation to launch"
+    ],
+    "requirements": [
+      "Proven experience as a Product Manager",
+      "Experience with project management tools like JIRA and Confluence",
+      "Strong analytical skills"
+    ],
+    "benefits": [
+      "Health insurance",
+      "Stock options",
+      "Employee discounts"
+    ],
+    "applicationDeadline": "2024-06-08"
   }
 ]

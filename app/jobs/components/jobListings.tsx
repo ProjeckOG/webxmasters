@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import JobCard from './jobCard';
 import FilterComponent from './filterComponent';
+import JobCard from './jobCard';
+
 
 interface Job {
   id: number;
@@ -11,6 +12,7 @@ interface Job {
   applyLink: string;
   tools: string[];
   date: string; // Ensure this property is defined
+  profilePicture: string; // Ensure this property is defined
 }
 
 export default function JobListings() {
@@ -78,13 +80,15 @@ export default function JobListings() {
       {filteredJobs.map(job => (
         <JobCard
           key={job.id}
-          id={job.id} // Pass the id prop
+          id={job.id}
           title={job.title}
           company={job.company}
           location={job.location}
           description={job.description}
           applyLink={job.applyLink}
           tools={job.tools}
+          date={job.date}
+          profilePicture={job.profilePicture} // Pass the profile picture
         />
       ))}
     </div>
