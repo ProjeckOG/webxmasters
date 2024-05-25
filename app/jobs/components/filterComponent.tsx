@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from '@radix-ui/react-dropdown-menu';
+import { Button } from '@/lib/@/components/ui/button';
 
 interface FilterProps {
   selectedTools: string[];
@@ -11,7 +13,7 @@ interface FilterProps {
   setSortOption: (option: string) => void;
 }
 
-const tools = ['React', 'Tailwind CSS', 'Node.js', 'Express']; // Example tools
+const tools = ['Webflow', 'Shopify', 'WordPress', 'AWS', 'Figma']; // Example tools
 
 const FilterComponent: FC<FilterProps> = ({
   selectedTools,
@@ -40,19 +42,25 @@ const FilterComponent: FC<FilterProps> = ({
         onChange={(e) => setSearchTerm(e.target.value)}
         className="p-2 border rounded bg-primary-foreground"
       />
-      <div className="flex gap-4">
-        {tools.map(tool => (
-          <label key={tool} className="flex items-center space-x-2">
-            <input
-              type="checkbox"
+      
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">Tools</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56 p-2">
+          {tools.map(tool => (
+            <DropdownMenuCheckboxItem
+              key={tool}
               checked={selectedTools.includes(tool)}
-              onChange={() => handleToolChange(tool)}
-              className="form-checkbox bg-primary-foreground"
-            />
-            <span>{tool}</span>
-          </label>
-        ))}
-      </div>
+              onCheckedChange={() => handleToolChange(tool)}
+              className="flex items-center space-x-2"
+            >
+              {tool}
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+
       <select
         value={sortOption}
         onChange={(e) => setSortOption(e.target.value)}

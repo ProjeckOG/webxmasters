@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import FilterComponent from './filterComponent';
 import JobCard from './jobCard';
 
-
 interface Job {
   id: number;
   title: string;
@@ -11,8 +10,9 @@ interface Job {
   description: string;
   applyLink: string;
   tools: string[];
-  date: string; // Ensure this property is defined
-  profilePicture: string; // Ensure this property is defined
+  date: string;
+  profilePicture: string;
+  companyLogo: string;
 }
 
 export default function JobListings() {
@@ -24,7 +24,6 @@ export default function JobListings() {
   const [sortOption, setSortOption] = useState<string>('recent');
 
   useEffect(() => {
-    // Fetch job listings from the static JSON file
     fetch('/api/jobs.json')
       .then(response => response.json())
       .then(data => {
@@ -84,11 +83,11 @@ export default function JobListings() {
           title={job.title}
           company={job.company}
           location={job.location}
-          description={job.description}
           applyLink={job.applyLink}
           tools={job.tools}
           date={job.date}
-          profilePicture={job.profilePicture} // Pass the profile picture
+          profilePicture={job.profilePicture}
+          companyLogo={job.companyLogo}
         />
       ))}
     </div>

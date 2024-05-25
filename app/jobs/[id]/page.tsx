@@ -21,7 +21,6 @@ interface Job {
   responsibilities: string[]; // Add responsibilities
   requirements: string[]; // Add requirements
   benefits: string[]; // Add benefits
-  applicationDeadline: string; // Add application deadline
 }
 
 const JobPage = () => {
@@ -58,47 +57,50 @@ const JobPage = () => {
               </CardDescription>
             </div>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             <span className="border px-2 py-1 rounded text-xs">{job.jobType}</span>
             {job.salaryRange && <span className="border px-2 py-1 rounded text-xs">{job.salaryRange}</span>}
             {job.experienceLevel && <span className="border px-2 py-1 rounded text-xs">{job.experienceLevel}</span>}
             <span className="border px-2 py-1 rounded text-xs">{new Date(job.date).toLocaleDateString()}</span>
           </div>
           <p className="text-sm">{job.description}</p>
-          <div className="flex flex-wrap gap-2 mt-2">
-            {job.tools.map(tool => (
-              <span key={tool} className="bg-secondary  px-2 py-1 rounded text-xs">
-                {tool}
-              </span>
-            ))}
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Responsibilities</h3>
-            <ul className="list-disc list-inside">
-              {job.responsibilities.map((responsibility, index) => (
-                <li key={index}>{responsibility}</li>
+          {job.tools && job.tools.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {job.tools.map(tool => (
+                <span key={tool} className="bg-secondary px-2 py-1 rounded text-xs">
+                  {tool}
+                </span>
               ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Requirements</h3>
-            <ul className="list-disc list-inside">
-              {job.requirements.map((requirement, index) => (
-                <li key={index}>{requirement}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Benefits</h3>
-            <ul className="list-disc list-inside">
-              {job.benefits.map((benefit, index) => (
-                <li key={index}>{benefit}</li>
-              ))}
-            </ul>
-          </div>
-          {job.applicationDeadline && (
-            <div className="mt-4">
-              <strong>Application Deadline:</strong> {new Date(job.applicationDeadline).toLocaleDateString()}
+            </div>
+          )}
+          {job.responsibilities && job.responsibilities.length > 0 && (
+            <div>
+              <h3 className="text-lg font-semibold">Responsibilities</h3>
+              <ul className="list-disc list-inside">
+                {job.responsibilities.map((responsibility, index) => (
+                  <li key={index}>{responsibility}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {job.requirements && job.requirements.length > 0 && (
+            <div>
+              <h3 className="text-lg font-semibold">Requirements</h3>
+              <ul className="list-disc list-inside">
+                {job.requirements.map((requirement, index) => (
+                  <li key={index}>{requirement}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {job.benefits && job.benefits.length > 0 && (
+            <div>
+              <h3 className="text-lg font-semibold">Benefits</h3>
+              <ul className="list-disc list-inside">
+                {job.benefits.map((benefit, index) => (
+                  <li key={index}>{benefit}</li>
+                ))}
+              </ul>
             </div>
           )}
           <Button variant="outline" className="mt-4 rounded-full">
