@@ -9,10 +9,11 @@ interface JobCardProps {
   company: string;
   location: string;
   applyLink: string;
-  tools?: string[]; // Make tools optional
-  date: string; // Add date property
-  profilePicture: string; // Add profile picture property
-  companyLogo: string; // Add company logo property
+  tools?: string[];
+  date: string;
+  profilePicture: string;
+  companyLogo: string;
+  dateAdded: string;
 }
 
 const JobCard: FC<JobCardProps> = ({
@@ -25,8 +26,9 @@ const JobCard: FC<JobCardProps> = ({
   date,
   profilePicture,
   companyLogo,
+  dateAdded,
 }) => {
-  const daysAgo = Math.floor((new Date().getTime() - new Date(date).getTime()) / (1000 * 60 * 60 * 24));
+  const daysAgo = Math.floor((new Date().getTime() - new Date(dateAdded).getTime()) / (1000 * 60 * 60 * 24));
 
   return (
     <Card className="flex flex-col md:flex-row items-start border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -47,11 +49,8 @@ const JobCard: FC<JobCardProps> = ({
         <div className="md:w-2/3 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <div className="flex flex-wrap gap-2">
-              {tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="border bg-secondary px-2 py-1 rounded text-xs"
-                >
+              {tools.map(tool => (
+                <span key={tool} className="border bg-secondary px-2 py-1 rounded text-xs">
                   {tool}
                 </span>
               ))}

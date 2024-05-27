@@ -1,19 +1,19 @@
-import React, { FC } from 'react';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from '@radix-ui/react-dropdown-menu';
-import { Button } from '@/lib/@/components/ui/button';
+import React, { FC } from "react";
+import { Button } from "@/lib/@/components/ui/button";
+import SearchableDropdown from "./toolSearchbar";
 
 interface FilterProps {
   selectedTools: string[];
   setSelectedTools: (tools: string[]) => void;
   searchTerm: string;
-  setSearchTerm: (term: string) => void;
+  setSearchTerm: (term: string) => all;
   selectedDate: string;
   setSelectedDate: (date: string) => void;
   sortOption: string;
   setSortOption: (option: string) => void;
 }
 
-const tools = ['Webflow', 'Shopify', 'WordPress', 'AWS', 'Figma']; // Example tools
+const tools = ["Webflow", "Shopify", "WordPress", "AWS", "Figma"]; // Example tools from JSON or similar
 
 const FilterComponent: FC<FilterProps> = ({
   selectedTools,
@@ -25,50 +25,42 @@ const FilterComponent: FC<FilterProps> = ({
   sortOption,
   setSortOption,
 }) => {
-  const handleToolChange = (tool: string) => {
-    if (selectedTools.includes(tool)) {
-      setSelectedTools(selectedTools.filter(t => t !== tool));
-    } else {
-      setSelectedTools([...selectedTools, tool]);
-    }
+  const handleRemoveTool = (tool: string) => {
+    setSelectedTools(selectedTools.filter((t) => t !== tool));
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-4">
-      <input
-        type="text"
-        placeholder="Search by job title"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="p-2 border rounded bg-primary-foreground"
-      />
-      
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">Tools</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56 p-2">
-          {tools.map(tool => (
-            <DropdownMenuCheckboxItem
-              key={tool}
-              checked={selectedTools.includes(tool)}
-              onCheckedChange={() => handleToolChange(tool)}
-              className="flex items-center space-x-2"
-            >
-              {tool}
-            </DropdownMenuCheckboxItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-center gap-4">
+        <input
+          type="text"
+          placeholder="Search by job title"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="p-2 border rounded"
+        />
 
-      <select
-        value={sortOption}
-        onChange={(e) => setSortOption(e.target.value)}
-        className="p-2 border rounded bg-primary-foreground"
-      >
-        <option value="recent">Recent</option>
-        <option value="oldest">Oldest</option>
-      </select>
+        <SearchableDropdown tools={tools} selectedTools={selectedTools} setSelectedTools={setSelectedTools} />
+
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          className="p-2 border rounded"
+        >
+          <option value="recent">Recent</option>
+          <option value="oldest">Oldest</option>
+        </select>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {selectedTools.map((tool) => (
+          <div key={tool} className="flex items-center border p-2 rounded">
+            {tool}
+            <button onClick={() => handleRemoveTool(tool)} className="ml-2 text-red-500">
+              x
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

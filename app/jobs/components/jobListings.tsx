@@ -11,6 +11,7 @@ interface Job {
   applyLink: string;
   tools: string[];
   date: string;
+  dateAdded: string;
   profilePicture: string;
   companyLogo: string;
 }
@@ -26,43 +27,43 @@ export default function JobListings() {
   useEffect(() => {
     fetch('/api/jobs.json')
       .then(response => response.json())
-      .then(data => {
-        const jobsWithTools = data.map((job: Job) => ({
-          ...job,
-          tools: job.tools || [],
-        }));
-        setJobs(jobsWithTools);
-        setFilteredJobs(jobsWithTools);
+      .then((data: Job[]) => {
+        const sortedJobs = data.sort((a: Job, b: Job) => new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime());
+        setJobs(sortedJobs);
+        setFilteredJobs(sortedJobs); // Initially sort by most recent
       });
   }, []);
 
   useEffect(() => {
     let filtered = jobs;
-
+  
+    // Filter by selected tools
     if (selectedTools.length > 0) {
-      filtered = filtered.filter(job =>
-        selectedTools.every(tool => job.tools.includes(tool))
-      );
+      filtered = filtered.filter(job => selectedTools.every(tool => job.tools.includes(tool)));
     }
-
+  
+    // Filter by search term
     if (searchTerm) {
-      filtered = filtered.filter(job =>
-        job.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      filtered = filtered.filter(job => job.title.toLowerCase().includes(searchTerm.toLowerCase()));
     }
-
+  
+    // Filter by selected date
     if (selectedDate) {
       filtered = filtered.filter(job => job.date === selectedDate);
     }
-
-    if (sortOption === 'recent') {
-      filtered = filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    } else if (sortOption === 'oldest') {
-      filtered = filtered.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    }
-
-    setFilteredJobs(filtered);
-  }, [selectedTools, searchTerm, selectedDate, sortOption, jobs]);
+  
+    // Sort by selected sort option
+    filtered.sort((a, b) => {
+      if (sortOption === 'recent') {
+        return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+      } else { // Sort by oldest
+        return new Date(a.dateAdded).getTime() - new Date(b.dateAdded).getTime();
+      }
+    });
+  
+    setFilteredJobs(filtered); // Update the state with the filtered and sorted list
+  }, [selectedTools, searchTerm, selectedDate, sortOption, jobs]); // Include sortOption in the dependency array
+  
 
   return (
     <div className="flex flex-col gap-2">
@@ -88,6 +89,7 @@ export default function JobListings() {
           date={job.date}
           profilePicture={job.profilePicture}
           companyLogo={job.companyLogo}
+          dateAdded={job.dateAdded}
         />
       ))}
     </div>
