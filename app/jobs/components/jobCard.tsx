@@ -38,7 +38,6 @@ const JobCard: FC<JobCardProps> = ({
           <div>
             <CardTitle className="text-xl font-semibold">{title}</CardTitle>
             <CardDescription className="text-sm flex items-center">
-              <img src={profilePicture} alt={`${company} profile`} className="w-6 h-6 rounded-full object-cover mr-2" />
               <div>
                 <span>{company}</span>
                 <span className="italic ml-2">{location}</span>

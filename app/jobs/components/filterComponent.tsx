@@ -1,33 +1,39 @@
-import React, { FC } from "react";
-import { Button } from "@/lib/@/components/ui/button";
-import SearchableDropdown from "./toolSearchbar";
+import React, { FC, useState } from "react";
+import FeatureDialog from "../../tools/components/featureDialog";
+import ToolDialog from "./toolDialog";
+;
 
 interface FilterProps {
   selectedTools: string[];
   setSelectedTools: (tools: string[]) => void;
+  selectedFeatures: string[];
+  setSelectedFeatures: (features: string[]) => void;
   searchTerm: string;
-  setSearchTerm: (term: string) => all;
+  setSearchTerm: (term: string) => void;
   selectedDate: string;
   setSelectedDate: (date: string) => void;
   sortOption: string;
   setSortOption: (option: string) => void;
 }
 
-const tools = ["Webflow", "Shopify", "WordPress", "AWS", "Figma"]; // Example tools from JSON or similar
-
 const FilterComponent: FC<FilterProps> = ({
   selectedTools,
   setSelectedTools,
   searchTerm,
   setSearchTerm,
-  selectedDate,
-  setSelectedDate,
   sortOption,
   setSortOption,
 }) => {
-  const handleRemoveTool = (tool: string) => {
-    setSelectedTools(selectedTools.filter((t) => t !== tool));
+  const handleSelectTool = (tool: string) => {
+    if (!selectedTools.includes(tool)) {
+      setSelectedTools([...selectedTools, tool]);
+    }
   };
+
+  const handleRemoveTool = (tool: string) => {
+    setSelectedTools(selectedTools.filter(t => t !== tool));
+  };
+
 
   return (
     <div className="flex flex-col gap-4">
@@ -37,25 +43,29 @@ const FilterComponent: FC<FilterProps> = ({
           placeholder="Search by job title"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-2 border rounded"
+          className="p-2 border rounded bg-primary-foreground"
         />
 
-        <SearchableDropdown tools={tools} selectedTools={selectedTools} setSelectedTools={setSelectedTools} />
+        <ToolDialog onSelectTool={handleSelectTool} />
 
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="p-2 border rounded"
+          className="p-2 border rounded bg-primary-foreground"
         >
           <option value="recent">Recent</option>
           <option value="oldest">Oldest</option>
         </select>
       </div>
       <div className="flex flex-wrap gap-2">
-        {selectedTools.map((tool) => (
+        {selectedTools && selectedTools.map((tool) => (
           <div key={tool} className="flex items-center border p-2 rounded">
             {tool}
-            <button onClick={() => handleRemoveTool(tool)} className="ml-2 text-red-500">
+            <button
+              onClick={() => handleRemoveTool(tool)}
+              className="ml-2 text-red-500"
+              aria-label={`Remove ${tool}`}
+            >
               x
             </button>
           </div>
