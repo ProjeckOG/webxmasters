@@ -59,11 +59,11 @@ const FilterComponent: FC<FilterProps> = ({
       </div>
       <div className="flex flex-wrap gap-2">
         {selectedTools && selectedTools.map((tool) => (
-          <div key={tool} className="flex items-center border p-2 rounded">
+          <div key={tool} className="flex items-center border p-3 rounded hover:bg-secondary ">
             {tool}
             <button
               onClick={() => handleRemoveTool(tool)}
-              className="ml-2 text-red-500"
+              className="ml-3 text-red-600 "
               aria-label={`Remove ${tool}`}
             >
               x

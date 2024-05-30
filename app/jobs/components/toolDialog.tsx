@@ -26,17 +26,17 @@ const ToolDialog: React.FC<ToolDialogProps> = ({ onSelectTool }) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
+        <Button variant="outline" role="combobox" aria-expanded={open} className="w-[250px] justify-between flex bg-primary-foreground">
           {selectedTool || "Select Tool"}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDown className="ml-2 shrink-0 opacity-50 " />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0">
+      <PopoverContent className="w-[250px] p-0">
         <Command>
-          <CommandInput placeholder="Search tools..." className="bg-secondary" />
+          <CommandInput placeholder="Search tools..." className="w-[250px] h-10 bg-primary-foreground" />
           <CommandEmpty>No tool found.</CommandEmpty>
           <CommandGroup>
-            <CommandList>
+            <CommandList className="bg-primary-foreground p-2 w-[250px]">
               {displayedTools.map((tool) => (
                 <CommandItem
                   key={tool}
@@ -47,7 +47,7 @@ const ToolDialog: React.FC<ToolDialogProps> = ({ onSelectTool }) => {
                     setOpen(false);
                   }}
                 >
-                  <Check className={`mr-2 h-4 w-4 ${selectedTool === tool ? "opacity-100" : "opacity-0"}`} />
+                  <Check className={`flex mr-2 h-4 w-4  ${selectedTool === tool ? "opacity-100" : "opacity-0"}`} />
                   {tool}
                 </CommandItem>
               ))}
