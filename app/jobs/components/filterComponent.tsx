@@ -1,7 +1,13 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import FeatureDialog from "../../tools/components/featureDialog";
 import ToolDialog from "./toolDialog";
-;
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/lib/@/components/ui/select";
 
 interface FilterProps {
   selectedTools: string[];
@@ -31,7 +37,7 @@ const FilterComponent: FC<FilterProps> = ({
   };
 
   const handleRemoveTool = (tool: string) => {
-    setSelectedTools(selectedTools.filter(t => t !== tool));
+    setSelectedTools(selectedTools.filter((t) => t !== tool));
   };
 
 
@@ -48,28 +54,37 @@ const FilterComponent: FC<FilterProps> = ({
 
         <ToolDialog onSelectTool={handleSelectTool} />
 
-        <select
+        <Select
+          onValueChange={(value) => setSortOption(value)}
           value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          className="p-2 border rounded bg-primary-foreground"
         >
-          <option value="recent">Recent</option>
-          <option value="oldest">Oldest</option>
-        </select>
+          <SelectTrigger className="p-2 border rounded bg-primary-foreground w-[180px]">
+            <SelectValue placeholder="Sort By" />
+          </SelectTrigger>
+          <SelectContent className="w-[180px] bg-primary-foreground border-none">
+            <SelectItem value="recent">Recent</SelectItem>
+            <SelectItem value="oldest">Oldest</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <div className="flex flex-wrap gap-2">
-        {selectedTools && selectedTools.map((tool) => (
-          <div key={tool} className="flex items-center border p-3 rounded hover:bg-secondary ">
-            {tool}
-            <button
-              onClick={() => handleRemoveTool(tool)}
-              className="ml-3 text-red-600 "
-              aria-label={`Remove ${tool}`}
+        {selectedTools &&
+          selectedTools.map((tool) => (
+            <div
+              key={tool}
+              className="flex items-center border p-3 rounded hover:bg-secondary"
             >
-              x
-            </button>
-          </div>
-        ))}
+              {tool}
+              <button
+                onClick={() => handleRemoveTool(tool)}
+                className="ml-3 text-red-600"
+                aria-label={`Remove ${tool}`}
+              >
+                x
+              </button>
+            </div>
+          ))}
+
       </div>
     </div>
   );
