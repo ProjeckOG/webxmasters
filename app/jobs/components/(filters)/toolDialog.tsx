@@ -26,28 +26,29 @@ const ToolDialog: React.FC<ToolDialogProps> = ({ onSelectTool }) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant="outline" role="combobox" aria-expanded={open} className="w-[250px] justify-between flex bg-primary-foreground">
+        <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between flex bg-primary-foreground">
           {selectedTool || "Select Tool"}
-          <ChevronsUpDown className="ml-2 shrink-0 opacity-50 " />
+          <ChevronsUpDown className="ml-2 shrink-0 opacity-50 flex " />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[250px] p-0">
+      <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search tools..." className="w-[250px] h-10 bg-primary-foreground" />
+          <CommandInput placeholder="Search tools..." className="w-[200px] h-10 bg-primary-foreground" />
           <CommandEmpty>No tool found.</CommandEmpty>
           <CommandGroup>
-            <CommandList className="bg-primary-foreground p-2 w-[250px]">
+            <CommandList className="bg-primary-foreground p-2 w-[200px]">
               {displayedTools.map((tool) => (
                 <CommandItem
                   key={tool}
                   value={tool}
+                  className="flex items-center"
                   onSelect={() => {
                     onSelectTool(tool);
                     setSelectedTool(tool);
                     setOpen(false);
                   }}
                 >
-                  <Check className={`flex mr-2 h-4 w-4  ${selectedTool === tool ? "opacity-100" : "opacity-0"}`} />
+                  <Check className={`flex mr-2 h-4 w-4  ${selectedTool === tool ? "opacity-100 " : "opacity-0"}`} />
                   {tool}
                 </CommandItem>
               ))}

@@ -1,25 +1,20 @@
 import React, { FC } from "react";
-import FeatureDialog from "../../tools/components/featureDialog";
-import ToolDialog from "./toolDialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/lib/@/components/ui/select";
+import JobTypeSelect from "./(filters)/jobTypeSelect";
+import LocationSelect from "./(filters)/locationSelect";
+import PaySelect from "./(filters)/paySelect";
+import ToolDialog from "./(filters)/toolDialog";
 
 interface FilterProps {
   selectedTools: string[];
   setSelectedTools: (tools: string[]) => void;
-  selectedFeatures: string[];
-  setSelectedFeatures: (features: string[]) => void;
   searchTerm: string;
   setSearchTerm: (term: string) => void;
-  selectedDate: string;
-  setSelectedDate: (date: string) => void;
-  sortOption: string;
-  setSortOption: (option: string) => void;
+  selectedJobType: string;
+  setSelectedJobType: (jobType: string) => void;
+  selectedLocation: string;
+  setSelectedLocation: (location: string) => void;
+  selectedPay: string;
+  setSelectedPay: (pay: string) => void;
 }
 
 const FilterComponent: FC<FilterProps> = ({
@@ -27,8 +22,12 @@ const FilterComponent: FC<FilterProps> = ({
   setSelectedTools,
   searchTerm,
   setSearchTerm,
-  sortOption,
-  setSortOption,
+  selectedJobType,
+  setSelectedJobType,
+  selectedLocation,
+  setSelectedLocation,
+  selectedPay,
+  setSelectedPay,
 }) => {
   const handleSelectTool = (tool: string) => {
     if (!selectedTools.includes(tool)) {
@@ -39,7 +38,6 @@ const FilterComponent: FC<FilterProps> = ({
   const handleRemoveTool = (tool: string) => {
     setSelectedTools(selectedTools.filter((t) => t !== tool));
   };
-
 
   return (
     <div className="flex flex-col gap-4">
@@ -53,38 +51,23 @@ const FilterComponent: FC<FilterProps> = ({
         />
 
         <ToolDialog onSelectTool={handleSelectTool} />
-
-        <Select
-          onValueChange={(value) => setSortOption(value)}
-          value={sortOption}
-        >
-          <SelectTrigger className="p-2 border rounded bg-primary-foreground w-[180px]">
-            <SelectValue placeholder="Sort By" />
-          </SelectTrigger>
-          <SelectContent className="w-[180px] bg-primary-foreground border-none">
-            <SelectItem value="recent">Recent</SelectItem>
-            <SelectItem value="oldest">Oldest</SelectItem>
-          </SelectContent>
-        </Select>
+        <JobTypeSelect selectedJobType={selectedJobType} setSelectedJobType={setSelectedJobType} />
+        <LocationSelect selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} />
+        <PaySelect selectedPay={selectedPay} setSelectedPay={setSelectedPay} />
       </div>
       <div className="flex flex-wrap gap-2">
-        {selectedTools &&
-          selectedTools.map((tool) => (
-            <div
-              key={tool}
-              className="flex items-center border p-3 rounded hover:bg-secondary"
+        {selectedTools.map((tool) => (
+          <div key={tool} className="flex items-center border p-3 rounded hover:bg-secondary">
+            {tool}
+            <button
+              onClick={() => handleRemoveTool(tool)}
+              className="ml-3 text-red-600"
+              aria-label={`Remove ${tool}`}
             >
-              {tool}
-              <button
-                onClick={() => handleRemoveTool(tool)}
-                className="ml-3 text-red-600"
-                aria-label={`Remove ${tool}`}
-              >
-                x
-              </button>
-            </div>
-          ))}
-
+              x
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );

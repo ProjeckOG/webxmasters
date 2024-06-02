@@ -1,15 +1,11 @@
 import { Button } from "@/lib/@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "@radix-ui/react-dropdown-menu";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-
-const features = [
-  "Drag-and-Drop", "Business", "eCommerce", "Templates", "Professional",
-  "Portfolio", "CMS", "Open Source", "Customizable", "UI/UX Design",
-  "Prototyping", "Creative", "Email Marketing", "Automation", "Campaigns",
-  "Design", "Creativity", "CRM", "Marketing", "Sales", "Customer Support",
-  "Help Desk", "Collaboration"
-];
+interface Feature {
+  id: string;
+  name: string;
+}
 
 interface FeatureFilterProps {
   selectedFeatures: string[];
@@ -17,6 +13,15 @@ interface FeatureFilterProps {
 }
 
 const FeatureFilter: React.FC<FeatureFilterProps> = ({ selectedFeatures, setSelectedFeatures }) => {
+  const [features, setFeatures] = useState<Feature[]>([]);
+
+  useEffect(() => {
+    fetch('/api/features.json')
+      .then(response => response.json())
+      .then(data => setFeatures(data))
+      .catch(error => console.error('Failed to fetch features', error));
+  }, []);
+
   const handleFeatureChange = (feature: string) => {
     if (selectedFeatures.includes(feature)) {
       setSelectedFeatures(selectedFeatures.filter(f => f !== feature));
@@ -30,14 +35,14 @@ const FeatureFilter: React.FC<FeatureFilterProps> = ({ selectedFeatures, setSele
       <DropdownMenuTrigger asChild>
         <Button variant="outline">Features</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 max-h-60 overflow-y-auto">
+      <DropdownMenuContent className="w-56  overflow-y-auto">
         {features.map(feature => (
           <DropdownMenuCheckboxItem
-            key={feature}
-            checked={selectedFeatures.includes(feature)}
-            onCheckedChange={() => handleFeatureChange(feature)}
+            key={feature.id}
+            checked={selectedFeatures.includes(feature.name)}
+            onCheckedChange={() => handleFeatureChange(feature.name)}
           >
-            {feature}
+            {feature.name}
           </DropdownMenuCheckboxItem>
         ))}
       </DropdownMenuContent>

@@ -1,16 +1,11 @@
 import { Button } from "@/lib/@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "@radix-ui/react-dropdown-menu";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-
-
-const categories = [
-  "Drag-and-Drop", "Business", "eCommerce", "Templates", "Professional",
-  "Portfolio", "CMS", "Open Source", "Customizable", "UI/UX Design",
-  "Prototyping", "Creative", "Email Marketing", "Automation", "Campaigns",
-  "Design", "Creativity", "CRM", "Marketing", "Sales", "Customer Support",
-  "Help Desk", "Collaboration"
-];
+interface Category {
+  id: string;
+  name: string;
+}
 
 interface CategoryFilterProps {
   selectedCategories: string[];
@@ -18,6 +13,15 @@ interface CategoryFilterProps {
 }
 
 const CategoryFilter: React.FC<CategoryFilterProps> = ({ selectedCategories, setSelectedCategories }) => {
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    fetch('/api/categories.json')
+      .then(response => response.json())
+      .then(data => setCategories(data))
+      .catch(error => console.error('Failed to fetch categories', error));
+  }, []);
+
   const handleCategoryChange = (category: string) => {
     if (selectedCategories.includes(category)) {
       setSelectedCategories(selectedCategories.filter(c => c !== category));
@@ -27,19 +31,18 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ selectedCategories, set
   };
 
   return (
-    <DropdownMenu >
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">Categories</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="max-h-60 overflow-y-auto bg-black p-2">
+      <DropdownMenuContent className=" overflow-y-auto bg-primary-foreground text-center border p-2 mt-2">
         {categories.map(category => (
           <DropdownMenuCheckboxItem
-            key={category}
-            checked={selectedCategories.includes(category)}
-            onCheckedChange={() => handleCategoryChange(category)}
-            
+            key={category.id}
+            checked={selectedCategories.includes(category.name)}
+            onCheckedChange={() => handleCategoryChange(category.name)}
           >
-            {category}
+            {category.name}
           </DropdownMenuCheckboxItem>
         ))}
       </DropdownMenuContent>

@@ -1,8 +1,13 @@
 [
-    {"id": "1", "name": "Website Builders"},
-    {"id": "2", "name": "eCommerce Platforms"},
-    {"id": "3", "name": "Design Tools"},
-    {"id": "4", "name": "Marketing Tools"},
-    {"id": "5", "name": "CRM Systems"},
-    {"id": "6", "name": "Customer Support Tools"}
+    {"id": "1", "name": "Websites"},
+    {"id": "2", "name": "Web Apps"},
+    {"id": "3", "name": "Mobile Apps"},
+    {"id": "4", "name": "Email"},
+    {"id": "5", "name": "Ecommerce"},
+    {"id": "6", "name": "Artificial Intelligence"},
+    {"id": "7", "name": "Website Hosting"},
+    {"id": "8", "name": "Database"},
+    {"id": "9", "name": "Design Tools"},
+    {"id": "10", "name": "Automation"},
+    {"id": "11", "name": "Internal Tools"}
 ]

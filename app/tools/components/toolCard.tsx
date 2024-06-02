@@ -23,12 +23,12 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
         <CardDescription className="text-center text-sm text-gray-600 my-2">{tool.description}</CardDescription>
         <div className="flex flex-wrap gap-2 mt-2 justify-center">
           {(tool.categories || []).map((category, index) => (
-            <span key={index} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+            <span key={index} className="bg-secondary px-2 py-1 rounded text-xs">
               {category}
             </span>
           ))}
           {(tool.features || []).map((feature, index) => (
-            <span key={index} className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+            <span key={index} className="  border px-2 py-1 rounded text-xs">
               {feature}
             </span>
           ))}
