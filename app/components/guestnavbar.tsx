@@ -19,7 +19,7 @@ const GuestNavbar =  () => {
         </div>
         <ul className="hidden md:flex font-bold ">
         <li className="mr-5">
-            <Link href="/news">NEWS</Link>
+            <Link href="/blog">BLOG</Link>
           </li>
           <li className="mr-5">
             <Link href="/jobs">JOBS</Link>
@@ -60,7 +60,7 @@ const GuestNavbar =  () => {
         <nav className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
           <ul className="flex flex-col text-center bg-primary-color w-full">
             <li className="p-2">
-              <Link href="/news">NEWS</Link>
+              <Link href="/blog">BLOG</Link>
             </li>
             <hr />
             <li className="p-2">

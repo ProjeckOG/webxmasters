@@ -1,30 +1,137 @@
 [
-    {
-      "id": 1,
-      "title": "Main News Post Title",
-      "description": "This is a short description of the main news post. It provides an overview of the content and entices the reader to click through to read more.",
-      "image": "https://via.placeholder.com/600x400",
-      "date": "2024-06-01",
-      "category": "Technology",
-      "content": "Full content of the main news post goes here..."
-    },
-    {
-      "id": 2,
-      "title": "Secondary News Post 1 Title",
-      "description": "This is a short description of the secondary news post 1.",
-      "image": "https://via.placeholder.com/300x200",
-      "date": "2024-06-02",
-      "category": "Health",
-      "content": "Full content of the secondary news post 1 goes here..."
-    },
-    {
-      "id": 3,
-      "title": "Secondary News Post 2 Title",
-      "description": "This is a short description of the secondary news post 2.",
-      "image": "https://via.placeholder.com/300x200",
-      "date": "2024-06-03",
-      "category": "Business",
-      "content": "Full content of the secondary news post 2 goes here..."
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "AI Breakthroughs in 2024",
+    "description": "Discover the latest advancements in artificial intelligence and their potential applications.",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-01",
+    "category": "Technology",
+    "content": "Full content of the AI breakthroughs post goes here..."
+  },
+  {
+    "id": 2,
+    "title": "Health Innovations: What's New in 2024?",
+    "description": "A look at the most exciting health innovations that are set to transform the medical field.",
+    "image": "https://images.unsplash.com/photo-1497493292307-31c376b6e479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-02",
+    "category": "Health",
+    "content": "Full content of the health innovations post goes here..."
+  },
+  {
+    "id": 3,
+    "title": "Business Strategies for the Modern World",
+    "description": "Explore the latest business strategies that companies are using to stay ahead in the modern world.",
+    "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-03",
+    "category": "Business",
+    "content": "Full content of the business strategies post goes here..."
+  },
+  {
+    "id": 4,
+    "title": "Tech Innovations in 2024",
+    "description": "Exploring the latest advancements in technology for the year 2024.",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-04",
+    "category": "Technology",
+    "content": "Full content of the tech innovations post goes here..."
+  },
+  {
+    "id": 5,
+    "title": "Health Tips for a Better Life",
+    "description": "Simple and effective health tips for improving your daily life.",
+    "image": "https://images.unsplash.com/photo-1497493292307-31c376b6e479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-05",
+    "category": "Health",
+    "content": "Full content of the health tips post goes here..."
+  },
+  {
+    "id": 6,
+    "title": "Business Trends to Watch",
+    "description": "An overview of the key business trends to keep an eye on in 2024.",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-06",
+    "category": "Business",
+    "content": "Full content of the business trends post goes here..."
+  },
+  {
+    "id": 7,
+    "title": "The Future of Renewable Energy",
+    "description": "How renewable energy sources are shaping the future of power generation.",
+    "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-07",
+    "category": "Technology",
+    "content": "Full content of the renewable energy post goes here..."
+  },
+  {
+    "id": 8,
+    "title": "Mental Health Awareness",
+    "description": "Understanding the importance of mental health and the steps to take for better well-being.",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-08",
+    "category": "Health",
+    "content": "Full content of the mental health awareness post goes here..."
+  },
+  {
+    "id": 9,
+    "title": "Startup Culture: The Rise of New Businesses",
+    "description": "An in-depth look at the rise of startups and the culture surrounding them.",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-09",
+    "category": "Business",
+    "content": "Full content of the startup culture post goes here..."
+  },
+  {
+    "id": 10,
+    "title": "Advancements in Space Exploration",
+    "description": "Discover the latest advancements in space exploration and what they mean for humanity.",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-10",
+    "category": "Technology",
+    "content": "Full content of the space exploration post goes here..."
+  },
+  {
+    "id": 11,
+    "title": "Green Technologies Revolution",
+    "description": "Exploring how green technologies are transforming our world.",
+    "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-11",
+    "category": "Technology",
+    "content": "Full content of the green technologies post goes here..."
+  },
+  {
+    "id": 12,
+    "title": "Fitness Trends in 2024",
+    "description": "The latest trends in fitness and how to incorporate them into your routine.",
+    "image": "https://images.unsplash.com/photo-1497493292307-31c376b6e479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-12",
+    "category": "Health",
+    "content": "Full content of the fitness trends post goes here..."
+  },
+  {
+    "id": 13,
+    "title": "Financial Planning for Millennials",
+    "description": "Tips and strategies for millennials to plan their finances effectively.",
+    "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-13",
+    "category": "Business",
+    "content": "Full content of the financial planning post goes here..."
+  },
+  {
+    "id": 14,
+    "title": "The Rise of Remote Work",
+    "description": "How remote work is changing the landscape of employment.",
+    "image": "https://images.unsplash.com/photo-1497493292307-31c376b6e479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-14",
+    "category": "Business",
+    "content": "Full content of the remote work post goes here..."
+  },
+  {
+    "id": 15,
+    "title": "The Impact of 5G Technology",
+    "description": "Understanding the impact of 5G technology on various industries.",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    "date": "2024-06-15",
+    "category": "Technology",
+    "content": "Full content of the 5G technology post goes here..."
+  }
+]
