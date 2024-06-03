@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "title": "Main News Post Title",
+      "description": "This is a short description of the main news post. It provides an overview of the content and entices the reader to click through to read more.",
+      "image": "https://via.placeholder.com/600x400",
+      "date": "2024-06-01",
+      "category": "Technology",
+      "content": "Full content of the main news post goes here..."
+    },
+    {
+      "id": 2,
+      "title": "Secondary News Post 1 Title",
+      "description": "This is a short description of the secondary news post 1.",
+      "image": "https://via.placeholder.com/300x200",
+      "date": "2024-06-02",
+      "category": "Health",
+      "content": "Full content of the secondary news post 1 goes here..."
+    },
+    {
+      "id": 3,
+      "title": "Secondary News Post 2 Title",
+      "description": "This is a short description of the secondary news post 2.",
+      "image": "https://via.placeholder.com/300x200",
+      "date": "2024-06-03",
+      "category": "Business",
+      "content": "Full content of the secondary news post 2 goes here..."
+    }
+  ]
+  

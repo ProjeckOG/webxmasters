@@ -6,7 +6,7 @@
         "website": "https://www.wix.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
         "categories": ["Websites"],
-        "features": ["Drag-and-Drop", "Business", "eCommerce"]
+        "features": ["Drag-and-Drop", "Business", "eCommerce", "Free Trial", "Easy to use"]
     },
     {
         "id": "2",
@@ -15,7 +15,7 @@
         "website": "https://www.squarespace.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968672.png",
         "categories": ["Websites"],
-        "features": ["Templates", "Professional", "Portfolio"]
+        "features": ["Templates", "Professional", "Portfolio", "Free Trial", "Easy to use"]
     },
     {
         "id": "3",
@@ -24,7 +24,7 @@
         "website": "https://www.wordpress.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968646.png",
         "categories": ["Websites", "Web Apps"],
-        "features": ["CMS", "Open Source", "Customizable"]
+        "features": ["CMS", "Open Source", "Customizable", "Free Account"]
     },
     {
         "id": "4",
@@ -33,7 +33,7 @@
         "website": "https://www.shopify.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968827.png",
         "categories": ["Ecommerce"],
-        "features": ["eCommerce", "Store Builder", "Business"]
+        "features": ["eCommerce", "Store Builder", "Business", "Free Trial"]
     },
     {
         "id": "5",
@@ -42,7 +42,7 @@
         "website": "https://www.adobe.com/products/xd.html",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968779.png",
         "categories": ["Web Apps", "Mobile Apps"],
-        "features": ["UI/UX Design", "Prototyping", "Creative"]
+        "features": ["UI/UX Design", "Prototyping", "Creative", "Enterprise Ready"]
     },
     {
         "id": "6",
@@ -51,7 +51,7 @@
         "website": "https://www.mailchimp.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968514.png",
         "categories": ["Email"],
-        "features": ["Email Marketing", "Automation", "Campaigns"]
+        "features": ["Email Marketing", "Automation", "Campaigns", "Free Account"]
     },
     {
         "id": "7",
@@ -60,7 +60,7 @@
         "website": "https://www.canva.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968701.png",
         "categories": ["Web Apps", "Mobile Apps"],
-        "features": ["Design", "Templates", "Creativity"]
+        "features": ["Design", "Templates", "Creativity", "Free Account", "Easy to use"]
     },
     {
         "id": "8",
@@ -69,7 +69,7 @@
         "website": "https://www.hubspot.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968342.png",
         "categories": ["Web Apps"],
-        "features": ["CRM", "Marketing", "Sales"]
+        "features": ["CRM", "Marketing", "Sales", "Enterprise Ready"]
     },
     {
         "id": "9",
@@ -78,7 +78,7 @@
         "website": "https://www.zendesk.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968337.png",
         "categories": ["Web Apps"],
-        "features": ["Customer Support", "CRM", "Help Desk"]
+        "features": ["Customer Support", "CRM", "Help Desk", "Enterprise Ready"]
     },
     {
         "id": "10",
@@ -87,6 +87,33 @@
         "website": "https://www.figma.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968865.png",
         "categories": ["Web Apps"],
-        "features": ["Design", "Prototyping", "Collaboration"]
+        "features": ["Design", "Prototyping", "Collaboration", "Free Account"]
+    },
+    {
+        "id": "11",
+        "name": "Asana",
+        "description": "Asana is a web and mobile application designed to help teams organize, track, and manage their work.",
+        "website": "https://www.asana.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968885.png",
+        "categories": ["Web Apps"],
+        "features": ["Task Management", "Project Tracking", "Collaboration", "Free Account", "Enterprise Ready"]
+    },
+    {
+        "id": "12",
+        "name": "Slack",
+        "description": "Slack is a messaging app for businesses that connects people to the information they need, offering features like channels, direct messages, and integrations with other tools.",
+        "website": "https://www.slack.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968889.png",
+        "categories": ["Web Apps", "Mobile Apps"],
+        "features": ["Messaging", "File Sharing", "Integrations", "Free Account", "Enterprise Ready"]
+    },
+    {
+        "id": "13",
+        "name": "GitHub",
+        "description": "GitHub is a platform for version control and collaboration, allowing multiple people to work on projects simultaneously.",
+        "website": "https://www.github.com",
+        "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968818.png",
+        "categories": ["Web Apps"],
+        "features": ["Version Control", "Collaboration", "Open Source", "Free Account"]
     }
 ]

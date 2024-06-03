@@ -35,12 +35,13 @@ const FeatureFilter: React.FC<FeatureFilterProps> = ({ selectedFeatures, setSele
       <DropdownMenuTrigger asChild>
         <Button variant="outline">Features</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56  overflow-y-auto">
+      <DropdownMenuContent className="overflow-y-auto bg-primary-foreground text-center border p-2 mt-2">
         {features.map(feature => (
           <DropdownMenuCheckboxItem
             key={feature.id}
             checked={selectedFeatures.includes(feature.name)}
             onCheckedChange={() => handleFeatureChange(feature.name)}
+            className="border-b-2 p-2 "
           >
             {feature.name}
           </DropdownMenuCheckboxItem>

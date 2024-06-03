@@ -41,6 +41,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ selectedCategories, set
             key={category.id}
             checked={selectedCategories.includes(category.name)}
             onCheckedChange={() => handleCategoryChange(category.name)}
+            className="border-b-2 p-2"
           >
             {category.name}
           </DropdownMenuCheckboxItem>

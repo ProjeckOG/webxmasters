@@ -58,13 +58,13 @@ export default function Tools() {
       </div>
       <div className="flex flex-wrap justify-center gap-2 my-4">
         {selectedCategories.map(category => (
-          <span key={category} className="flex items-center bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+          <span key={category} className="flex items-center bg-secondary p-2 rounded text-xs">
             {category}
             <button className="ml-2 text-red-500" onClick={() => handleCategoryRemove(category)}>✕</button>
           </span>
         ))}
         {selectedFeatures.map(feature => (
-          <span key={feature} className="flex items-center bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+          <span key={feature} className="flex items-center bg-primary-foreground p-2 rounded text-xs">
             {feature}
             <button className="ml-2 text-red-500" onClick={() => handleFeatureRemove(feature)}>✕</button>
           </span>

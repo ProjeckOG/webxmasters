@@ -1,10 +1,14 @@
 import React from 'react'
-import { NewsHeader } from './components/newsHeader'
+import CategoryNav from './components/categoryNav'
+import MainNewsPostCard from './components/mainNewsPostCard'
+
 
 export default function page() {
   return (
     <div className='md:w-3/4 mx-auto my-10'>
-      <NewsHeader />
+      <h1 className='font-bold text-3xl text-center my-5'>News</h1>
+    <CategoryNav/>
+    <MainNewsPostCard />
     </div>
   )
 }
