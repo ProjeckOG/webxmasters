@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/lib/@/components/ui/card";
+import Link from "next/link";
 
 interface NewsPostCardProps {
   title: string;
@@ -19,7 +20,7 @@ const BlogPostCard: React.FC<NewsPostCardProps> = ({ title, description, image, 
       />
       <CardHeader className="px-4 py-2">
         <p className="text-sm text-gray-500">{date} | {category}</p>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl"><Link href={"/blog/id"}>{title}</Link></CardTitle>
       </CardHeader>
       {showDescription && (
         <CardContent className="px-4 py-2">
