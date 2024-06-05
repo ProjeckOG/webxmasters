@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import BlogPostCard from "./blogPostCard";
 
@@ -9,6 +9,7 @@ interface Article {
   image: string;
   date: string;
   category: string;
+  author: string;
   content: string;
 }
 
@@ -19,7 +20,7 @@ const BlogListings = () => {
 
   useEffect(() => {
     // Fetching articles from JSON
-    fetch('/api/news.json')
+    fetch('/api/blog.json')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -52,16 +53,18 @@ const BlogListings = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center mb-4 py-10">More News Posts</h2>
+      <h2 className="text-3xl font-bold text-center mb-4">More Blog Posts</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {otherArticles.map(article => (
           <BlogPostCard
             key={article.id}
+            id={article.id}
             title={article.title}
             description={article.description}
             image={article.image}
             date={article.date}
             category={article.category}
+            author={article.author}
           />
         ))}
       </div>
