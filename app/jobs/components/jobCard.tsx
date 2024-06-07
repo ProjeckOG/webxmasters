@@ -31,9 +31,9 @@ const JobCard: FC<JobCardProps> = ({
   const daysAgo = Math.floor((new Date().getTime() - new Date(dateAdded).getTime()) / (1000 * 60 * 60 * 24));
 
   return (
-    <Card className="flex flex-col md:flex-row items-start border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+    <Card className="flex flex-col md:flex-row items-start border hover:shadow-md transition-shadow duration-200">
       <CardContent className="w-full flex flex-col md:flex-row">
-        <div className="md:w-1/3 flex flex-col md:flex-row items-center mb-4 md:mb-0 gap-4">
+        <div className="md:w-1/3 flex flex-col md:flex-row items-center  md:mb-0 gap-4">
           <img src={companyLogo} alt={`${company} logo`} className="w-10 h-10 rounded-full object-cover" />
           <div>
             <CardTitle className="text-xl font-semibold">{title}</CardTitle>

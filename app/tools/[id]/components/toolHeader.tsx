@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CardTitle } from '@/lib/@/components/ui/card';
 import { Button } from '@/lib/@/components/ui/button';
+import { Heart } from 'lucide-react';
 
 interface ToolHeaderProps {
   name: string;
@@ -26,10 +27,10 @@ const ToolHeader: React.FC<ToolHeaderProps> = ({ name, imageUrl }) => {
         <CardTitle className="text-2xl font-semibold">{name}</CardTitle>
         <div className="flex space-x-4 mt-2">
           <Button variant="outline" className="rounded-full" onClick={handleLike}>
-            Like ({likes})
+            <Heart /> 
           </Button>
           <Button variant="outline" className="rounded-full" onClick={handleUse}>
-            I Use This ({uses})
+            I Use This 
           </Button>
         </div>
       </div>
