@@ -14,7 +14,7 @@ interface PostDetailProps {
 
 const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
   return (
-    <div className=" shadow-md rounded p-6 mb-4">
+    <div className="rounded p-6 mb-4">
       <h1 className="text-4xl uppercase font-bold mb-2 text-center py-5">{post.title}</h1>
       <p className="  mx-auto text-center  rounded-full font-bold" >
          by {post.author}

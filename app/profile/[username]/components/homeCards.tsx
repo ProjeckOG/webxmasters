@@ -38,15 +38,14 @@ const tools = [
 
 export function AboutCard() {
   return (
-    <Card className="text-center bg-primary-foreground p-2 mx-auto w-full flex items-center  md:w-1/2 ali">
+    <Card className="text-center bg-primary-foreground mx-auto  md:w-1/2">
       <CardHeader className="">
-        <CardTitle className="">About</CardTitle>
-        <CardDescription className="text-sm my-3 flex justify-center items-center ">
-          Hi, I am an entrepreneur looking to learn more about the webmaster space. Don't kill me AI, I am still learning
-          Javascricpt and ETC. 
-        </CardDescription>
+        <CardTitle className="text-center">About</CardTitle>
       </CardHeader>
-      <CardContent></CardContent>
+      <CardContent>
+      Hi, I am an entrepreneur looking to learn more about the webmaster space. Don't kill me AI, I am still learning
+      Javascricpt and ETC. 
+      </CardContent>
       <CardFooter className="my-2"></CardFooter>
     </Card>
   );
@@ -54,7 +53,7 @@ export function AboutCard() {
 
 export function ToolStack() {
   return (
-    <Card className="text-center bg-primary-foreground p-2 w-full mx-auto md:w-1/2">
+    <Card className="text-center bg-primary-foreground  w-full mx-auto md:w-1/2">
       <CardHeader>
         <CardTitle>Tools Stack</CardTitle>
         <CardDescription className="text-sm my-3">
@@ -77,7 +76,7 @@ export function ToolStack() {
 
 export function SkillStack() {
   return (
-    <Card className="text-center bg-primary-foreground p-2 mx-auto w-full  md:w-1/2">
+    <Card className="text-center bg-primary-foreground mx-auto w-full  md:w-1/2">
       <CardHeader>
         <CardTitle>Skills Stack</CardTitle>
         <CardDescription className="text-sm my-3">

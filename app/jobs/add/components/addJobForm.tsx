@@ -61,7 +61,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground" placeholder="Job Title" {...field} />
+                <Input className="bg-primary-foreground"  placeholder="Job Title" {...field} />
               </FormControl>
               <FormDescription>This is the job title.</FormDescription>
               <FormMessage />
@@ -75,7 +75,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Company</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground" placeholder="Company Name" {...field} />
+                <Input className="bg-primary-foreground"  placeholder="Company Name" {...field} />
               </FormControl>
               <FormDescription>This is the company name.</FormDescription>
               <FormMessage />
@@ -89,7 +89,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Company Logo URL</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground" placeholder="https://example.com/logo.png" {...field} />
+                <Input className="bg-primary-foreground"  placeholder="https://example.com/logo.png" {...field} />
               </FormControl>
               <FormDescription>This is the URL for the company logo.</FormDescription>
               <FormMessage />
@@ -103,7 +103,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Location</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground" placeholder="Job Location" {...field} />
+                <Input className="bg-primary-foreground"  placeholder="Job Location" {...field} />
               </FormControl>
               <FormDescription>This is the job location.</FormDescription>
               <FormMessage />
@@ -117,7 +117,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea className="bg-primary-foreground" placeholder="Job Description" {...field} />
+                <Textarea className="bg-primary-foreground"  placeholder="Job Description" {...field} />
               </FormControl>
               <FormDescription>This is the job description.</FormDescription>
               <FormMessage />
@@ -131,7 +131,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Apply Link</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground" placeholder="https://example.com/apply" {...field} />
+                <Input className="bg-primary-foreground"  placeholder="https://example.com/apply" {...field} />
               </FormControl>
               <FormDescription>This is the URL for applying to the job.</FormDescription>
               <FormMessage />
@@ -145,7 +145,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Tools</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground" placeholder="Comma separated tools" {...field} />
+                <Input className="bg-primary-foreground"  placeholder="Comma separated tools" {...field} />
               </FormControl>
               <FormDescription>List of tools required for the job.</FormDescription>
               <FormMessage />
@@ -179,7 +179,7 @@ export function AddJobForm() {
                   defaultValue={field.value}
                 >
                   <SelectTrigger>
-                    <SelectValue className="bg-primary-foreground" placeholder="Select Job Type" />
+                    <SelectValue className="bg-primary-foreground"  placeholder="Select Job Type" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="Full-Time">Full-Time</SelectItem>
@@ -200,7 +200,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Salary Range</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground" placeholder="$50,000 - $70,000" {...field} />
+                <Input className="bg-primary-foreground"  placeholder="$50,000 - $70,000" {...field} />
               </FormControl>
               <FormDescription>This is the salary range for the job.</FormDescription>
               <FormMessage />
@@ -219,7 +219,7 @@ export function AddJobForm() {
                   defaultValue={field.value}
                 >
                   <SelectTrigger>
-                    <SelectValue className="bg-primary-foreground" placeholder="Select Experience Level" />
+                    <SelectValue className="bg-primary-foreground"  placeholder="Select Experience Level" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="Junior">Junior</SelectItem>
@@ -240,7 +240,7 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Benefits</FormLabel>
               <FormControl>
-                <Textarea className="bg-primary-foreground" placeholder="Comma separated benefits" {...field} />
+                <Textarea className="bg-primary-foreground"  placeholder="Comma separated benefits" {...field} />
               </FormControl>
               <FormDescription>List of benefits for the job.</FormDescription>
               <FormMessage />

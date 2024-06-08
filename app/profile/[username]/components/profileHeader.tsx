@@ -44,7 +44,9 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   return (
     <Card className="text-center bg-primary-foreground p-2 mx-auto md:w-1/2">
       <CardHeader>
-        <Avatar className="my-4">
+      </CardHeader>
+      <CardContent>
+      <Avatar className="my-4">
           <AvatarImage
             src="https://github.com/shadcn.png"
             alt="Profile Picture"
@@ -52,24 +54,21 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           />
           <AvatarFallback>Profile Picture</AvatarFallback>
         </Avatar>
-        <p className="text-base">@Deezxus</p>
-        <CardTitle className="">Entrepreneur</CardTitle>
-        <CardDescription className="text-sm my-3">
+      <p className="text-base py-2">@Deezxus</p>
+      <CardTitle className="">Entrepreneur</CardTitle>
+        <div className="flex flex-col items-center justify-center gap-3 ">
           I am here to build things that will change the world
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center justify-center gap-3 my-3">
-          <Button variant={"outline"} className="rounded-full 	border-2		">
-            Follow
-          </Button>
-          <Button variant={"outline"} className="rounded-full border-2 	 	">
-            <UserCog />
-            
-          </Button>
+          <div className="item-center flex">
+            <Button variant={"outline"} className="rounded-full 	border-2		">
+              Follow
+            </Button>
+            <Button variant={"outline"} className="rounded-full border-2 	 	">
+              <UserCog />
+            </Button>
+          </div>
         </div>
       </CardContent>
-      <CardFooter className="my-2">
+      <CardFooter className="">
         <div className="flex mx-auto gap-5 ">
           <ScreenShare />
           <Github />

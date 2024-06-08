@@ -28,14 +28,12 @@ const projects = [
 
 export function ProjectCard() {
   return (
-    <Card className="text-center border-0 mx-auto md:w-1/2">
-      <CardHeader>
-      </CardHeader>
+    <Card className="border text-center bg-primary-foreground md:w-1/2 mx-auto">
       <CardContent className="flex flex-wrap gap-5">
         {projects.map((project) => (
           <div
             key={project.title}
-            className="bg-primary-foreground border rounded-lg p-3 w-full"
+            className="bg-background border rounded-lg p-3 w-full"
           >
             <p className="text-2xl font-bold  my-3">{project.title}</p>
             <p className="text-sm ">{project.description}</p>
@@ -56,7 +54,6 @@ export function ProjectCard() {
           </div>
         ))}
       </CardContent>
-      <CardFooter className=""></CardFooter>
     </Card>
   );
 }

@@ -53,9 +53,9 @@ const JobPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <Card className="border p-6 rounded-lg shadow-sm">
-        <CardContent className="flex flex-col gap-6">
-          <div className="flex items-center gap-6">
+      <Card className="border rounded-lg shadow-sm">
+        <CardContent className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
             {job.companyLogo && (
               <img
                 src={job.companyLogo}
@@ -71,7 +71,7 @@ const JobPage = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex gap-3 flex-wrap">
             <span className="border px-3 py-1 rounded-full text-sm font-medium">{job.jobType}</span>
             {job.salaryRange && (
               <span className="border px-3 py-1 rounded-full text-sm font-medium">{job.salaryRange}</span>
@@ -90,9 +90,9 @@ const JobPage = () => {
           {job.tools && job.tools.length > 0 && (
             <div className="my-4">
               <h3 className="text-xl font-semibold mb-2">Tools</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {job.tools.map((tool) => (
-                  <span key={tool} className="bg-secondary px-3 py-1 rounded-full text-sm">
+                  <span key={tool} className="bg-secondary px-3 = rounded-full text-sm">
                     {tool}
                   </span>
                 ))}
@@ -101,7 +101,7 @@ const JobPage = () => {
           )}
 
           {job.benefits && job.benefits.length > 0 && (
-            <div className="my-4">
+            <div className="my-2">
               <h3 className="text-xl font-semibold mb-2">Benefits</h3>
               <ul className="list-disc list-inside">
                 {job.benefits.map((benefit, index) => (
