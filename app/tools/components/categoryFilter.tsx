@@ -33,7 +33,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ selectedCategories, set
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Categories</Button>
+        <Button variant="outline" className="bg-secondary">Categories</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" overflow-y-auto bg-primary-foreground text-center border p-2 mt-2">
         {categories.map(category => (

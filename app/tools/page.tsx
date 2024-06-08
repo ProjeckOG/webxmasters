@@ -49,14 +49,14 @@ export default function Tools() {
   };
 
   return (
-    <div className="md:w-3/4 mx-auto">
+    <div>
       <h1 className="text-center text-4xl font-bold my-10">WEBMASTERS TOOLS LIST</h1>
       <div className="flex justify-center gap-4 items-center flex-wrap">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <CategoryFilter selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories} />
         <FeatureFilter selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
       </div>
-      <div className="flex flex-wrap justify-center gap-2 my-4">
+      <div className="flex flex-wrap gap-2 justify-center">
         {selectedCategories.map(category => (
           <span key={category} className="flex items-center bg-secondary p-2 rounded text-xs">
             {category}
@@ -64,14 +64,14 @@ export default function Tools() {
           </span>
         ))}
         {selectedFeatures.map(feature => (
-          <span key={feature} className="flex items-center bg-primary-foreground p-2 rounded text-xs">
+          <span key={feature} className="flex items-center border p-2 rounded text-xs">
             {feature}
             <button className="ml-2 text-red-500" onClick={() => handleFeatureRemove(feature)}>✕</button>
           </span>
         ))}
       </div>
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap gap-5 justify-around mt-5">
+      <div className="">
+        <div className="flex flex-wrap   mt-5">
           {filteredTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))}

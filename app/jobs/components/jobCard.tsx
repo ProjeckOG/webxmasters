@@ -32,8 +32,8 @@ const JobCard: FC<JobCardProps> = ({
 
   return (
     <Card className="">
-      <CardContent className=" flex  md:flex-row">
-        <div className="md:w-1/3 flex flex-col md:flex-row items-center  md:mb-0 gap-4">
+      <CardContent className="flex  md:flex-row">
+        <div className="md:w-1/3 flex  items-center  md:mb-0 gap-4">
           <img src={companyLogo} alt={`${company} logo`} className="w-10 h-10 rounded-full object-cover" />
           <div>
             <CardTitle className="text-xl font-semibold">{title}</CardTitle>
@@ -54,10 +54,10 @@ const JobCard: FC<JobCardProps> = ({
                 </span>
               ))}
             </div>
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-center">
               <span className="text-xs text-gray-500 mb-2">{daysAgo} days ago</span>
-              <Button variant="outline" className="rounded-full">
-                <Link href={`/jobs/${id}`}>Apply Now</Link>
+              <Button variant="outline" className="rounded-full hover:bg-primary-foreground">
+                <Link href={`/jobs/${id}`} className="">Apply Now</Link>
               </Button>
             </div>
           </div>
