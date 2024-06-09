@@ -19,7 +19,8 @@
       "Health insurance",
       "401(k) matching",
       "Remote work options"
-    ]
+    ],
+    "promoted": true
   },
   {
     "id": 2,
@@ -41,7 +42,8 @@
       "Health insurance",
       "Stock options",
       "Gym membership"
-    ]
+    ],
+    "promoted": false
   },
   {
     "id": 3,
@@ -63,7 +65,8 @@
       "Flexible working hours",
       "Health insurance",
       "Paid time off"
-    ]
+    ],
+    "promoted": true
   },
   {
     "id": 4,
@@ -85,7 +88,8 @@
       "Health insurance",
       "401(k) matching",
       "Creative work environment"
-    ]
+    ],
+    "promoted": false
   },
   {
     "id": 5,
@@ -107,7 +111,8 @@
       "Health insurance",
       "Remote work",
       "Paid time off"
-    ]
+    ],
+    "promoted": false
   },
   {
     "id": 6,
@@ -129,6 +134,99 @@
       "Health insurance",
       "Stock options",
       "Employee discounts"
-    ]
+    ],
+    "promoted": true
+  },
+  {
+    "id": 7,
+    "title": "Marketing Specialist",
+    "company": "Digital Marketing Co.",
+    "companyLogo": "https://cdn-icons-png.flaticon.com/512/732/732218.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+    "location": "Austin, TX",
+    "description": "We are seeking a Marketing Specialist with experience in social media and digital campaigns. Responsibilities: Develop marketing strategies, Manage social media accounts, Analyze marketing data. Requirements: Proven experience as a Marketing Specialist, Knowledge of digital marketing tools, Excellent communication skills.",
+    "applyLink": "https://example.com/apply",
+    "tools": ["Hootsuite", "Google Analytics"],
+    "skills": ["Digital Marketing", "Social Media", "Data Analysis"],
+    "date": "2024-05-13",
+    "dateAdded": "2024-05-06",
+    "jobType": "Full-Time",
+    "salaryRange": "$50,000 - $70,000",
+    "experienceLevel": "Entry-Level",
+    "benefits": [
+      "Health insurance",
+      "Paid time off",
+      "Professional development"
+    ],
+    "promoted": false
+  },
+  {
+    "id": 8,
+    "title": "Data Scientist",
+    "company": "Analytics Corp",
+    "companyLogo": "https://cdn-icons-png.flaticon.com/512/732/732219.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+    "location": "Boston, MA",
+    "description": "We are looking for a Data Scientist to join our team and analyze large data sets. Responsibilities: Collect and analyze data, Develop predictive models, Communicate findings to stakeholders. Requirements: Proven experience as a Data Scientist, Knowledge of statistical techniques, Experience with Python and R.",
+    "applyLink": "https://example.com/apply",
+    "tools": ["Python", "R"],
+    "skills": ["Data Analysis", "Predictive Modeling", "Statistics"],
+    "date": "2024-05-11",
+    "dateAdded": "2024-05-07",
+    "jobType": "Full-Time",
+    "salaryRange": "$80,000 - $100,000",
+    "experienceLevel": "Mid-Level",
+    "benefits": [
+      "Health insurance",
+      "401(k) matching",
+      "Work-life balance"
+    ],
+    "promoted": true
+  },
+  {
+    "id": 9,
+    "title": "Technical Writer",
+    "company": "Tech Docs Inc.",
+    "companyLogo": "https://cdn-icons-png.flaticon.com/512/732/732214.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+    "location": "Seattle, WA",
+    "description": "We need a Technical Writer to create and manage technical documentation. Responsibilities: Write technical documents, Collaborate with developers, Ensure accuracy and clarity. Requirements: Proven experience as a Technical Writer, Excellent writing skills, Technical background preferred.",
+    "applyLink": "https://example.com/apply",
+    "tools": ["MS Word", "Confluence"],
+    "skills": ["Technical Writing", "Documentation", "Collaboration"],
+    "date": "2024-05-10",
+    "dateAdded": "2024-05-08",
+    "jobType": "Contract",
+    "salaryRange": "$40,000 - $60,000",
+    "experienceLevel": "Mid-Level",
+    "benefits": [
+      "Health insurance",
+      "Flexible hours",
+      "Remote work"
+    ],
+    "promoted": false
+  },
+  {
+    "id": 10,
+    "title": "Customer Support Specialist",
+    "company": "Support Hub",
+    "companyLogo": "https://cdn-icons-png.flaticon.com/512/732/732220.png",
+    "profilePicture": "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+    "location": "Denver, CO",
+    "description": "We are hiring a Customer Support Specialist to assist our customers. Responsibilities: Respond to customer inquiries, Troubleshoot issues, Provide excellent customer service. Requirements: Proven experience in customer support, Excellent communication skills, Ability to multitask.",
+    "applyLink": "https://example.com/apply",
+    "tools": ["Zendesk", "Salesforce"],
+    "skills": ["Customer Support", "Troubleshooting", "Communication"],
+    "date": "2024-05-09",
+    "dateAdded": "2024-05-07",
+    "jobType": "Full-Time",
+    "salaryRange": "$35,000 - $50,000",
+    "experienceLevel": "Entry-Level",
+    "benefits": [
+      "Health insurance",
+      "Paid time off",
+      "Employee discounts"
+    ],
+    "promoted": true
   }
 ]
