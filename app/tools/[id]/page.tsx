@@ -5,12 +5,14 @@ import { Card, CardContent } from "@/lib/@/components/ui/card";
 import ToolDescription from "./components/toolDescription";
 import ToolDetails from "./components/toolDetail";
 import ToolHeader from "./components/toolHeader";
+import SimilarTools from "./components/similarTools";
 
 interface Tool {
   id: string;
   name: string;
   description: string;
   logo: string;
+  website: string;
   categories: string[];
   features: string[];
 }
@@ -62,10 +64,12 @@ const ToolPage = () => {
       <Card className="border p-4 rounded-lg shadow-sm">
         <CardContent className="flex flex-col gap-4">
           <ToolHeader name={tool.name} imageUrl={tool.logo} />
-          <ToolDescription description={tool.description} />
+          <ToolDescription description={tool.description} website={tool.website} />
           <ToolDetails categories={tool.categories} features={tool.features} />
+          
         </CardContent>
       </Card>
+      <SimilarTools currentToolId={tool.id} currentToolCategories={tool.categories} />
     </div>
   );
 };

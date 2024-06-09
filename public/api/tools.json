@@ -6,7 +6,8 @@
         "website": "https://www.wix.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
         "categories": ["Websites"],
-        "features": ["Drag-and-Drop", "Business", "eCommerce", "Free Trial", "Easy to use"]
+        "features": ["Drag-and-Drop", "Business", "eCommerce", "Free Trial", "Easy to use"],
+        "promoted": true
     },
     {
         "id": "2",
@@ -15,7 +16,8 @@
         "website": "https://www.squarespace.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968672.png",
         "categories": ["Websites"],
-        "features": ["Templates", "Professional", "Portfolio", "Free Trial", "Easy to use"]
+        "features": ["Templates", "Professional", "Portfolio", "Free Trial", "Easy to use"],
+        "promoted": false
     },
     {
         "id": "3",
@@ -24,7 +26,8 @@
         "website": "https://www.wordpress.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968646.png",
         "categories": ["Websites", "Web Apps"],
-        "features": ["CMS", "Open Source", "Customizable", "Free Account"]
+        "features": ["CMS", "Open Source", "Customizable", "Free Account"],
+        "promoted": false
     },
     {
         "id": "4",
@@ -33,7 +36,8 @@
         "website": "https://www.shopify.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968827.png",
         "categories": ["Ecommerce"],
-        "features": ["eCommerce", "Store Builder", "Business", "Free Trial"]
+        "features": ["eCommerce", "Store Builder", "Business", "Free Trial"],
+        "promoted": true
     },
     {
         "id": "5",
@@ -42,7 +46,8 @@
         "website": "https://www.adobe.com/products/xd.html",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968779.png",
         "categories": ["Web Apps", "Mobile Apps"],
-        "features": ["UI/UX Design", "Prototyping", "Creative", "Enterprise Ready"]
+        "features": ["UI/UX Design", "Prototyping", "Creative", "Enterprise Ready"],
+        "promoted": false
     },
     {
         "id": "6",
@@ -51,7 +56,8 @@
         "website": "https://www.mailchimp.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968514.png",
         "categories": ["Email"],
-        "features": ["Email Marketing", "Automation", "Campaigns", "Free Account"]
+        "features": ["Email Marketing", "Automation", "Campaigns", "Free Account"],
+        "promoted": true
     },
     {
         "id": "7",
@@ -60,7 +66,8 @@
         "website": "https://www.canva.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968701.png",
         "categories": ["Web Apps", "Mobile Apps"],
-        "features": ["Design", "Templates", "Creativity", "Free Account", "Easy to use"]
+        "features": ["Design", "Templates", "Creativity", "Free Account", "Easy to use"],
+        "promoted": false
     },
     {
         "id": "8",
@@ -69,7 +76,8 @@
         "website": "https://www.hubspot.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968342.png",
         "categories": ["Web Apps"],
-        "features": ["CRM", "Marketing", "Sales", "Enterprise Ready"]
+        "features": ["CRM", "Marketing", "Sales", "Enterprise Ready"],
+        "promoted": false
     },
     {
         "id": "9",
@@ -78,7 +86,8 @@
         "website": "https://www.zendesk.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968337.png",
         "categories": ["Web Apps"],
-        "features": ["Customer Support", "CRM", "Help Desk", "Enterprise Ready"]
+        "features": ["Customer Support", "CRM", "Help Desk", "Enterprise Ready"],
+        "promoted": false
     },
     {
         "id": "10",
@@ -87,7 +96,8 @@
         "website": "https://www.figma.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968865.png",
         "categories": ["Web Apps"],
-        "features": ["Design", "Prototyping", "Collaboration", "Free Account"]
+        "features": ["Design", "Prototyping", "Collaboration", "Free Account"],
+        "promoted": false
     },
     {
         "id": "11",
@@ -96,7 +106,8 @@
         "website": "https://www.asana.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968885.png",
         "categories": ["Web Apps"],
-        "features": ["Task Management", "Project Tracking", "Collaboration", "Free Account", "Enterprise Ready"]
+        "features": ["Task Management", "Project Tracking", "Collaboration", "Free Account", "Enterprise Ready"],
+        "promoted": false
     },
     {
         "id": "12",
@@ -105,7 +116,8 @@
         "website": "https://www.slack.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968889.png",
         "categories": ["Web Apps", "Mobile Apps"],
-        "features": ["Messaging", "File Sharing", "Integrations", "Free Account", "Enterprise Ready"]
+        "features": ["Messaging", "File Sharing", "Integrations", "Free Account", "Enterprise Ready"],
+        "promoted": false
     },
     {
         "id": "13",
@@ -114,6 +126,7 @@
         "website": "https://www.github.com",
         "logo": "https://cdn-icons-png.flaticon.com/512/5968/5968818.png",
         "categories": ["Web Apps"],
-        "features": ["Version Control", "Collaboration", "Open Source", "Free Account"]
+        "features": ["Version Control", "Collaboration", "Open Source", "Free Account"],
+        "promoted": false
     }
 ]

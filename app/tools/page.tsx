@@ -1,10 +1,10 @@
-"use client";
-import { useState, useEffect } from "react";
-import CategoryFilter from "./components/categoryFilter";
-import FeatureFilter from "./components/featureFilter";
-import SearchBar from "./components/searchBar";
-import ToolCard from "./components/toolCard";
-
+"use client"// tools.tsx
+import { useState, useEffect } from 'react';
+import CategoryFilter from './components/categoryFilter';
+import FeatureFilter from './components/featureFilter';
+import SearchBar from './components/searchBar';
+import ToolCard from './components/toolCard';
+import AddToolBtn from './components/addToolBtn';
 
 interface Tool {
   id: string;
@@ -14,6 +14,7 @@ interface Tool {
   logo: string;
   categories?: string[];
   features?: string[];
+  promoted: boolean;
 }
 
 const fetchTools = async (): Promise<Tool[]> => {
@@ -24,7 +25,7 @@ const fetchTools = async (): Promise<Tool[]> => {
 
 export default function Tools() {
   const [tools, setTools] = useState<Tool[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
 
@@ -32,21 +33,24 @@ export default function Tools() {
     fetchTools().then(setTools);
   }, []);
 
-  const filteredTools = tools.filter(tool => {
+  const filteredTools = tools.filter((tool) => {
     const matchesSearchTerm = tool.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategories = selectedCategories.length === 0 || selectedCategories.some(category => tool.categories?.includes(category));
-    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.every(feature => tool.features?.includes(feature));
+    const matchesCategories = selectedCategories.length === 0 || selectedCategories.some((category) => tool.categories?.includes(category));
+    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.every((feature) => tool.features?.includes(feature));
 
     return matchesSearchTerm && matchesCategories && matchesFeatures;
   });
 
   const handleCategoryRemove = (category: string) => {
-    setSelectedCategories(selectedCategories.filter(c => c !== category));
+    setSelectedCategories(selectedCategories.filter((c) => c !== category));
   };
 
   const handleFeatureRemove = (feature: string) => {
-    setSelectedFeatures(selectedFeatures.filter(f => f !== feature));
+    setSelectedFeatures(selectedFeatures.filter((f) => f !== feature));
   };
+
+  const promotedTools = filteredTools.filter((tool) => tool.promoted);
+  const regularTools = filteredTools.filter((tool) => !tool.promoted);
 
   return (
     <div>
@@ -55,24 +59,38 @@ export default function Tools() {
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <CategoryFilter selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories} />
         <FeatureFilter selectedFeatures={selectedFeatures} setSelectedFeatures={setSelectedFeatures} />
+        <AddToolBtn />
       </div>
       <div className="flex flex-wrap gap-2 justify-center">
-        {selectedCategories.map(category => (
+        {selectedCategories.map((category) => (
           <span key={category} className="flex items-center bg-secondary p-2 rounded text-xs">
             {category}
-            <button className="ml-2 text-red-500" onClick={() => handleCategoryRemove(category)}>✕</button>
+            <button className="ml-2 text-red-500" onClick={() => handleCategoryRemove(category)}>
+              ✕
+            </button>
           </span>
         ))}
-        {selectedFeatures.map(feature => (
+        {selectedFeatures.map((feature) => (
           <span key={feature} className="flex items-center border p-2 rounded text-xs">
             {feature}
-            <button className="ml-2 text-red-500" onClick={() => handleFeatureRemove(feature)}>✕</button>
+            <button className="ml-2 text-red-500" onClick={() => handleFeatureRemove(feature)}>
+              ✕
+            </button>
           </span>
         ))}
       </div>
-      <div className="">
-        <div className="flex flex-wrap   mt-5">
-          {filteredTools.map((tool) => (
+      <div className="mt-10">
+        {promotedTools.length > 0 && (
+          <div className="mb-10">
+            <div className="flex flex-wrap gap-4 justify-center">
+              {promotedTools.map((tool) => (
+                <ToolCard key={tool.id} tool={tool} />
+              ))}
+            </div>
+          </div>
+        )}
+        <div className="flex flex-wrap gap-4 justify-center">
+          {regularTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))}
         </div>
