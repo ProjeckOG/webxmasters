@@ -1,54 +1,75 @@
-"use client";
-import { Button } from "@/lib/@/components/ui/button";
-import { FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, Form } from "@/lib/@/components/ui/form";
-import { Input } from "@/lib/@/components/ui/input";
-import { Textarea } from "@/lib/@/components/ui/textarea";
+"use client"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@radix-ui/react-select";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
+import Select from "react-select";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/lib/@/components/ui/form";
+import { Input } from "@/lib/@/components/ui/input";
+import { Button } from "@/lib/@/components/ui/button";
+import { Textarea } from "@/lib/@/components/ui/textarea";
 
-
-
-const formSchema = z.object({
+const jobSchema = z.object({
   title: z.string().min(2, { message: "Title must be at least 2 characters." }),
   company: z.string().min(2, { message: "Company name must be at least 2 characters." }),
-  companyLogo: z.string().url({ message: "Invalid URL" }),
-  location: z.string().min(2, { message: "Location must be at least 2 characters." }),
+  companyLogo: z.string().optional(), // File upload will handle validation
+  location: z.string().min(2, { message: "Location must be selected." }),
   description: z.string().min(10, { message: "Description must be at least 10 characters." }),
-  applyLink: z.string().url({ message: "Invalid URL" }),
-  tools: z.array(z.string()).min(1, { message: "At least one tool is required." }),
-  date: z.string().min(2, { message: "Date is required." }),
-  dateAdded: z.string().min(2, { message: "Date added is required." }),
-  jobType: z.string().min(2, { message: "Job type is required." }),
-  salaryRange: z.string().min(2, { message: "Salary range is required." }),
-  experienceLevel: z.string().min(2, { message: "Experience level is required." }),
-  benefits: z.array(z.string()).min(1, { message: "At least one benefit is required." }),
+  applyLink: z.string().url({ message: "Please enter a valid URL for the application link." }),
+  tools: z.array(z.string()).nonempty({ message: "Please select at least one tool." }),
+  jobType: z.string().min(2, { message: "Job type must be selected." }),
+  salaryRangeMin: z.number().min(0, { message: "Minimum salary must be at least 0." }),
+  salaryRangeMax: z.number().min(0, { message: "Maximum salary must be at least 0." }),
+  experienceLevel: z.string().min(2, { message: "Experience level must be selected." }),
+  benefits: z.array(z.string()).nonempty({ message: "Please add at least one benefit." }),
 });
 
-export function AddJobForm() {
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-      company: "",
-      companyLogo: "",
-      location: "",
-      description: "",
-      applyLink: "",
-      tools: [""],
-      date: "",
-      dateAdded: "",
-      jobType: "",
-      salaryRange: "",
-      experienceLevel: "",
-      benefits: [""],
+const customStyles = {
+  control: (base: any) => ({
+    ...base,
+    padding: "0.5rem",
+    borderColor: "var(--input)",
+    borderRadius: "0.375rem",
+    backgroundColor: "hsl(var(--primary-foreground))",
+    boxShadow: "none",
+    "&:hover": {
+      borderColor: "var(--input)",
     },
+  }),
+  menu: (base: any) => ({
+    ...base,
+    backgroundColor: "hsl(var(--primary-foreground))",
+  }),
+  multiValue: (base: any) => ({
+    ...base,
+    backgroundColor: "hsl(var(--primary-foreground))",
+  }),
+  multiValueLabel: (base: any) => ({
+    ...base,
+    color: "var(--foreground)",
+  }),
+  multiValueRemove: (base: any) => ({
+    ...base,
+    color: "var(--foreground)",
+    ":hover": {
+      backgroundColor: "var(--foreground)",
+      color: "var(--primary-foreground)",
+    },
+  }),
+};
+
+const JobForm = () => {
+  const form = useForm({
+    resolver: zodResolver(jobSchema),
+  });
+  
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "benefits",
   });
 
-  const onSubmit = (data: any) => {
-    console.log("Form Data:", data);
-    // Handle form submission, e.g., send data to API
+  const onSubmit = (values: any) => {
+    console.log(values);
+    // Handle form submission logic here
   };
 
   return (
@@ -61,9 +82,8 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground"  placeholder="Job Title" {...field} />
+                <Input placeholder="Job Title" {...field} />
               </FormControl>
-              <FormDescription>This is the job title.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -75,27 +95,19 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Company</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground"  placeholder="Company Name" {...field} />
+                <Input placeholder="Company Name" {...field} />
               </FormControl>
-              <FormDescription>This is the company name.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="companyLogo"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Company Logo URL</FormLabel>
-              <FormControl>
-                <Input className="bg-primary-foreground"  placeholder="https://example.com/logo.png" {...field} />
-              </FormControl>
-              <FormDescription>This is the URL for the company logo.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <FormItem>
+          <FormLabel>Company Logo</FormLabel>
+          <FormControl>
+            <Input type="file" {...form.register("companyLogo")} />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
         <FormField
           control={form.control}
           name="location"
@@ -103,9 +115,18 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Location</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground"  placeholder="Job Location" {...field} />
+                <Select
+                  styles={customStyles}
+                  options={[
+                    { value: "United States", label: "United States" },
+                    { value: "Canada", label: "Canada" },
+                    { value: "United Kingdom", label: "United Kingdom" },
+                    // Add more countries as needed
+                  ]}
+                  classNamePrefix="react-select"
+                  onChange={(selected) => field.onChange(selected?.value)}
+                />
               </FormControl>
-              <FormDescription>This is the job location.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -117,9 +138,8 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea className="bg-primary-foreground"  placeholder="Job Description" {...field} />
+                <Textarea placeholder="Job Description" {...field} />
               </FormControl>
-              <FormDescription>This is the job description.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -129,11 +149,10 @@ export function AddJobForm() {
           name="applyLink"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Apply Link</FormLabel>
+              <FormLabel>Application Link</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground"  placeholder="https://example.com/apply" {...field} />
+                <Input placeholder="https://example.com/apply" {...field} />
               </FormControl>
-              <FormDescription>This is the URL for applying to the job.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -145,28 +164,25 @@ export function AddJobForm() {
             <FormItem>
               <FormLabel>Tools</FormLabel>
               <FormControl>
-                <Input className="bg-primary-foreground"  placeholder="Comma separated tools" {...field} />
+                <Select
+                  isMulti
+                  styles={customStyles}
+                  options={[
+                    { value: "React", label: "React" },
+                    { value: "Node.js", label: "Node.js" },
+                    { value: "Tailwind CSS", label: "Tailwind CSS" },
+                    { value: "Next.js", label: "Next.js" },
+                  ]}
+                  classNamePrefix="react-select"
+                  onChange={(selected) =>
+                    field.onChange(selected.map((option: any) => option.value))
+                  }
+                />
               </FormControl>
-              <FormDescription>List of tools required for the job.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Date</FormLabel>
-              <FormControl>
-                <Input type="date" {...field} />
-              </FormControl>
-              <FormDescription>This is the job posting date.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="jobType"
@@ -175,38 +191,48 @@ export function AddJobForm() {
               <FormLabel>Job Type</FormLabel>
               <FormControl>
                 <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <SelectTrigger>
-                    <SelectValue className="bg-primary-foreground"  placeholder="Select Job Type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Full-Time">Full-Time</SelectItem>
-                    <SelectItem value="Part-Time">Part-Time</SelectItem>
-                    <SelectItem value="Contract">Contract</SelectItem>
-                  </SelectContent>
-                </Select>
+                  styles={customStyles}
+                  options={[
+                    { value: "Full-Time", label: "Full-Time" },
+                    { value: "Part-Time", label: "Part-Time" },
+                    { value: "Contract", label: "Contract" },
+                  ]}
+                  classNamePrefix="react-select"
+                  onChange={(selected) => field.onChange(selected?.value)}
+                />
               </FormControl>
-              <FormDescription>This is the job type.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="salaryRange"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Salary Range</FormLabel>
-              <FormControl>
-                <Input className="bg-primary-foreground"  placeholder="$50,000 - $70,000" {...field} />
-              </FormControl>
-              <FormDescription>This is the salary range for the job.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="flex gap-4">
+          <FormField
+            control={form.control}
+            name="salaryRangeMin"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Minimum Salary</FormLabel>
+                <FormControl>
+                  <Input type="number" placeholder="Minimum Salary" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="salaryRangeMax"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Maximum Salary</FormLabel>
+                <FormControl>
+                  <Input type="number" placeholder="Maximum Salary" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <FormField
           control={form.control}
           name="experienceLevel"
@@ -215,40 +241,38 @@ export function AddJobForm() {
               <FormLabel>Experience Level</FormLabel>
               <FormControl>
                 <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <SelectTrigger>
-                    <SelectValue className="bg-primary-foreground"  placeholder="Select Experience Level" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Junior">Junior</SelectItem>
-                    <SelectItem value="Mid-Level">Mid-Level</SelectItem>
-                    <SelectItem value="Senior">Senior</SelectItem>
-                  </SelectContent>
-                </Select>
+                  styles={customStyles}
+                  options={[
+                    { value: "Junior", label: "Junior" },
+                    { value: "Mid-Level", label: "Mid-Level" },
+                    { value: "Senior", label: "Senior" },
+                  ]}
+                  classNamePrefix="react-select"
+                  onChange={(selected) => field.onChange(selected?.value)}
+                />
               </FormControl>
-              <FormDescription>This is the required experience level.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="benefits"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Benefits</FormLabel>
-              <FormControl>
-                <Textarea className="bg-primary-foreground"  placeholder="Comma separated benefits" {...field} />
-              </FormControl>
-              <FormDescription>List of benefits for the job.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit Job</Button>
+        <div>
+          <FormLabel>Benefits</FormLabel>
+          {fields.map((field, index) => (
+            <div key={field.id} className="flex items-center gap-2 mb-2">
+              <Input {...form.register(`benefits.${index}`)} placeholder="Benefit" className="flex-grow" />
+              <Button type="button" variant="outline" onClick={() => remove(index)}>
+                Remove
+              </Button>
+            </div>
+          ))}
+          <Button type="button" variant="outline" onClick={() => append('')}>
+            Add Benefit
+          </Button>
+        </div>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   );
-}
+};
+
+export default JobForm;

@@ -159,7 +159,7 @@ export function SuggestToolForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-primary-foreground" variant={"outline"} className="w-full rounded font-bold">Submit Tool</Button>
+        <Button type="submit" variant={"outline"} className="w-full rounded font-bold">Submit Tool</Button>
       </form>
     </Form>
   )

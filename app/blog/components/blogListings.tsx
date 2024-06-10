@@ -53,8 +53,8 @@ const BlogListings = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center mb-4">More Blog Posts</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <h2 className="text-3xl font-bold text-center mb-4 mt-20">More Blog Posts</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         {otherArticles.map(article => (
           <BlogPostCard
             key={article.id}
