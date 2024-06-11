@@ -38,7 +38,7 @@ const JobCard: FC<JobCardProps> = ({
   return (
     <Card
       className={`${
-        promoted ? "border-2 border-yellow-300" : ""
+        promoted ? "border-2 border-yellow-300 " : ""
       } border p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200`}
     >
       <CardContent className="flex flex-col md:flex-row">

@@ -2,6 +2,6 @@
     {"id": "1", "name": "Free Account"},
     {"id": "2", "name": "Enterprise Ready"},
     {"id": "3", "name": "Open Source"},
-    {"id": "3", "name": "Free Trial"},
-    {"id": "3", "name": "Easy to use"}
+    {"id": "4", "name": "Free Trial"},
+    {"id": "5", "name": "Easy to use"}
 ]

@@ -40,8 +40,8 @@ const FilterComponent: FC<FilterProps> = ({
   };
 
   return (
-    <div className="flex flex-col py-5">
-      <div className="flex flex-wrap gap-4">
+    <div className="flex flex-col justify-between py-5">
+      <div className="flex flex-wrap justify-between gap-4">
         <input
           type="text"
           placeholder="Search by job title"

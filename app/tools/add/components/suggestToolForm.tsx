@@ -1,46 +1,67 @@
-"use client"
-import { zodResolver } from "@hookform/resolvers/zod"
-import {  useForm } from "react-hook-form"
-import { z } from "zod"
-import Select from "react-select"
-import { useEffect, useState } from "react"
-import { Button } from "@/lib/@/components/ui/button"
-import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form } from "@/lib/@/components/ui/form"
-import { Textarea } from "@/lib/@/components/ui/textarea"
-import { Input } from "@/lib/@/components/ui/input"
-
+"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import Select from "react-select";
+import { useEffect, useState } from "react";
+import { Button } from "@/lib/@/components/ui/button";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form } from "@/lib/@/components/ui/form";
+import { Textarea } from "@/lib/@/components/ui/textarea";
+import { Input } from "@/lib/@/components/ui/input";
 
 const customStyles = {
-    control: (base: any) => ({
-      ...base,
-      borderRadius: "0.375rem",
-      backgroundColor: "hsl(var(--primary-foreground))", // Tailwind primary-foreground color
-      boxShadow: "none",
-      "&:hover": {
-        borderColor: "#9ca3af",
-      },
-    }),
-    menu: (base: any) => ({
-      ...base,
-      backgroundColor: "hsl(var(--primary-foreground))", // Tailwind primary-foreground color
-    }),
-    multiValue: (base: any) => ({
-      ...base,
-      backgroundColor: "hsl(var(--secondary))", // Tailwind primary-foreground color
-    }),
-    multiValueLabel: (base: any) => ({
-      ...base,
-      color: "#ffffff",
-    }),
-    multiValueRemove: (base: any) => ({
-      ...base,
-      color: "#ffffff",
-      ":hover": {
-        backgroundColor: "#1f2937", // A darker shade
-        color: "red",
-      },
-    }),
-  };
+  control: (base: any, state: any) => ({
+    ...base,
+    borderRadius: "0.375rem",
+    backgroundColor: "hsl(var(--primary-foreground))",
+    boxShadow: "none",
+    border: "1px solid hsl(var(--input))",
+    "&:hover": {
+      borderColor: "#9ca3af",
+    },
+    "&:focus-within": {
+      borderColor: "hsl(var(--ring))",
+    },
+  }),
+  menu: (base: any) => ({
+    ...base,
+    backgroundColor: "hsl(var(--primary-foreground))",
+    zIndex: 9999,
+  }),
+  menuList: (base: any) => ({
+    ...base,
+    backgroundColor: "hsl(var(--primary-foreground))",
+  }),
+  multiValue: (base: any) => ({
+    ...base,
+    backgroundColor: "hsl(var(--secondary))",
+  }),
+  multiValueLabel: (base: any) => ({
+    ...base,
+    color: "#ffffff",
+  }),
+  multiValueRemove: (base: any) => ({
+    ...base,
+    color: "#ffffff",
+    ":hover": {
+      backgroundColor: "#1f2937",
+      color: "red",
+    },
+  }),
+  option: (base: any, { isFocused }: any) => ({
+    ...base,
+    backgroundColor: isFocused ? "hsl(var(--accent))" : "hsl(var(--primary-foreground))",
+    color: isFocused ? "var(--foreground)" : "var(--primary)",
+    "&:hover": {
+      backgroundColor: "hsl(var(--accent))",
+      color: "var(--foreground)",
+    },
+  }),
+  singleValue: (base: any) => ({
+    ...base,
+    color: "white",
+  }),
+};
 
 const formSchema = z.object({
   toolName: z.string().min(2, {
@@ -58,28 +79,28 @@ const formSchema = z.object({
   features: z.array(z.string()).nonempty({
     message: "Please select at least one feature.",
   }),
-})
+});
 
 export function SuggestToolForm() {
-  const [categories, setCategories] = useState([])
-  const [features, setFeatures] = useState([])
+  const [categories, setCategories] = useState([]);
+  const [features, setFeatures] = useState([]);
 
   useEffect(() => {
-    fetch('/api/categories.json')
-      .then(response => response.json())
-      .then(data => setCategories(data))
-    fetch('/api/features.json')
-      .then(response => response.json())
-      .then(data => setFeatures(data))
-  }, [])
+    fetch("/api/categories.json")
+      .then((response) => response.json())
+      .then((data) => setCategories(data));
+    fetch("/api/features.json")
+      .then((response) => response.json())
+      .then((data) => setFeatures(data));
+  }, []);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-  })
+  });
 
   const onSubmit = (values: any) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   return (
     <Form {...form}>
@@ -91,7 +112,11 @@ export function SuggestToolForm() {
             <FormItem>
               <FormLabel>Tool Name</FormLabel>
               <FormControl>
-                <Input placeholder="Tool Name" className="bg-primary-foreground" {...field} />
+                <Input
+                  placeholder="Tool Name"
+                  className="bg-primary-foreground"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -104,7 +129,11 @@ export function SuggestToolForm() {
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea placeholder="Tool Description" className="bg-primary-foreground" {...field} />
+                <Textarea
+                  placeholder="Tool Description"
+                  className="bg-primary-foreground"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -117,7 +146,11 @@ export function SuggestToolForm() {
             <FormItem>
               <FormLabel>Website</FormLabel>
               <FormControl>
-                <Input placeholder="https://example.com" className="bg-primary-foreground" {...field} />
+                <Input
+                  placeholder="https://example.com"
+                  className="bg-primary-foreground"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -132,8 +165,13 @@ export function SuggestToolForm() {
               <FormControl>
                 <Select
                   isMulti
-                  options={categories.map((category: any) => ({ value: category.id, label: category.name }))}
-                  onChange={(selected) => field.onChange(selected.map((option: any) => option.value))}
+                  options={categories.map((category: any) => ({
+                    value: category.id,
+                    label: category.name,
+                  }))}
+                  onChange={(selected) =>
+                    field.onChange(selected.map((option: any) => option.value))
+                  }
                   styles={customStyles}
                 />
               </FormControl>
@@ -147,11 +185,16 @@ export function SuggestToolForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Features</FormLabel>
-              <FormControl  className="bg-primary-foreground">
+              <FormControl>
                 <Select
                   isMulti
-                  options={features.map((feature: any) => ({ value: feature.id, label: feature.name }))}
-                  onChange={(selected) => field.onChange(selected.map((option: any) => option.value))}
+                  options={features.map((feature: any) => ({
+                    value: feature.id,
+                    label: feature.name,
+                  }))}
+                  onChange={(selected) =>
+                    field.onChange(selected.map((option: any) => option.value))
+                  }
                   styles={customStyles}
                 />
               </FormControl>
@@ -159,8 +202,14 @@ export function SuggestToolForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" variant={"outline"} className="w-full rounded font-bold">Submit Tool</Button>
+        <Button
+          type="submit"
+          variant={"outline"}
+          className="w-full rounded font-bold"
+        >
+          Submit Tool
+        </Button>
       </form>
     </Form>
-  )
+  );
 }
