@@ -24,20 +24,22 @@ const jobSchema = z.object({
 });
 
 const customStyles = {
-  control: (base: any) => ({
+  control: (base: any, state: any) => ({
     ...base,
-    padding: "0.5rem",
-    borderColor: "var(--input)",
-    borderRadius: "0.375rem",
     backgroundColor: "hsl(var(--primary-foreground))",
     boxShadow: "none",
+    border: "1px solid hsl(var(--input))",
     "&:hover": {
-      borderColor: "var(--input)",
+      borderColor: "hsl(var(--input))",
+    },
+    "&:focus-within": {
+      borderColor: "hsl(var(--ring))",
     },
   }),
   menu: (base: any) => ({
     ...base,
     backgroundColor: "hsl(var(--primary-foreground))",
+    border: "1px solid hsl(var(--input))",
   }),
   multiValue: (base: any) => ({
     ...base,
@@ -51,11 +53,26 @@ const customStyles = {
     ...base,
     color: "var(--foreground)",
     ":hover": {
-      backgroundColor: "var(--foreground)",
-      color: "var(--primary-foreground)",
+      backgroundColor: "var(--background)",
+      color: "var(--primary)",
     },
   }),
+  option: (base: any, { isFocused }: any) => ({
+    ...base,
+    backgroundColor: isFocused ? "hsl(var(--accent))" : "hsl(var(--primary-foreground))",
+    color: isFocused ? "var(--foreground)" : "var(--primary)",
+    "&:hover": {
+      backgroundColor: "hsl(var(--accent))",
+      color: "var(--foreground)",
+    },
+  }),
+  singleValue: (base: any) => ({
+    ...base,
+    color: "white",
+  }),
 };
+
+
 
 const JobForm = () => {
   const form = useForm({
@@ -82,7 +99,7 @@ const JobForm = () => {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input placeholder="Job Title" {...field} />
+                <Input placeholder="Job Title" {...field} className="bg-primary-foreground"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -95,7 +112,7 @@ const JobForm = () => {
             <FormItem>
               <FormLabel>Company</FormLabel>
               <FormControl>
-                <Input placeholder="Company Name" {...field} />
+                <Input placeholder="Company Name" {...field} className="bg-primary-foreground"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -104,7 +121,7 @@ const JobForm = () => {
         <FormItem>
           <FormLabel>Company Logo</FormLabel>
           <FormControl>
-            <Input type="file" {...form.register("companyLogo")} />
+            <Input type="file" {...form.register("companyLogo")} className="bg-primary-foreground p-2" />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -138,7 +155,7 @@ const JobForm = () => {
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea placeholder="Job Description" {...field} />
+                <Textarea placeholder="Job Description" {...field} className="bg-primary-foreground"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -151,7 +168,7 @@ const JobForm = () => {
             <FormItem>
               <FormLabel>Application Link</FormLabel>
               <FormControl>
-                <Input placeholder="https://example.com/apply" {...field} />
+                <Input placeholder="https://example.com/apply" {...field} className="bg-primary-foreground"/>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -213,7 +230,7 @@ const JobForm = () => {
               <FormItem className="flex-1">
                 <FormLabel>Minimum Salary</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="Minimum Salary" {...field} />
+                  <Input type="number" placeholder="Minimum Salary" {...field} className="bg-primary-foreground"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -226,7 +243,7 @@ const JobForm = () => {
               <FormItem className="flex-1">
                 <FormLabel>Maximum Salary</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="Maximum Salary" {...field} />
+                  <Input type="number" placeholder="Maximum Salary" {...field} className="bg-primary-foreground"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
