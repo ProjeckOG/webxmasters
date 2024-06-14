@@ -1,8 +1,8 @@
-// components/toolCard.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardTitle, CardDescription } from '@/lib/@/components/ui/card';
 import { Button } from '@/lib/@/components/ui/button';
 import Link from 'next/link';
+import { Heart } from 'lucide-react';
 
 interface ToolCardProps {
   tool: {
@@ -14,10 +14,18 @@ interface ToolCardProps {
     categories?: string[];
     features?: string[];
     promoted?: boolean;
+    likes?: number; // Add likes property
   };
 }
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
+  const [likes, setLikes] = useState(tool.likes || 0);
+
+  const likeTool = () => {
+    setLikes(likes + 1);
+    // Here you would typically also update the server with the new like count
+  };
+
   return (
     <Card className={`${tool.promoted ? 'border-2 border-yellow-300' : ''} w-full md:w-1/3 lg:w-1/4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200`}>
       <CardContent className="flex flex-col items-center p-4">
@@ -36,11 +44,16 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
             </span>
           ))}
         </div>
+        <div className='flex items-center gap-5'>
         <Button variant={"outline"} className='rounded-full my-5 hover:bg-primary-foreground'>
-        <Link href={`/tools/${tool.id}`}  className="mt-4 ">
-          Visit Page
-        </Link>
+          <Link href={`/tools/${tool.id}`} className="mt-4">
+            Visit Page
+          </Link>
         </Button>
+        <Button variant="outline" className="rounded-full" onClick={likeTool}>
+            <Heart className="w-4 h-4" />
+          </Button>
+          </div>
         {tool.promoted && <span className="text-xs text-yellow-500">Promoted</span>}
       </CardContent>
     </Card>

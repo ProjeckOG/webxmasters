@@ -50,7 +50,7 @@ const JobTeaser = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {jobs.map((job) => (
-          <Card key={job.id} className="border p-4 rounded-lg shadow-sm">
+          <Card key={job.id} className="border p-4 rounded-lg shadow-sm ">
             <CardContent className="flex flex-col gap-4">
               <div className="flex items-center gap-4">
                 <img
@@ -72,7 +72,7 @@ const JobTeaser = () => {
                 </div>
               </div>
 
-              <Button variant="outline" className="mt-4 rounded-full hover:bg-primary-foreground">
+              <Button variant="outline" className="mt-4 rounded-full ">
                 <Link href={`/jobs/${job.id}`}>View Job</Link>
               </Button>
             </CardContent>
@@ -80,7 +80,7 @@ const JobTeaser = () => {
         ))}
       </div>
       <div className="flex justify-center mt-6">
-        <Button variant="outline" className="rounded-full">
+        <Button variant="outline" className="rounded-full ">
           <Link href="/jobs">See All Jobs</Link>
         </Button>
       </div>

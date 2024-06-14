@@ -82,14 +82,14 @@ export default function Tools() {
       <div className="mt-10">
         {promotedTools.length > 0 && (
           <div className="mb-10">
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-wrap  justify-center">
               {promotedTools.map((tool) => (
                 <ToolCard key={tool.id} tool={tool} />
               ))}
             </div>
           </div>
         )}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap justify-center">
           {regularTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))}
