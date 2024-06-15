@@ -1,0 +1,20 @@
+[
+    {
+      "id": "1",
+      "name": "Project Alpha",
+      "description": "Project Alpha is a web application designed to streamline task management for small teams.",
+      "startDate": "2023-01-01",
+      "endDate": "2023-06-30",
+      "skills": ["React", "Redux", "Node.js", "Express", "MongoDB"],
+      "tools": ["JIRA", "Slack", "GitHub", "Figma"]
+    },
+    {
+      "id": "2",
+      "name": "Project Beta",
+      "description": "Project Beta focuses on improving user experience for e-commerce platforms.",
+      "startDate": "2023-02-15",
+      "skills": ["Vue.js", "Vuex", "Django", "PostgreSQL"],
+      "tools": ["Asana", "Trello", "Bitbucket", "Adobe XD"]
+    }
+  ]
+  
