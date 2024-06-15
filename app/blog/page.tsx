@@ -1,6 +1,7 @@
 import React from "react";
 import MainBlogPostCard from "./components/mainBlogPostCard";
 import BlogListings from "./components/blogListings";
+import EmailOptInForm from "./components/emailOptInForm";
 
 
 export default function page() {
@@ -8,6 +9,7 @@ export default function page() {
     <div className="md:w-3/4 mx-auto my-10">
       <h1 className="font-bold text-3xl text-center my-5">News</h1>
       <MainBlogPostCard />
+      <EmailOptInForm />
       <BlogListings />
     </div>
   );
