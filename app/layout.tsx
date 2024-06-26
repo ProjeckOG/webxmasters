@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-import { ThemeProvider } from "./components/theme-provider";
-import { Toaster } from "sonner";
+// app/layout.tsx
+import React from 'react';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Footer from './components/footer';
+import { ThemeProvider } from './components/theme-provider';
+import { Toaster } from 'sonner';
+import GuestSidebar from './components/guestSideBar';
+import UserSidebar from './components/userSidebar';
 
-const inter = Inter({ subsets: ["latin"] });
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "WebxMasters: Maker's Tools",
-  description: "Find the tools to create things in the digital era!",
+  title: 'WebxMasters: Maker\'s Tools',
+  description: 'Find the tools to create things in the digital era!',
 };
 
 export default function RootLayout({
@@ -19,6 +22,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // This is a placeholder for authentication logic to determine which sidebar to show
+  const isAuthenticated = false; // Replace this with actual authentication logic
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -29,11 +35,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className={`flex flex-col min-h-screen ${inter.className}`}>
-            <Navbar />
-
-            <main className="flex-grow border">{children}</main>
-            <Footer />
+          <div className={`flex ${inter.className} min-h-screen`}>
+            {isAuthenticated ? <UserSidebar /> : <GuestSidebar />}
+            <div className="flex flex-col flex-grow ml-0 md:ml-60">
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
             <Toaster />
           </div>
         </ThemeProvider>
