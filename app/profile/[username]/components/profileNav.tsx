@@ -14,7 +14,7 @@ import { ProjectCard } from "./projectCards";
 export default function ProfileNav() {
   return (
     <Tabs defaultValue="about">
-      <TabsList className="flex bg-primary-foreground border  rounded-lg p-2 mx-auto md:w-1/2 mb-5">
+      <TabsList className="flex bg-primary-foreground border  rounded-lg p-2 mb-5">
         <TabsTrigger
           value="about"
           className="data-[state=active]:bg-background p-2 rounded w-full"

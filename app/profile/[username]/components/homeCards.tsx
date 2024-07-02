@@ -38,7 +38,7 @@ const tools = [
 
 export function AboutCard() {
   return (
-    <Card className="text-center bg-primary-foreground mx-auto  md:w-1/2">
+    <Card className="text-center bg-primary-foreground ">
       <CardHeader className="">
         <CardTitle className="text-center">About</CardTitle>
       </CardHeader>
@@ -53,7 +53,7 @@ export function AboutCard() {
 
 export function ToolStack() {
   return (
-    <Card className="text-center bg-primary-foreground  w-full mx-auto md:w-1/2">
+    <Card className="text-center bg-primary-foreground  w-full ">
       <CardHeader>
         <CardTitle>Tools Stack</CardTitle>
         <CardDescription className="text-sm my-3">
@@ -76,7 +76,7 @@ export function ToolStack() {
 
 export function SkillStack() {
   return (
-    <Card className="text-center bg-primary-foreground mx-auto w-full  md:w-1/2">
+    <Card className="text-center bg-primary-foreground">
       <CardHeader>
         <CardTitle>Skills Stack</CardTitle>
         <CardDescription className="text-sm my-3">

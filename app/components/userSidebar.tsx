@@ -9,7 +9,7 @@ import { Button } from '@/lib/@/components/ui/button';
 const UserSidebar = () => {
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-10 w-60 flex-col border-r bg-background hidden sm:flex">
+      <aside className="fixed inset-y-0 left-0 z-10 w-40 flex-col border-r bg-background hidden sm:flex">
         <nav className="flex flex-col items-start gap-4 p-4">
           <Link href="/" className="text-2xl font-bold mb-6">WEBXMASTERS</Link>
           <TooltipProvider>

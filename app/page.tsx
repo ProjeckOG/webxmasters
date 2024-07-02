@@ -4,7 +4,7 @@ import JobTeaser from "./components/jobTeaser";
 
 export default function Home() {
   return (
-      <main className="py-20 flex flex-col gap-40">
+      <main className="py-20 flex flex-col gap-40 container">
         <Hero />
         <JobTeaser />
         <BlogTeaser />

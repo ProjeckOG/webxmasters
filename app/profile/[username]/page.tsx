@@ -35,7 +35,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 justify-center md:w-3/4 mx-auto my-10">
+    <div className="flex flex-col gap-5 justify-center container my-10">
       <ProfileHeader username={""} jobTitle={""} description={""} twitterUrl={""} linkedinUrl={""} facebookUrl={""} instagramUrl={""} avatarUrl={""} />
       <ProfileNav />
       

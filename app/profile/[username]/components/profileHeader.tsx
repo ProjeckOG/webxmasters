@@ -42,7 +42,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   avatarUrl,
 }) => {
   return (
-    <Card className="text-center bg-primary-foreground p-2 mx-auto md:w-1/2">
+    <Card className="text-center bg-primary-foreground p-2 ">
       <CardHeader>
       </CardHeader>
       <CardContent>
@@ -50,7 +50,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           <AvatarImage
             src="https://github.com/shadcn.png"
             alt="Profile Picture"
-            className="rounded-full w-1/4 mx-auto ring-4 ring-secondary"
+            className="rounded-full w-1/6 mx-auto ring-4 ring-secondary"
           />
           <AvatarFallback>Profile Picture</AvatarFallback>
         </Avatar>

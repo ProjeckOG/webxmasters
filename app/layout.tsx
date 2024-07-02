@@ -37,7 +37,7 @@ export default function RootLayout({
         >
           <div className={`flex ${inter.className} min-h-screen`}>
             {isAuthenticated ? <UserSidebar /> : <GuestSidebar />}
-            <div className="flex flex-col flex-grow ml-0 md:ml-60">
+            <div className="flex flex-col flex-grow ml-0 md:ml-40">
               <main className="flex-grow">{children}</main>
               <Footer />
             </div>
