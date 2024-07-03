@@ -80,10 +80,7 @@
     @apply bg-background text-foreground;
   }
 }
-.lucide {
-  /* Change this! */
-  stroke-width: 1px;
-}
+
 [data-radix-dialog-overlay] {
   position: fixed;
   inset: 0;
@@ -97,5 +94,9 @@
   background: white;
   padding: 32px;
   border-radius: 10px;
-  z-index: 1000; /* Ensure it's above other content */
+  z-index: 1000;
+}
+.lucide {
+  /* Change this! */
+  stroke-width: 1px;
 }

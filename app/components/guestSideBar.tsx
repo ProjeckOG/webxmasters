@@ -1,9 +1,10 @@
 // app/components/GuestSidebar.tsx
 import React from 'react';
 import Link from 'next/link';
-import { Home, ShoppingCart, Package, Users2, LineChart, Settings, PanelLeft, X, Rss, Briefcase, Wrench, LogIn } from 'lucide-react';
+import { Home, ShoppingCart, Package, Users2, LineChart, Settings, PanelLeft, X, Rss, Briefcase, Wrench, LogIn, Newspaper } from 'lucide-react';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip';
-import { Dialog, DialogTrigger, DialogContent, DialogClose } from '@radix-ui/react-dialog';
+import { Dialog, DialogTrigger, DialogContent, DialogClose } from '@/lib/@/components/ui/dialog';
+import { JoinDialog } from '../(auth)/join/page';
 import { Button } from '@/lib/@/components/ui/button';
 
 
@@ -16,8 +17,8 @@ const GuestSidebar = () => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/blog" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-                  <Rss className="h-5 w-5" />
+                <Link href="/blog" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg text-sm">
+                  <Newspaper className="h-5 w-5" />
                   <span>BLOG</span>
                 </Link>
               </TooltipTrigger>
@@ -27,7 +28,7 @@ const GuestSidebar = () => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/jobs" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
+                <Link href="/jobs" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg text-sm">
                   <Briefcase className="h-5 w-5" />
                   <span>JOBS</span>
                 </Link>
@@ -38,37 +39,22 @@ const GuestSidebar = () => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/tools" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-                  <Wrench  className="h-5 w-5" />
+                <Link href="/tools" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg text-sm">
+                  <Wrench className="h-5 w-5" />
                   <span>TOOLS</span>
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="right">Tools</TooltipContent>
             </Tooltip>
           </TooltipProvider>
-
         </nav>
         <nav className="mt-auto flex flex-col items-start gap-4 p-4">
-        <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link href="/login" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-                  <LogIn  className="h-5 w-5" />
-                  <span>LOGIN</span>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent side="right">Login</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/signup" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-                  <LineChart className="h-5 w-5" />
-                  <span>SIGNUP</span>
-                </Link>
+                <JoinDialog />
               </TooltipTrigger>
-              <TooltipContent side="right">Signup</TooltipContent>
+              <TooltipContent side="right">Join</TooltipContent>
             </Tooltip>
           </TooltipProvider>
         </nav>
@@ -80,9 +66,9 @@ const GuestSidebar = () => {
             <span className="sr-only">Toggle Menu</span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="fixed top-0 left-0 right-0 bg-white p-4 z-50">
+        <DialogContent className="fixed top-0 left-0 right-0  p-4 z-50">
           <div className="flex justify-between items-center mb-4">
-            <Link href="/" className="text-2xl font-bold">WEBXMASTERS</Link>
+            <Link href="/" className="text-xl font-bold">WEBXMASTERS</Link>
             <DialogClose asChild>
               <Button variant="outline">
                 <X className="h-5 w-5" />
@@ -92,7 +78,7 @@ const GuestSidebar = () => {
           </div>
           <nav className="flex flex-col items-start gap-4">
             <Link href="/blog" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-              <Rss className="h-5 w-5" />
+              <Newspaper className="h-5 w-5" />
               <span>BLOG</span>
             </Link>
             <Link href="/jobs" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
@@ -100,20 +86,12 @@ const GuestSidebar = () => {
               <span>JOBS</span>
             </Link>
             <Link href="/tools" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-              <Wrench  className="h-5 w-5" />
+              <Wrench className="h-5 w-5" />
               <span>TOOLS</span>
             </Link>
-            <Link href="/login" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-              <LogIn  className="h-5 w-5" />
-              <span>LOGIN</span>
-            </Link>
-            <Link href="/signup" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-              <LineChart className="h-5 w-5" />
-              <span>SIGNUP</span>
-            </Link>
-            <Link href="/settings" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg mt-auto">
-              <Settings className="h-5 w-5" />
-              <span>Settings</span>
+            <Link href="/join" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
+              <LogIn className="h-5 w-5" />
+              <span>JOIN</span>
             </Link>
           </nav>
         </DialogContent>

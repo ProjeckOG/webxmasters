@@ -89,7 +89,7 @@ export default function Tools() {
             </div>
           </div>
         )}
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center container">
           {regularTools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))}
