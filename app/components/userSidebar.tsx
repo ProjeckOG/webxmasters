@@ -1,7 +1,7 @@
 // app/components/UserSidebar.tsx
 import React from 'react';
 import Link from 'next/link';
-import { Home, ShoppingCart, Package, Users2, LineChart, Settings, PanelLeft, X } from 'lucide-react';
+import { Home, ShoppingCart, Package, Users2, LineChart, Settings, PanelLeft, X, Users } from 'lucide-react';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip';
 import { Dialog, DialogTrigger, DialogContent, DialogClose } from '@radix-ui/react-dialog';
 import { Button } from '@/lib/@/components/ui/button';
@@ -11,7 +11,7 @@ const UserSidebar = () => {
     <>
       <aside className="fixed inset-y-0 left-0 z-10 w-40 flex-col border-r bg-background hidden sm:flex">
         <nav className="flex flex-col items-start gap-4 p-4">
-          <Link href="/" className="text-2xl font-bold mb-6">WEBXMASTERS</Link>
+          <Link href="/" className="text-sm font-bold mb-6">WEBXMASTERS</Link>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -45,28 +45,17 @@ const UserSidebar = () => {
               <TooltipContent side="right">Tools</TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link href="/profile/username" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-                  <Users2 className="h-5 w-5" />
-                  <span>PROFILE</span>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent side="right">Profile</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
         </nav>
         <nav className="mt-auto flex flex-col items-start gap-4 p-4">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/settings" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-                  <Settings className="h-5 w-5" />
-                  <span>Settings</span>
+                <Link href="/user" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
+                  <Users className="h-5 w-5" />
+                  <span>ACCOUNT</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Settings</TooltipContent>
+              <TooltipContent side="right">Account</TooltipContent>
             </Tooltip>
           </TooltipProvider>
         </nav>

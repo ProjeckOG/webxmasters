@@ -1,10 +1,9 @@
 // app/components/GuestSidebar.tsx
 import React from 'react';
 import Link from 'next/link';
-import { Home, ShoppingCart, Package, Users2, LineChart, Settings, PanelLeft, X, Rss, Briefcase, Wrench, LogIn, Newspaper } from 'lucide-react';
+import { Home, ShoppingCart, Package, Users2, LineChart, Settings, PanelLeft, X, Rss, Briefcase, Wrench, LogIn, Newspaper, ArrowRight } from 'lucide-react';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip';
 import { Dialog, DialogTrigger, DialogContent, DialogClose } from '@/lib/@/components/ui/dialog';
-import { JoinDialog } from '../(auth)/join/page';
 import { Button } from '@/lib/@/components/ui/button';
 
 
@@ -13,7 +12,7 @@ const GuestSidebar = () => {
     <>
       <aside className="fixed inset-y-0 left-0 z-10 w-40 flex-col border-r bg-background hidden sm:flex">
         <nav className="flex flex-col items-start gap-4 p-4">
-          <Link href="/" className="text-base font-bold mb-6">WEBXMASTERS</Link>
+          <Link href="/" className="text-sm font-bold mb-6">WEBXMASTERS</Link>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -41,7 +40,7 @@ const GuestSidebar = () => {
               <TooltipTrigger asChild>
                 <Link href="/tools" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg text-sm">
                   <Wrench className="h-5 w-5" />
-                  <span>TOOLS</span>
+                  <span className='text-sm'>TOOLS</span>
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="right">Tools</TooltipContent>
@@ -52,7 +51,11 @@ const GuestSidebar = () => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <JoinDialog />
+                <Link href="/login" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg text-sm">
+                  <ArrowRight className="h-5 w-5" />
+                  <span>JOIN</span>
+                </Link>
+             
               </TooltipTrigger>
               <TooltipContent side="right">Join</TooltipContent>
             </Tooltip>
@@ -89,7 +92,7 @@ const GuestSidebar = () => {
               <Wrench className="h-5 w-5" />
               <span>TOOLS</span>
             </Link>
-            <Link href="/join" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
+            <Link href="/login" className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
               <LogIn className="h-5 w-5" />
               <span>JOIN</span>
             </Link>

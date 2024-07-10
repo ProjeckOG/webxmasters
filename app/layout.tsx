@@ -8,6 +8,7 @@ import { ThemeProvider } from './components/theme-provider';
 import { Toaster } from 'sonner';
 import GuestSidebar from './components/guestSideBar';
 import UserSidebar from './components/userSidebar';
+import Navbar from './components/navbar';
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -22,8 +23,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // This is a placeholder for authentication logic to determine which sidebar to show
-  const isAuthenticated = false; // Replace this with actual authentication logic
+
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -36,7 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className={`flex ${inter.className} min-h-screen`}>
-            {isAuthenticated ? <UserSidebar /> : <GuestSidebar />}
+            <Navbar />
             <div className="flex flex-col flex-grow ml-0 md:ml-40">
               <main className="flex-grow">{children}</main>
               <Footer />

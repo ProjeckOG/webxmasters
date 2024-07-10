@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 
 import { createClient } from "@/lib/utils/supabase/server";
-import { cookies } from "next/headers";
 
-import GuestNavbar from "./guestnavbar";
-import UserNavbar from "./usernavbar";
+import GuestSidebar from "./guestSideBar";
+import UserSidebar from "./userSidebar";
+import { redirect } from "next/navigation";
 
 const Navbar: React.FC = async () => {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = createClient()
 
-  const { data, error } = await supabase.auth.getUser();
+  const { data, error } = await supabase.auth.getUser()
+  if (error || !data?.user) {
+    
+  }
   
 
-  return <>{!data?.user ? <GuestNavbar /> : <UserNavbar />}</>;
+  return <>{!data?.user ? <GuestSidebar /> : <UserSidebar />}</>;
 };
 
 export default Navbar;
