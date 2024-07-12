@@ -24,7 +24,7 @@ const Account = async () => {
   }
   
   return (
-    <div className="w-full md:w-1/2 mx-auto mt-10">
+    <div className="container mt-10">
       <FullAccount userData={data?.user} />
     </div>
   );

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function TileNav() {
   return (
-    <Tabs defaultValue="projects" className="md:w-3/4 mx-auto ">
+    <Tabs defaultValue="projects" className="container ">
       <TabsList className=" w-full p-1 rounded border flex font-bold justify-around mb-10 bg-primary-foreground">
         <TabsTrigger
           value="projects"
@@ -30,33 +30,36 @@ export default function TileNav() {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="projects" className="flex flex-col items-center">
-        <h2 className="font-bold  uppercase text-3xl">Your Projects</h2>
+      <div className="flex items-center "><h2 className="font-bold  uppercase text-3xl"> Projects</h2>
         <Button
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 "
         ><Link href={"/user/new-project"}>+ New Project</Link>
           
-        </Button>
+        </Button></div>
+        
         <ProjectTiles />
       </TabsContent>
       <TabsContent value="tools" className="flex flex-col items-center">
-        <h2 className="font-bold  uppercase text-3xl">Your Tools</h2>
+      <div className="flex items-center justify-end"><h2 className="font-bold  uppercase text-3xl"> Tools</h2>
         <Button
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 "
         >
           <Link href={"/tools"}>+ New Tool</Link>
-        </Button>
+        </Button></div>
+        
         <ToolTiles />
       </TabsContent>
       <TabsContent value="skills" className="flex flex-col items-center">
-        <h2 className="font-bold  uppercase text-3xl">Your Skills</h2>
+        <div className="flex items-center "><h2 className="font-bold  uppercase text-3xl"> Skills</h2>
         <Button
           variant={"outline"}
           className="rounded hover:bg-primary-foreground m-5 "
         >
           <Link href={"/tool"}>+ New Skill</Link>
-        </Button>
+        </Button></div>
+        
         <SkillTiles />
       </TabsContent>
     </Tabs>

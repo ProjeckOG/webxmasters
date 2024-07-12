@@ -31,7 +31,7 @@ export default function User() {
   }, []); // Empty dependency array to run only once on mount
 
   return (
-    <div className="mx-auto items-center mt-10 flex flex-col">
+    <div className=" items-center mt-10 flex flex-col">
       <UserNav user={user} />
       <TileNav />
     </div>
