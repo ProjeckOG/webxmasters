@@ -9,6 +9,7 @@ import {
 import { Button } from "@/lib/@/components/ui/button";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { MapPin, Calendar, Briefcase, DollarSign, User } from 'lucide-react';
 
 interface Job {
   id: number;
@@ -20,7 +21,7 @@ interface Job {
   applyLink: string;
   tools: string[];
   date: string;
-  dateAdded: string; // Add dateAdded field
+  dateAdded: string;
   jobType: string;
   salaryRange: string;
   experienceLevel: string;
@@ -43,7 +44,7 @@ const JobPage = () => {
   }, [id]);
 
   if (!job) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
 
   const daysAgo = Math.floor(
@@ -52,47 +53,65 @@ const JobPage = () => {
   );
 
   return (
-    <div className="container mx-auto p-4">
-      <Card className="border rounded-lg shadow-sm">
-        <CardContent className="flex flex-col gap-3">
-          <div className="flex items-center gap-3">
+    <div className="container mx-auto p-4 max-w-4xl">
+      <Card className="border rounded-lg shadow-lg overflow-hidden bg-card">
+        <div className="bg-accent p-6 text-accent-foreground">
+          <div className="flex items-center gap-4">
             {job.companyLogo && (
               <img
                 src={job.companyLogo}
                 alt={job.company}
-                className="w-20 h-20 object-contain"
+                className="w-20 h-20 object-contain bg-background rounded-full p-2"
               />
             )}
             <div>
               <CardTitle className="text-3xl font-bold">{job.title}</CardTitle>
-              <CardDescription className="text-xl text-gray-600">
-                {job.company} - <span className="italic">{job.location}</span>
+              <CardDescription className="text-xl text-muted-foreground">
+                {job.company}
               </CardDescription>
             </div>
           </div>
-
-          <div className="flex gap-3 flex-wrap">
-            <span className="border px-3 py-1 rounded-full text-sm font-medium">{job.jobType}</span>
+        </div>
+        
+        <CardContent className="p-6">
+          <div className="flex flex-wrap gap-4 mb-6">
+            <div className="flex items-center gap-2">
+              <MapPin className="text-primary" size={18} />
+              <span className="text-card-foreground">{job.location}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="text-primary" size={18} />
+              <span className="text-card-foreground">Posted {daysAgo} days ago</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Briefcase className="text-primary" size={18} />
+              <span className="text-card-foreground">{job.jobType}</span>
+            </div>
             {job.salaryRange && (
-              <span className="border px-3 py-1 rounded-full text-sm font-medium">{job.salaryRange}</span>
+              <div className="flex items-center gap-2">
+                <DollarSign className="text-primary" size={18} />
+                <span className="text-card-foreground">{job.salaryRange}</span>
+              </div>
             )}
             {job.experienceLevel && (
-              <span className="border px-3 py-1 rounded-full text-sm font-medium">{job.experienceLevel}</span>
+              <div className="flex items-center gap-2">
+                <User className="text-primary" size={18} />
+                <span className="text-card-foreground">{job.experienceLevel}</span>
+              </div>
             )}
-            <span className="border px-3 py-1 rounded-full text-sm font-medium">Added {daysAgo} days ago</span>
           </div>
           
-          <div className="my-4">
-            <h3 className="text-xl font-semibold mb-2">Description</h3>
-            <p className="text-base">{job.description}</p>
+          <div className="mb-6">
+            <h3 className="text-2xl font-semibold mb-3 text-card-foreground">Job Description</h3>
+            <p className="text-card-foreground">{job.description}</p>
           </div>
           
           {job.tools && job.tools.length > 0 && (
-            <div className="my-4">
-              <h3 className="text-xl font-semibold mb-2">Tools</h3>
-              <div className="flex flex-wrap gap-3">
+            <div className="mb-6">
+              <h3 className="text-2xl font-semibold mb-3 text-card-foreground">Software Required</h3>
+              <div className="flex flex-wrap gap-2">
                 {job.tools.map((tool) => (
-                  <span key={tool} className="bg-secondary px-3 = rounded-full text-sm">
+                  <span key={tool} className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-medium">
                     {tool}
                   </span>
                 ))}
@@ -101,17 +120,17 @@ const JobPage = () => {
           )}
 
           {job.benefits && job.benefits.length > 0 && (
-            <div className="my-2">
-              <h3 className="text-xl font-semibold mb-2">Benefits</h3>
-              <ul className="list-disc list-inside">
+            <div className="mb-6">
+              <h3 className="text-2xl font-semibold mb-3 text-card-foreground">Benefits</h3>
+              <ul className="list-disc list-inside text-card-foreground">
                 {job.benefits.map((benefit, index) => (
-                  <li key={index} className="text-base">{benefit}</li>
+                  <li key={index} className="mb-1">{benefit}</li>
                 ))}
               </ul>
             </div>
           )}
 
-          <Button variant={"outline"} className="mt-6 rounded-full">
+          <Button className="w-full mt-6 bg-primary text-primary-foreground font-bold py-3 rounded-full transition-transform hover:scale-105">
             <Link href={job.applyLink}>Apply Now</Link>
           </Button>
         </CardContent>
